@@ -1,5 +1,7 @@
 ENZO V1 FREE — CANON BASELINE
 
+![ENZO V1 overview](enzo_v1_overview_800.jpg)
+
 Start here: docs/README_START_HERE_T1_ENZO_v1-2.md
 
 This folder contains the V1 Free (Canon) baseline for ENZO.
