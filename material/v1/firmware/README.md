@@ -6,4 +6,4 @@ Files here are designed to run on an ESP32-S3 using MicroPython.
 No diagnostics UI. No autonomy. Deterministic behaviour only.
 
 Start point:
-- main.py
+- README_START_HERE_T1_ENZO_v1-2.md
