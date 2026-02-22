@@ -1,0 +1,61 @@
+# ENZO V1 — Power & 5V Isolation Wiring (Schottky Channels)
+
+**Status:** As-built / Canon reference
+
+This document describes the final, verified power architecture and the dual-Schottky 5V isolation scheme used in **ENZO V1**. It reflects the physical wiring that has been tested and confirmed working with:
+- Battery only
+- USB only
+- Seamless handover without back-feed
+
+---
+
+## 1. Power Source Overview
+
+### Battery Path
+```
+Battery → Fuse → Schottky (reverse protection) → Source Rail → Buck Converter → Latching Switch → 5V Rail (A)
+```
+
+### USB Path
+```
+USB → ESP32-S3 5V Pin → Schottky Channel A → 5V Rail (A)
+```
+
+---
+
+## 2. 5V Rail Isolation (Dual-Schottky Scheme)
+
+### Channel A — USB / ESP → Rail
+- From: ESP32-S3 5V pin
+- To: 5V Rail (A)
+- Diode orientation: Grey band faces the rail
+
+### Channel B — Rail → ESP
+- From: 5V Rail (A)
+- To: ESP32-S3 5V pin
+- Diode orientation: Grey band faces the ESP
+
+---
+
+## 3. Loads on the 5V Rail
+- Voltmeter
+- Latching switch LED
+- OLED
+- RGB
+- PIR
+- DHT22
+- ESP32-S3 (via Channel B)
+
+---
+
+## 4. Verified Behaviour
+
+| Scenario | Result |
+|--------|--------|
+| Battery only | OK |
+| USB only | OK |
+| Battery + USB | OK (no backfeed) |
+
+---
+
+**ENZO V1 power architecture is LOCKED once referenced in baseline documentation.**
