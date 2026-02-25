@@ -12,7 +12,7 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ## Core Electronics
 
 ### ESP32 Controller
-- **Item:** ESP32-S3 Dev Board
+- **Item:** ESP32-S3 Dev_Kit_NXR8
 - **Notes:** Main controller (WiFi + BLE)
 - **Source:** Amazon
 - **Qty:** 1
