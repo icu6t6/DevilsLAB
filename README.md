@@ -1,5 +1,7 @@
 ENZO V1 FREE — CANON BASELINE
 
+ENZO is a structured bring-up and deterministic control platform for embedded systems
+
 ![ENZO V1 overview](enzo_v1_overview_800.jpg)
 
 Start here: docs/README_START_HERE_T1_ENZO_v1-2.md
