@@ -61,14 +61,11 @@ ENZO uses a professional handover-style interaction model.
 
 Before asking for help, the builder provides:
 
-1. **CAT A — Constraints**  
-   Physical laws, safety rules, and elements that cannot change.
-
-2. **CAT B — Intent**  
-   What the builder is trying to achieve or understand.
-
-3. **Current Snapshot**  
-   The current ENZO version, phase, and known-good state.
+1. Constraints (hardware rules, safety limits)
+ 
+2. Builder intent (what you're trying to achieve)
+ 
+3. Current system snapshot
 
 Only after this context is established does the builder move into:
 
