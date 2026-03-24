@@ -34,10 +34,6 @@ This baseline is the reference all other tiers derive from
 
 If you want observability or diagnostics, see V1 Advanced.
 
-## ENZO V1 Advanced
-
-This repository contains the full build and documentation.
-
 ---
 
 ## Next Step — ENZO V1 Advanced (Optional)
