@@ -4,8 +4,7 @@ This repository contains the full build and documentation.
 
 👉 Advanced diagnostics version available 
 here:
-https://baileyspark81.gumroad.com/l/qposal
-
+https://devilslab.gumroad.com/l/qposal
 ENZO V1 FREE — CANON BASELINE
 
 ENZO is a structured bring-up and deterministic control platform for embedded systems
