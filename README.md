@@ -1,13 +1,4 @@
-## ENZO V1 Advanced
 
-This repository contains the full build and documentation.
-
-👉 Advanced diagnostics version available 
-here:
-https://devilslab.gumroad.com/l/qposal
-ENZO V1 FREE — CANON BASELINE
-
-ENZO is a structured bring-up and deterministic control platform for embedded systems
 
 ![ENZO V1 overview](enzo_v1_overview_800.jpg)
 
@@ -42,3 +33,14 @@ Changes only occur via deliberate new baseline versions
 This baseline is the reference all other tiers derive from
 
 If you want observability or diagnostics, see V1 Advanced.
+
+## ENZO V1 Advanced
+
+This repository contains the full build and documentation.
+
+👉 Advanced diagnostics version available 
+here:
+https://devilslab.gumroad.com/l/qposal
+ENZO V1 FREE — CANON BASELINE
+
+ENZO is a structured bring-up and deterministic control platform for embedded systems
