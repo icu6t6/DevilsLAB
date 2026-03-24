@@ -38,9 +38,21 @@ If you want observability or diagnostics, see V1 Advanced.
 
 This repository contains the full build and documentation.
 
-👉 Advanced diagnostics version available 
-here:
-https://devilslab.gumroad.com/l/qposal
-ENZO V1 FREE — CANON BASELINE
+---
 
-ENZO is a structured bring-up and deterministic control platform for embedded systems
+## Next Step — ENZO V1 Advanced (Optional)
+
+If you want to go beyond the baseline and actually verify your system properly:
+
+👉 https://devilslab.gumroad.com/l/qposal
+
+V1 Advanced is a structured diagnostics and validation layer that sits on top of a working V1 build.
+
+It is used to:
+- verify behaviour step-by-step
+- expose internal system state
+- validate hardware without guesswork
+
+This is NOT required for V1.
+
+Start with V1. Trust it. Then extend it.
