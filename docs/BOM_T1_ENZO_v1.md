@@ -1,11 +1,11 @@
-# T1 ENZO v1 – Bill of Materials (BOM)
+## T1 ENZO v1 – Bill of Materials (BOM)
 
-## T1-ENZO v1 is an educational firmware and reference build package.
+T1-ENZO v1 is an educational firmware and reference build package.
 The documentation includes one proven physical implementation (“ENZO”) used to validate the firmware and architecture.
 Builders may replicate this implementation or substitute their own hardware, provided the electrical and pin-mapping rules are preserved.
 
-This document lists all components required to build **T1 ENZO v1**, including brand, purpose, and source.
-Where exact model numbers were not written explicitly, they are noted and can be confirmed or swapped with equivalents.
+This document lists all components required to build **T1-ENZO v1**, including brand, purpose, and source.
+Where exact model numbers were not written explicitly, they are noted and can be confirmed or replaced with suitable equivalents.
 
 ---
 
