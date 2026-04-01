@@ -33,7 +33,7 @@ Changes only occur via deliberate new baseline versions
 This baseline is the reference all other tiers derive from
 
 If you want observability or diagnostics, see V1 Advanced.
-
+----------------------------------------------------------------------------
 Next Step — ENZO V1 Advanced (Optional)
 If you want to go beyond the baseline and actually verify your system properly:
 
