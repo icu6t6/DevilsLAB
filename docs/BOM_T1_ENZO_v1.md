@@ -142,7 +142,7 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ---
 
 ## Notes & Assumptions
----
+
 - All grounds ultimately tie back to the **Ground Rail**
 - ESP32 ground is connected to ground rail via a single heavy reference wire
 - Sensors may ground locally at ESP, but share common ground via rail
