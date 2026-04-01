@@ -164,4 +164,8 @@ Document.
 Photograph.
 Tag firmware.
 
-Then — and only then — begin v2.
+## Next Step
+
+Once the physical build is complete, continue to Module Group B.
+
+Do not skip ahead or mix stages out of order.
