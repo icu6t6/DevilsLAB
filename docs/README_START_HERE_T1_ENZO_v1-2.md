@@ -15,7 +15,7 @@ This repository is structured as a **guided baseline build**, not a loose collec
 
 Recommended order:
 1. Read this document fully (`docs/README_START_HERE_T1_ENZO_v1-2.md`)
-2. Review the top-level `README.md`
+2. Review the top-level (`OVERVIEW_T1_ENZO_v1.md`)
 3. Review the Bill of Materials (`docs/BOM_T1_ENZO_v1.md`)
 4. Follow the hardware Build Guide (`docs/BUILD_GUIDE_T1_ENZO_v1-2.md`)
 5. Consult the wiring and pin-reference documents
