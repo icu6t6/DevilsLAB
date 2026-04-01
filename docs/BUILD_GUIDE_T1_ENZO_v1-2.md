@@ -96,25 +96,28 @@ source/intput Bus Bar
 
 ---
 
-## 4. Wiring – Motor Driver (TB6612FNG)
+## 4. Wiring – Motor Driver (TB6612FNG Grove I2C)
 
-### Power
-- VM → input rail
-- VCC → 5V rail
-- GND → ground rail
+This V1 build uses the **Grove I2C** version of the TB6612FNG motor driver.
 
-### Control (ESP GPIO example)
-- AIN1 → GPIO X
-- AIN2 → GPIO Y
-- BIN1 → GPIO Z
-- BIN2 → GPIO W
-- STBY → GPIO (or tied HIGH)
+### Motor Power
+- Driver `+` → motor power input
+- Driver `-` → common ground
+
+### Logic / Control
+- `SCL` → ESP32-S3 I2C clock line
+- `SDA` → ESP32-S3 I2C data line
+- `VCC` → 5V rail
+- `GND` → common ground
 
 ### Motors
-- Motor A → A01 / A02
-- Motor B → B01 / B02
-(Swap wires to reverse direction)
+- Motor A → `a1` / `a2`
+- Motor B → `b1` / `b2`
 
+### Important
+This build does **not** use direct control pins such as `AIN1`, `AIN2`, `BIN1`, `BIN2`, or `STBY`.
+
+Control is handled through the Grove I2C interface shown in the wiring diagram.
 ---
 
 ## 5. Wiring – ESP32 Core
