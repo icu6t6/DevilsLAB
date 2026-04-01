@@ -6,7 +6,7 @@ The documentation includes one proven physical implementation (“ENZO”) used 
 Builders may replicate this implementation or substitute their own hardware, provided the electrical and pin-mapping rules are preserved.
 This project is **NOT a physical product or kit**.
 
-Acknowledgement
+## Acknowledgement
 This project was designed and developed by the author, with support from an AI assistant used for analysis, discussion, and continuity during development.
 
 ## How to Use This Repository (Read Order)
@@ -138,6 +138,6 @@ This project is released under a **custom license**.
 
 - Open for learning, modification, and experimentation
 - Commercial use is reserved by the author
-- Monetisation applies to V2+ "dont worry wont break the bank"
+- Commercial licensing for V2+ is reserved by the author
 
 See: LICENSE_T1_ENZO_v1.md
