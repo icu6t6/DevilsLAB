@@ -118,6 +118,7 @@ This V1 build uses the **Grove I2C** version of the TB6612FNG motor driver.
 This build does **not** use direct control pins such as `AIN1`, `AIN2`, `BIN1`, `BIN2`, or `STBY`.
 
 Control is handled through the Grove I2C interface shown in the wiring diagram.
+
 ---
 
 ## 5. Wiring – ESP32 Core
