@@ -27,21 +27,21 @@ Where exact model numbers were not written explicitly, they are noted and can be
 
 ## Power System
 
-### 2-cell Battey 7.4V LiPo
-- **Item:** 2s1p 29.6Wh Gens ace
+### 2-cell Battery 7.4V LiPo
+- **Item:** 2s1p 29.6Wh Gens Ace
 - **Notes:** Main power source
 - **Source:** Amazon
 - **Qty:** 1
 
-### Double block connecter
-- **Item:** inline connection block (+-=IN, +-=OUT
-- **Notes:** links Deans-IN from Battery
+### Double-connecting block
+- **Item:** Inline connection block (+/- IN, +/- OUT)
+- **Notes:** Connects Deans input from battery
 - **Source:** Amazon
 - **Qty:** 1
 
-### Power in → Deans "male"
-- **Item:** Male Deans Connector
-- **Notes:** Dean male with 2 inch wire ish
+### Power input → Deans male
+- **Item:** Male Deans connector
+- **Notes:** Deans male connector with short wire lead
 - **Source:** Amazon
 - **Qty:** 1
 
