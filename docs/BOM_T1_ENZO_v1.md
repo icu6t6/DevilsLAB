@@ -151,8 +151,6 @@ Where exact model numbers were not written explicitly, they are noted and can be
 
 ---
 
----
-
 ## Next Step
 
 Once you have gathered the required parts, go to the Build Guide:
