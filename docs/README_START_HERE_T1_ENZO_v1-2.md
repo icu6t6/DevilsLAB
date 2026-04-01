@@ -111,16 +111,13 @@ T1‑ENZO v1 is considered complete when:
 
 ---
 
-What Comes After V1
+## What Comes After V1
 
-- T1-ENZO v1 is a complete baseline. No further steps are required.
+T1-ENZO v1 is a complete baseline. No further steps are required.
 
-- From this point, builders may:
-
+From this point, builders may:
 - Stop here, with a finished and stable embedded system
-
 - Optionally explore T1-ENZO v1 Advanced, which adds diagnostics and validation tools for learning and confidence
-
 - Proceed to ENZO V2, which introduces motion and external control
 
 V1 Baseline is always the launch point for V2.
