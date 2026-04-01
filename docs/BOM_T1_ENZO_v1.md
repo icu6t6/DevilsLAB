@@ -151,4 +151,14 @@ Where exact model numbers were not written explicitly, they are noted and can be
 
 ---
 
+---
+
+## Next Step
+
+Once you have gathered the required parts, go to the Build Guide:
+
+`docs/BUILD_GUIDE_T1_ENZO_v1-2.md`
+
+Gather first. Build second. Do not skip ahead.
+
 *This BOM reflects the current T1 ENZO v1 build and may be updated in future revisions.*
