@@ -126,3 +126,11 @@ If a test fails:
 - Run the self-test again
 
 The self-test does not modify system state and is safe to run multiple times.
+
+---
+
+## Next Step
+
+Once software setup and firmware flashing are complete, continue to ESP Group A.
+
+Do not skip ahead or mix stages out of order.
