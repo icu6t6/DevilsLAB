@@ -100,10 +100,10 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Qty:** 1
 
 ### Push Button Latching Switch with LED
-- **Item:** Latching Button
-- **Notes:** Latching power switch; LED powered from 5v; interrupts main 5v rail
-_ **Source: PiHut
-_ **Qty:** 1
+- **Item:** Latching button
+- **Notes:** Latching power switch; LED powered from 5V; interrupts main 5V rail
+- **Source:** Pi Hut
+- **Qty:** 1
  
 ### RGB LED
 - **Item:** Addressable RGB LED
