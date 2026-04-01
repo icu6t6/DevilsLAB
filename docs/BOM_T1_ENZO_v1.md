@@ -69,8 +69,8 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Qty:** 1
 
 ### Ground Rail
-- **Item:** Common Ground Bus / Terminal Block
-- **Notes:** Single ground reference (“ground motorway”)
+- **Item:** Common ground bus / terminal block
+- **Notes:** Single ground reference for the system
 - **Source:** Amazon
 - **Qty:** 1
 
