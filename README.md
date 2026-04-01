@@ -2,11 +2,11 @@
 
 ![ENZO V1 overview](enzo_v1_overview_800.jpg)
 
-Start here: docs/README_START_HERE_T1_ENZO_v1-2.md
+Start here: [docs/README_START_HERE_T1_ENZO_v1-2.md](docs/README_START_HERE_T1_ENZO_v1-2.md)
 
 This folder contains the V1 Free (Canon) baseline for ENZO.
 
-What this is
+## What this is
 
 Known-good hardware and firmware baseline
 
@@ -34,10 +34,7 @@ This baseline is the reference all other tiers derive from
 
 If you want observability or diagnostics, see V1 Advanced.
 
----
-
-## Next Step — ENZO V1 Advanced (Optional)
-
+Next Step — ENZO V1 Advanced (Optional)
 If you want to go beyond the baseline and actually verify your system properly:
 
 👉 https://devilslab.gumroad.com/l/qposal
@@ -45,10 +42,10 @@ If you want to go beyond the baseline and actually verify your system properly:
 V1 Advanced is a structured diagnostics and validation layer that sits on top of a working V1 build.
 
 It is used to:
-- verify behaviour step-by-step
-- expose internal system state
-- validate hardware without guesswork
 
+verify behaviour step-by-step
+expose internal system state
+validate hardware without guesswork
 This is NOT required for V1.
 
 Start with V1. Trust it. Then extend it.
