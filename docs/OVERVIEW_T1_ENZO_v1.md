@@ -2,7 +2,7 @@
 
 ## What is T-1 ENZO?
 
-T-1 ENZO is a hands-on learning robot kit built around the ESP32 microcontroller.
+T-1 ENZO is an educational ESP32 firmware and reference build platform.
 
 It is designed to teach real-world electronics, power systems, wiring discipline, and firmware structure — not just “plug it in and it works”.
 
