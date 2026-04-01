@@ -67,7 +67,8 @@ Default power model: 2S battery → protected input/source rail → regulated 5V
 USB power is acceptable for firmware flashing and early bench testing, but the architecture is designed to be battery-powered.
 
 The documentation includes one proven physical implementation (“ENZO”) used to validate the firmware and architecture.
-“Builders may replicate this implementation exactly. The power architecture may be reused as a platform, but the firmware + pin map are ESP32-S3 specific.”
+
+Builders may replicate this implementation exactly. The power architecture may be reused as a platform, but the firmware and pin map are ESP32-S3 specific.
 
 Controller support (V1): The ENZO v1 firmware and Pin Truth Map are authored for the ESP32-S3 dev board and the exact pinout documented in this repository.
 If you use any other controller (ESP32-WROOM, Pico, Arduino, etc.), the pin map and wiring instructions will not apply.
