@@ -48,13 +48,13 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ### Inline Fuse + Holder
 - **Item:** Automotive Blade Fuse Holder + Fuse
 - **Rating:** ~5A (recommended)
-- **Notes:** Inline on source-rail "positive only"
+- **Notes:** Inline on the source/input rail positive line only
 - **Source:** Amazon
 - **Qty:** 1
 
 ### Buck Converter
 - **Item:** DC-DC Buck Converter (input/source-rail → 5V)
-- **Notes:** Powers 5V rail / logic
+- **Notes:** Powers the 5V logic rail
 - **Source:** Amazon
 - **Qty:** 1
 
@@ -142,6 +142,7 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ---
 
 ## Notes & Assumptions
+---
 - All grounds ultimately tie back to the **Ground Rail**
 - ESP32 ground is connected to ground rail via a single heavy reference wire
 - Sensors may ground locally at ESP, but share common ground via rail
