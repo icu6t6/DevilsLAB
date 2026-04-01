@@ -130,16 +130,15 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ## Mechanical / Structure
 
 ### Chassis
-- **Item:** DFR “Radiator-style” Chassis
-- **Notes:** Custom / repurposed metal chassis
-- **Source:** Existing / custom
+- **Item:** DFR “radiator-style” chassis
+- **Notes:** Custom or repurposed metal chassis
+- **Source:** Existing or custom
 - **Qty:** 1
 
 ### Battery Tray
-- **Item:** Custom / Temporary Tray
-- **Notes:** May be redesigned depending on battery
+- **Item:** Custom battery tray
+- **Notes:** May be redesigned depending on battery choice
 - **Qty:** 1
-
 ---
 
 ## Notes & Assumptions
