@@ -150,7 +150,6 @@ source/intput Bus Bar
 
 ## 7. Final Checks
 - No loose wires
-- No exposed 12V
 - Fuse installed
 - Tracks free‑moving
 - ESP secure
