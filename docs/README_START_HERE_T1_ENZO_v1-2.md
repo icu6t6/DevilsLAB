@@ -50,12 +50,12 @@ T1‑ENZO v1 is an **educational embedded‑systems firmware baseline** designed
 “I can follow tutorials” to “I can design and reason about a complete system.”
 
 It focuses on:
-- Power architecture (Source/input rail → Regulated 5v logic rail → controller )
+- Power architecture (source/input rail → regulated 5V logic rail → controller)
 - Grounding strategy
 - GPIO planning
 - Modular firmware structure
 - Safe expansion paths
-- "In v1, the input rail is typically supplied by a 2-cell LiPo battyer but the firmware are power-source-agnostic."
+- In v1, the input rail is typically supplied by a 2-cell LiPo battery, but the firmware is power-source-agnostic.
 
 This is **not** a toy demo or copy‑paste project.
 
