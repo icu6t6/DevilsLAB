@@ -10,7 +10,6 @@ Builders may replicate this implementation or substitute their own hardware, pro
 ### Core Electronics
 - ESP32‑S3 development board (core controller)
 - ESP32‑S3 with LCD (optional, not required for v1)
-- TB6612FNG motor driver (Grove I2C version)
 - PIR motion sensor (5V)
 - LDR + resistor (3.3V divider)
 - RGB LED module or individual LEDs
@@ -80,7 +79,7 @@ Double-connecting block
 Fuse (5A)
  ↓
 source/intput Bus Bar
- ├── Motor Driver (VM)
+ ├
  └── UBEC (source-rail → 5V)
         ↓
       5V Rail
@@ -93,31 +92,6 @@ source/intput Bus Bar
 - All sensor grounds stay on ESP pins
 - All rails share common ground via bus bar
 - Chassis is NOT ground
-
----
-
-## 4. Wiring – Motor Driver (TB6612FNG Grove I2C)
-
-This V1 build uses the **Grove I2C** version of the TB6612FNG motor driver.
-
-### Motor Power
-- Driver `+` → motor power input
-- Driver `-` → common ground
-
-### Logic / Control
-- `SCL` → ESP32-S3 I2C clock line
-- `SDA` → ESP32-S3 I2C data line
-- `VCC` → 5V rail
-- `GND` → common ground
-
-### Motors
-- Motor A → `a1` / `a2`
-- Motor B → `b1` / `b2`
-
-### Important
-This build does **not** use direct control pins such as `AIN1`, `AIN2`, `BIN1`, `BIN2`, or `STBY`.
-
-Control is handled through the Grove I2C interface shown in the wiring diagram.
 
 ---
 
