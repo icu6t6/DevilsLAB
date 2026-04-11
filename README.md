@@ -16,13 +16,7 @@ Minimal behaviour (no diagnostics UI)
 
 Designed to be stable, repeatable, and teachable
 
-Status
-
-FROZEN
-
-AUTHORITATIVE
-
-SAFE TO RELEASE
+---
 
 Rules
 
