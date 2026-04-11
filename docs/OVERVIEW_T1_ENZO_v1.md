@@ -105,5 +105,5 @@ T-1 ENZO is built around understanding, not shortcuts.
 
 ## Next Step
 
-- Building hardware from scratch → go to BOM, then Build Guide
-- Already have compatible hardware → go to Software Setup
+- Building hardware from scratch → go to [BOM](BOM_T1_ENZO_v1.md), then [Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md)
+- Already have compatible hardware → go to [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
