@@ -14,12 +14,12 @@ This project was designed and developed by the author, with support from an AI a
 This repository is structured as a **guided baseline build**, not a loose collection of files.
 
 Recommended order:
-1. Read this document fully (`docs/README_START_HERE_T1_ENZO_v1-2.md`)
-2. Review the project overview (`OVERVIEW_T1_ENZO_v1.md`)
-3. Review the Bill of Materials (`docs/BOM_T1_ENZO_v1.md`)
-4. Follow the hardware Build Guide (`docs/BUILD_GUIDE_T1_ENZO_v1-2.md`)
+1. Read this document fully ([README Start Here](README_START_HERE_T1_ENZO_v1-2.md))
+2. Review the project overview ([Overview](OVERVIEW_T1_ENZO_v1.md))
+3. Review the Bill of Materials ([BOM](BOM_T1_ENZO_v1.md))
+4. Follow the hardware Build Guide ([Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md))
 5. Consult the wiring and pin-reference documents
-6. Complete software setup and flash firmware
+6. Complete software setup and flash firmware ([Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md))
 7. Verify behaviour against the Completion Criteria
 
 Do not skip steps or mix documents out of order.
