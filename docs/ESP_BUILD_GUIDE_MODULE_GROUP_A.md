@@ -17,6 +17,8 @@ A self‑contained ESP assembly with:
 
 All wires should exit the stack as a tidy bundle (a “tail”), ready to mount later.
 
+The tail should exit from the side opposite the USB port, so USB access remains clear during testing, flashing, and later servicing.
+
 ---
 
 ## Hardware baseline (important)
