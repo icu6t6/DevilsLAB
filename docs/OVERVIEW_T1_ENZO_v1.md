@@ -48,7 +48,6 @@ At the end, you will have:
 - A tracked ESP32 robot that:
   - Boots with LED status states
   - Reads sensors
-  - Drives motors
   - Is fully editable and expandable
 - A working understanding of how it actually works
 - A project you can modify instead of starting over
