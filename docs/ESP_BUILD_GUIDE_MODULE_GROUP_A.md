@@ -221,4 +221,4 @@ You’re done with Module Group A when:
 
 ## Next module
 
-Proceed to **MODULE GROUP B — POWER SYSTEM** once your ESP stack is stable.
+Proceed to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md) once your ESP stack is stable.
