@@ -133,6 +133,6 @@ The self-test does not modify system state and is safe to run multiple times.
 
 Once software setup is complete and the firmware is flashed successfully, continue to:
 
-**ESP Build Guide — Module Group A**
+[ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
 
 Do not skip ahead or mix stages out of order.
