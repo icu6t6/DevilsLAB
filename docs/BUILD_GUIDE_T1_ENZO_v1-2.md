@@ -143,6 +143,6 @@ Tag firmware.
 
 ## Next Step
 
-Once the physical build is complete, continue to Module Group B.
+Once the physical build is complete, continue to [Module Group B](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
 
 Do not skip ahead or mix stages out of order.
