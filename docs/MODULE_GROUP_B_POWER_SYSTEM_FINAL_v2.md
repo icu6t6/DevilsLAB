@@ -160,7 +160,7 @@ If you can:
 **STOP.**
 
 Only now do you proceed to:
-➡️ Module Group A (ESP stack) connection  
+➡️ [Module Group A (ESP stack) connection](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
 
 ---
 
