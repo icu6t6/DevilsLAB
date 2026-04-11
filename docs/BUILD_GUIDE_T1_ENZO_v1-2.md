@@ -59,7 +59,7 @@ _ Fuse (+) → input rail (+)
 
 ### Step 2: Level System
 - Level 0: Chassis base
-- Level 1: ESP + motor driver
+- Level 1: ESP
 - Level 2: Power rails
 - Level 3: Battery platform
 
@@ -121,7 +121,7 @@ source/intput Bus Bar
    - Solid
    - Angry
    - Happy
-4. Test motion reaction
+4. Test PIR motion reaction
 5. Test Wi‑Fi LED toggle
 
 ---
