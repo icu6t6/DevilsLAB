@@ -18,12 +18,11 @@ Recommended order:
 2. Review the project overview ([Overview](OVERVIEW_T1_ENZO_v1.md))
 3. Review the Bill of Materials ([BOM](BOM_T1_ENZO_v1.md))
 4. Follow the hardware Build Guide ([Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md))
-5. Consult the wiring and pin-reference documents
+5. Consult the [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
 6. Complete software setup and flash firmware ([Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md))
 7. Verify behaviour against the Completion Criteria
 
 Do not skip steps or mix documents out of order.
-
 
 **T1-ENZO v1 provides:**
 - Firmware
@@ -138,6 +137,7 @@ This project is released under a **custom license**.
 
 - Open for learning, modification, and experimentation
 - Commercial use is reserved by the author
+- See: [LICENSE_T1_ENZO_v1.md](LICENSE_T1_ENZO_v1.md)
 - Commercial licensing for V2+ is reserved by the author
 
 See: LICENSE_T1_ENZO_v1.md
