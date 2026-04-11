@@ -219,6 +219,16 @@ You’re done with Module Group A when:
 
 ---
 
-## Next module
+## Next Step
 
-Proceed to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md) once your ESP stack is stable.
+If you have not yet completed the power system stage, continue to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
+
+If you want to go beyond the public V1 baseline, V1 Advanced unlocks the next guided stage of the build (Module Group C).
+
+V1 Advanced adds:
+- live system information via display and telemetry
+- visibility into internal system state (instead of guessing)
+- a structured diagnostics process with deliberate PASS / FAIL validation
+- safe firmware extension without breaking the baseline
+
+See the [repository start page](../README.md) for the V1 Advanced path.
