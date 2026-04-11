@@ -161,7 +161,6 @@ If you can:
 
 Only now do you proceed to:
 ➡️ Module Group A (ESP stack) connection  
-➡️ Module Group C (mechanical assembly)
 
 ---
 
