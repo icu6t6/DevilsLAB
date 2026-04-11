@@ -17,12 +17,6 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Source:** Amazon
 - **Qty:** 1
 
-### Motor Driver
-- **Item:** TB6612FNG Dual Motor Driver (I2C / Grove variant supported)
-- **Notes:** Drives motors, logic-level controlled
-- **Source:** Amazon
-- **Qty:** 1
-
 ---
 
 ## Power System
