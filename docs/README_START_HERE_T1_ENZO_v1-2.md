@@ -137,7 +137,6 @@ This project is released under a **custom license**.
 
 - Open for learning, modification, and experimentation
 - Commercial use is reserved by the author
-- See: [LICENSE_T1_ENZO_v1.md](LICENSE_T1_ENZO_v1.md)
 - Commercial licensing for V2+ is reserved by the author
 
-See: LICENSE_T1_ENZO_v1.md
+See: [LICENSE_T1_ENZO_v1.md](LICENSE_T1_ENZO_v1.md)
