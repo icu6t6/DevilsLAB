@@ -30,6 +30,10 @@ Drives an RGB LED as three separate output channels using an ESP32.
 
 ![001 – RGB LED wiring diagram](../../images/3chanRGB-LED.png)
 
+The GND rail is shown in the diagram for clarity and for later expansion.
+In this first circuit, the RGB LED itself does not use the external GND rail as its return path.
+Each GPIO pin acts as the return path when set LOW.
+
 ## What’s actually happening
 Power comes from the **source rail**, through the LED.
 
