@@ -28,7 +28,7 @@ This answers:
 
 **How is ENZO wired, and how is V1 powered?**
 
-![ENZO V1 Wiring / Architecture Reference](updated_v1_wiring_diagram_11_04_2026.png)
+![ENZO V1 Wiring / Architecture Reference](updated_v1_wiring_diagram_ELF.png)
 
 ---
 
