@@ -45,7 +45,7 @@ So the current path is:
 
 `3.3V → source rail → LED → resistor → GPIO pin (LOW) → internal ground`
 
-No external ground rail is used in this circuit yet.  
+The external GND rail is present for clarity and later expansion, but the RGB LED itself does not use it as its return path in this first circuit.
 The ESP32 pins act as the return path when set LOW.
 
 ## Code
