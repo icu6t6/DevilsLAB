@@ -25,7 +25,7 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 Each module is intended to contain:
 - `README.md`
 - `diagram.png`
-- optional code in the README or as a separate file
+- code in the README
 
 ## Notes
 Main remains the authoritative ENZO V1 baseline.
