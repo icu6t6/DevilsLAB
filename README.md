@@ -14,7 +14,7 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - ENZO V1 baseline work
 - V1 Advanced material
 - V2 Locomotion
-- V3 Managment and Observability
+- V3 Management and Observability
 - Pi-side / T2 work
 - main project canon
 
