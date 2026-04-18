@@ -13,6 +13,8 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 ## What this branch is not for
 - ENZO V1 baseline work
 - V1 Advanced material
+- V2 Locomotion
+- V3 Managment and Observability
 - Pi-side / T2 work
 - main project canon
 
