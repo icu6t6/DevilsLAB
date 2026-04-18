@@ -26,6 +26,10 @@ Drives an RGB LED as three separate output channels using an ESP32.
 - Green leg → 220Ω resistor → GPIO5
 - Blue leg → 220Ω resistor → GPIO21
 
+## Diagram
+
+![001 – RGB LED wiring diagram](../../images/3chanRGB-LED.png)
+
 ## What’s actually happening
 Power comes from the **source rail**, through the LED.
 
