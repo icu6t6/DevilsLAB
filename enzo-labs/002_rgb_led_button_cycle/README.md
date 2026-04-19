@@ -77,6 +77,7 @@ import time
 red = Pin(2, Pin.OUT)
 green = Pin(5, Pin.OUT)
 blue = Pin(21, Pin.OUT)
+
 button = Pin(4, Pin.IN, Pin.PULL_UP)
 
 state = 0
@@ -89,6 +90,7 @@ def all_off():
 
 def set_state(s):
     all_off()
+
     if s == 1:
         red.value(0)
     elif s == 2:
@@ -96,21 +98,22 @@ def set_state(s):
     elif s == 3:
         blue.value(0)
     # state 0 = off
-    else:
-        all_off()
+
+all_off()
 
 while True:
     current = button.value()
 
-    # detect press (edge)
     if last == 1 and current == 0:
         state += 1
         if state > 3:
             state = 0
+
         set_state(state)
 
     last = current
     time.sleep(0.05)
+
 ```
 
 ## Test
