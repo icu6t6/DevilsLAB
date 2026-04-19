@@ -48,6 +48,23 @@ Using internal pull-up:
 - not pressed → `1`
 - pressed → `0`
 
+You can prove the button behaviour directly in the REPL with:
+
+```python
+from machine import Pin
+import time
+
+btn = Pin(4, Pin.IN, Pin.PULL_UP)
+
+while True:
+    print(btn.value())
+    time.sleep(0.2)
+```
+
+Expected result:
+- `1` when the button is not pressed
+- `0` when the button is pressed
+
 The button does not carry LED current.
 It only provides a signal to the ESP.
 
