@@ -20,6 +20,8 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 
 ## Current modules
 - [001 – RGB LED (3 Channel Output)](enzo-labs/001_rgb_led/README.md)
+- [002 – RGB LED Button Cycle](enzo-labs/002_rgb_led_button_cycle/README.md)
+- [003 – Potentiometer Input](enzo-labs/003_potentiometer_input/README.md)
 
 ## Structure
 Each module is intended to contain:
