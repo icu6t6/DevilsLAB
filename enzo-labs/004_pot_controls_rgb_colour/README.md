@@ -32,7 +32,7 @@ Facing the potentiometer:
 
 ## Wiring Diagram
 
-- [Pot controls RGB colour](../Images/004_pot_controls_rgb_colour.png)
+- [Pot controls RGB colour](../Images/004–Pot-Controls-RGB-Colour.png)
 
 ## Notes
 Observed potentiometer behaviour in this build:
