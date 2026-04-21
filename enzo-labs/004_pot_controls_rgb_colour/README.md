@@ -11,7 +11,7 @@ Uses a potentiometer to select which RGB LED colour is active.
 
 ## Parts
 - ESP32
-- RGB LED
+- RGB LED (common anode)
 - 3 × 220Ω resistors
 - potentiometer
 - breadboard
@@ -42,6 +42,11 @@ Observed potentiometer behaviour in this build:
 This RGB circuit is active-low:
 - `0` = channel ON
 - `1` = channel OFF
+
+The code below splits the ADC range into three zones:
+- low range → red
+- middle range → green
+- high range → blue
 
 ## LED Pin Test (optional)
 Use this to confirm RGB wiring is correct before using the potentiometer:
