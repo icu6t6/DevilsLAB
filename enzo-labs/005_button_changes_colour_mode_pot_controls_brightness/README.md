@@ -51,13 +51,23 @@ No need to change the board if it is already wired like that.
 ## Important new thing
 This is the first time PWM is used on the RGB outputs instead of plain `Pin.OUT`.
 
-So instead of:
+So instead of plain output objects like:
 
 ```python
 red = Pin(2, Pin.OUT)
+green = Pin(5, Pin.OUT)
+blue = Pin(21, Pin.OUT)
 ```
 
-you now use PWM objects.
+you now use PWM objects instead:
+
+```python
+red = PWM(Pin(2), freq=1000)
+green = PWM(Pin(5), freq=1000)
+blue = PWM(Pin(21), freq=1000)
+```
+
+That lets you control brightness, not just on/off state.
 
 ## Notes
 This RGB LED is common anode, so PWM behaviour is inverted:
