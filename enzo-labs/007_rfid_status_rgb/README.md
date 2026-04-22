@@ -47,7 +47,8 @@ This build uses red and green only.
 
 ## Wiring Diagram
 
-![007 – RFID Status RGB](../../images/007.png)
+![007 – RFID Status RGB](../../images/007_RFID_AUTHORISATION.png
+)
 
 ## Important
 The RC522 must be powered from **3.3V**, not 5V.
