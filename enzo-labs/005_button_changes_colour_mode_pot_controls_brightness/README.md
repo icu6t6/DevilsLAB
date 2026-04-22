@@ -48,7 +48,7 @@ No need to change the board if it is already wired like that.
 
 ![005 – Button changes colour mode, pot controls brightness](../../images/005.png)
 
-## Important new thing
+## Important New concept
 This is the first time PWM is used on the RGB outputs instead of plain `Pin.OUT`.
 
 So instead of plain output objects like:
