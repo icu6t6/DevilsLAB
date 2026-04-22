@@ -47,8 +47,7 @@ This build uses red and green only.
 
 ## Wiring Diagram
 
-![007 – RFID Status RGB](../../images/007_RFID_AUTHORISATION.png
-)
+![007 – RFID Status RGB](../../images/007_RFID_AUTHORISATION.png)
 
 ## Important
 The RC522 must be powered from **3.3V**, not 5V.
@@ -64,10 +63,10 @@ This version uses a timed flash for each result and then returns the LED to off.
 
 Stopping the script also turns the LED off cleanly.
 
-## Authorised UID used in this build
-```text
-[35, 166, 153, 13, 17]
-```
+Before using this module, run **006 – RFID Tag Read** first to read the UID values from your own card or fob.
+
+Then replace the example `AUTHORIZED_UID` in the code below with the UID from your own authorised tag.
+Do not rely on the example value from this build, because your tags will almost certainly be different.
 
 ## Code
 
@@ -83,7 +82,7 @@ green = Pin(21, Pin.OUT)
 # RFID reader
 rdr = MFRC522(sck=18, mosi=23, miso=19, rst=22, cs=5)
 
-# Authorised UID (blue fob)
+# Replace this with the UID from your own authorised tag or fob
 AUTHORIZED_UID = [35, 166, 153, 13, 17]
 
 def led_off():
@@ -138,7 +137,9 @@ finally:
 
 ## Test
 - run the script
-- present the authorised fob
+- use **006 – RFID Tag Read** first to confirm the UID of your authorised tag or fob
+- replace `AUTHORIZED_UID` in the code with that value
+- present the authorised tag or fob
 - confirm the LED flashes green, then turns off
 - present an unknown card or fob
 - confirm the LED flashes red, then turns off
