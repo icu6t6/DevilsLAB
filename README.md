@@ -4,6 +4,12 @@
 
 Start here: [docs/README_START_HERE_T1_ENZO_v1-2.md](docs/README_START_HERE_T1_ENZO_v1-2.md)
 
+## Looking for the smaller ESP32 module builds?
+
+See **ENZO-Labs** here:
+
+[ENZO-Labs branch](https://github.com/icu6t6/DevilsLAB/tree/Enzo-Labs)
+
 This folder contains the V1 Free (Canon) baseline for ENZO.
 
 ## What this is
