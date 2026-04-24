@@ -26,6 +26,7 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - [005 – Button Changes Colour Mode, Pot Controls Brightness](enzo-labs/005_button_changes_colour_mode_pot_controls_brightness/README.md)
 - [006 – RFID Tag Read](enzo-labs/006_rfid_tag_read/README.md)
 - [007 – RFID Status RGB](enzo-labs/007_rfid_status_rgb/README.md)
+- [008 – RFID Servo Lock](enzo-labs/008_rfid_servo_lock/README.md)
 
 ## Structure
 Each module is intended to contain:
