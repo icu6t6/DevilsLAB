@@ -18,6 +18,7 @@ In this build:
 ## Parts
 - ESP32
 - RC522 RFID reader
+- 5V UBEC regulator
 - RFID fob/card
 - micro servo
 - jumper wires
