@@ -79,7 +79,8 @@ rdr = MFRC522(sck=18, mosi=23, miso=19, rst=22, cs=5)
 # ----------------------------
 # Authorised UID
 # ----------------------------
-AUTHORIZED_UID = [35, 166, 153, 13, 17]   # blue fob
+# Change these digits to match your own authorised tag or fob UID
+AUTHORIZED_UID = [35, 166, 153, 13, 17]
 
 # ----------------------------
 # Servo on GPIO21
