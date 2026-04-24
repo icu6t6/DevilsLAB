@@ -71,13 +71,19 @@ from machine import Pin, PWM
 from mfrc522 import MFRC522
 import time
 
+# ----------------------------
 # RFID reader
+# ----------------------------
 rdr = MFRC522(sck=18, mosi=23, miso=19, rst=22, cs=5)
 
-# Replace this with the UID from your own authorised tag or fob
-AUTHORIZED_UID = [35, 166, 153, 13, 17]
+# ----------------------------
+# Authorised UID
+# ----------------------------
+AUTHORIZED_UID = [35, 166, 153, 13, 17]   # blue fob
 
+# ----------------------------
 # Servo on GPIO21
+# ----------------------------
 servo = PWM(Pin(21), freq=50)
 
 def set_servo_angle(angle):
@@ -95,7 +101,9 @@ set_servo_angle(LOCK_ANGLE)
 
 print("RFID servo lock ready")
 
+# ----------------------------
 # State tracking
+# ----------------------------
 unlocked = False
 last_seen_time = 0
 HOLD_MS = 1200   # how long after last authorised read before re-locking
@@ -133,6 +141,7 @@ try:
 finally:
     set_servo_angle(LOCK_ANGLE)
     servo.deinit()
+
 ```
 
 ## What to expect
