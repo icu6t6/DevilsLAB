@@ -23,14 +23,17 @@ In this build:
 - micro servo
 - jumper wires
 - breadboard
-- 5V supply for the servo
 
 ## Important servo note
 Do **not** power the servo from 3.3V.
 
+In this build, the **5V UBEC regulator** provides the servo power rail.
+It is used to give the servo a stable 5V supply instead of trying to run it from the ESP32 rail.
+
 Use:
-- servo VCC → 5V
-- servo GND → common ground with ESP32
+- servo VCC → UBEC 5V output
+- servo GND → UBEC ground
+- UBEC ground → common ground with ESP32
 - servo signal → GPIO pin
 
 ## Wiring
@@ -47,8 +50,8 @@ Use:
 
 ### Servo
 - signal → GPIO21
-- VCC → 5V
-- GND → GND
+- VCC → UBEC 5V output
+- GND → UBEC ground
 
 ## Wiring Diagram
 
