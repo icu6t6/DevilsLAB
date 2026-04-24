@@ -54,7 +54,7 @@ Use:
 ![008 – RFID Servo Lock](../../images/008_RFID_SERVO.png)
 
 ## Important UID note
-Before using this module, run **006 – RFID Tag Read** first to read the UID values from your own card or fob.
+Before using this module, run [006 – RFID Tag Read](../006_rfid_tag_read/README.md) first to read the UID values from your own card or fob.
 
 The `AUTHORIZED_UID` shown in the code below is only an example from this build.
 Replace it with the UID from your own authorised tag or card.
