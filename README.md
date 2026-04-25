@@ -27,6 +27,7 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - [006 – RFID Tag Read](enzo-labs/006_rfid_tag_read/README.md)
 - [007 – RFID Status RGB](enzo-labs/007_rfid_status_rgb/README.md)
 - [008 – RFID Servo Lock](enzo-labs/008_rfid_servo_lock/README.md)
+- [009 – RFID Servo Lock with Status RGB](enzo-labs/009_rfid_servo_lock_with_status_rgb/README.md)
 
 ## Structure
 Each module is intended to contain:
