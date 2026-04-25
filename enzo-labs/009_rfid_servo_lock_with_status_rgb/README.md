@@ -34,7 +34,7 @@ The RC522 must be powered from **3.3V**, not 5V.
 The servo must be powered from a separate **5V supply**, not from the ESP32 3.3V pin.
 
 In this build, the **UBEC / 5V regulator** provides the servo power rail.
-The battery pack feeds the UBEC, and the UBEC provides a stable 5V output for the servo.
+The battery pack feeds the UBEC, and the UBEC provides the servo 5V supply.
 
 The servo ground, RC522 ground, battery / UBEC ground, and ESP32 ground must all be connected together.
 
@@ -87,7 +87,7 @@ Replace it with the UID from your own authorised tag or card.
 ## Behaviour
 - authorised UID present → green turns on and the servo unlocks
 - keep the authorised UID present → the lock stays open
-- authorised UID removed → servo returns to lock and the LED returns to off
+- authorised UID removed → servo returns to lock and the LED turns off
 - unknown UID → red shows briefly and the servo does not move
 
 ## Code
@@ -190,7 +190,7 @@ finally:
 ## What to expect
 - authorised fob or card presented → green turns on and the servo unlocks
 - keep the authorised fob or card present → the lock stays open
-- remove the authorised fob or card → the servo locks and the LED returns to off
+- remove the authorised fob or card → the servo locks and the LED turns off
 - unknown tag or card → red shows briefly and the servo does not move
 
 ## Definition of done
