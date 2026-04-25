@@ -71,6 +71,11 @@ The servo ground, RC522 ground, battery / UBEC ground, and ESP32 ground must all
 
 The `mfrc522.py` driver file must already be saved onto the **MicroPython device** before running this script.
 
+Before using this module, run [006 – RFID Tag Read](../006_rfid_tag_read/README.md) first to read the UID values from your own card or fob.
+
+The `AUTHORIZED_UID` shown below is only an example from this build.
+Replace it with the UID from your own authorised card or fob.
+
 This RGB LED is common anode, so:
 - `0` = channel ON
 - `1` = channel OFF
@@ -96,6 +101,9 @@ Unknown tags:
 - do not move the servo
 
 ## Authorised UID used in this build
+
+This is an example only from this build.
+Use [006 – RFID Tag Read](../006_rfid_tag_read/README.md) to read the UID from your own authorised card or fob.
 
 ```text
 [35, 166, 153, 13, 17]
