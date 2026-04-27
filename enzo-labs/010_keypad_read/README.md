@@ -36,8 +36,7 @@ This build uses 8 direct signal wires from the keypad to the ESP32.
 This module uses the working wiring order shown above.
 
 The keypad was first tested with the wrong wire order during setup, but the final version here is the corrected working wiring only.
-
-Once wired correctly, the keypad reads all keys normally:
+The keypad reads all keys normally:
 - `1 2 3 A`
 - `4 5 6 B`
 - `7 8 9 C`
