@@ -30,7 +30,7 @@ This build uses 8 direct signal wires from the keypad to the ESP32.
 
 ## Wiring Diagram
 
-![010 – Keypad Read](../../images/010_keypad_read.png)
+![010 – Keypad Read](../../images/010_keyboard_read.png)
 
 ## Notes
 This module uses the working wiring order shown above.
