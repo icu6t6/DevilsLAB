@@ -46,8 +46,8 @@ This repository is **not**:
 - a Pi-side AI build
 - a random collection of experiments
 
-If you want the deeper machine, that comes later.  
 If you want the public starting point, this is it.
+If you want the deeper machine, that comes later.
 
 ---
 
@@ -108,7 +108,7 @@ Not part of this public baseline.
 
 ## Looking for smaller ESP32 circuits?
 
-If you want simpler entry-point builds first, use **ENZO-Labs**.
+If you want a lighter entry path first, use **ENZO-Labs**.
 
 ENZO-Labs is separate from the main ENZO baseline and is used for:
 - smaller circuits
@@ -129,7 +129,6 @@ Clone this repository if you want:
 - a stable launch point for V1 Advanced and later ENZO tiers
 
 If you only want to inspect the project, reading online is fine.
-
 If you want to build properly, clone it and work through it in order.
 
 ---
@@ -174,6 +173,10 @@ That is the point of the baseline.
 
 ## Next step
 
+If you want the main baseline:
+
+👉 [Start Here](docs/README_START_HERE_T1_ENZO_v1-2.md)
+
 If you want the optional diagnostics/validation layer after V1:
 
 👉 https://devilslab.gumroad.com/l/qposal
@@ -181,7 +184,3 @@ If you want the optional diagnostics/validation layer after V1:
 If you want smaller public learning circuits first:
 
 👉 [ENZO-Labs branch](https://github.com/icu6t6/DevilsLAB/tree/Enzo-Labs)
-
-If you want the main baseline:
-
-👉 [Start Here](docs/README_START_HERE_T1_ENZO_v1-2.md)
