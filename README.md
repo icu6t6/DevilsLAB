@@ -61,16 +61,6 @@ Then continue through the ladder.
 - [012 – Keypad Password Check](enzo-labs/012_keypad_password_check/README.md)
 - [013 – Keypad LCD Entry Display](enzo-labs/013_keypad_lcd_entry_display/README.md)
 
----
-
-## Module format
-
-Each ENZO-Labs module is intended to contain:
-- `README.md`
-- `diagram.png`
-- code in the README
-
-The aim is to keep modules simple, readable, and repeatable.
 
 ---
 
