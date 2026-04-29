@@ -60,6 +60,7 @@ Then continue through the ladder.
 - [011 – LCD Hello](enzo-labs/011_lcd_hello/README.md)
 - [012 – Keypad Password Check](enzo-labs/012_keypad_password_check/README.md)
 - [013 – Keypad LCD Entry Display](enzo-labs/013_keypad_lcd_entry_display/README.md)
+- [014 – Keypad LCD Servo Lock](enzo-labs/014_keypad_lcd_servo_lock/README.md)
 
 ---
 
