@@ -221,6 +221,14 @@ You’re done with Module Group A when:
 
 ---
 
+## Firmware location
+
+The public V1 baseline firmware lives here:
+
+👉 [material/v1/firmware/](../material/v1/firmware/)
+
+---
+
 ## Next Step
 
 If you have not yet completed the power system stage, continue to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
