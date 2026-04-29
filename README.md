@@ -66,6 +66,6 @@ Then continue through the ladder.
 
 ## Relationship to main ENZO
 
-Main ENZO is the deeper system and authoritative baseline.
+Main ENZO is the deeper public system and authoritative baseline of Enzo T1 spercifically v1.
 
 ENZO-Labs is the smaller public learning ladder that helps builders work toward that level without being dropped straight into the deep end.
