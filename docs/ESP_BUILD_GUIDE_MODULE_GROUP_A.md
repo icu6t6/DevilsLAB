@@ -223,7 +223,7 @@ You’re done with Module Group A when:
 
 ## Firmware location
 
-The public V1 baseline firmware lives here:
+The public V1 baseline firmware files live here:
 
 👉 [material/v1/firmware/](../material/v1/firmware/)
 
