@@ -61,11 +61,21 @@ Then continue through the ladder.
 - [012 – Keypad Password Check](enzo-labs/012_keypad_password_check/README.md)
 - [013 – Keypad LCD Entry Display](enzo-labs/013_keypad_lcd_entry_display/README.md)
 
+---
+
+## Module format
+
+Each ENZO-Labs module is intended to contain:
+- `README.md`
+- `diagram.png`
+- code in the README
+
+The aim is to keep modules simple, readable, and repeatable.
 
 ---
 
 ## Relationship to main ENZO
 
-Main ENZO is the deeper public system and authoritative baseline of Enzo T1 spercifically v1.
+Main ENZO is the deeper public system and the authoritative T1 ENZO V1 baseline.
 
 ENZO-Labs is the smaller public learning ladder that helps builders work toward that level without being dropped straight into the deep end.
