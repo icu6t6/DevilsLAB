@@ -31,6 +31,7 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - [010 – Keypad Read](enzo-labs/010_keypad_read/README.md)
 - [011 – LCD Hello](enzo-labs/011_lcd_hello/README.md)
 - [012 – Keypad Password Check](enzo-labs/012_keypad_password_check/README.md)
+- [013 – Keypad LCD Entry Display](enzo-labs/013_keypad_lcd_entry_display/README.md)
 
 ## Structure
 Each module is intended to contain:
