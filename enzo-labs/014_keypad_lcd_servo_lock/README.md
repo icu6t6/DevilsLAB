@@ -57,11 +57,10 @@ In this build:
 ![014 – Keypad LCD Servo Lock](../../images/014_keypad_lcd_servo_batterypack.png)
 
 ## Important
-Servo signal for the working build is **GPIO5**.
+Servo signal for this build is **GPIO5**.
 
 The servo must be powered from the separate **5V servo rail**, not from the ESP32 3.3V pin.
 
-The missing part during bring-up was the **common ground**.
 The servo ground, battery ground, LCD ground, and ESP32 ground must all share the same common ground.
 
 The LCD address used here is `0x27`, which matched the display used in this build.
