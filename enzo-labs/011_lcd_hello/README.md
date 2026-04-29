@@ -201,4 +201,4 @@ The loop at the end keeps the script running so the display stays stable.
 ## What this enables next
 - keypad + LCD entry display
 - keypad + LCD password lock
-- ultrasonic + LCD distance display
+
