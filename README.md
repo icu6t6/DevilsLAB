@@ -1,16 +1,22 @@
 # ENZO-Labs
 
-This branch is for **ENZO-Labs** only.
+ENZO-Labs is the lighter public learning branch of DevilsLAB.
 
-It is separate from the main ENZO V1 baseline and is used for smaller public circuits and learning builds.
+It is for small ESP32 circuits, short buildable modules, and confidence-building steps before bigger systems like ENZO.
 
-## What this branch is for
+If main ENZO feels too big right now, start here.
+
+---
+
+## What ENZO-Labs is for
+
 - simple ESP32 circuits
 - short buildable modules
 - step-by-step public learning material
 - small progressions that build confidence before bigger systems
 
-## What this branch is not for
+## What ENZO-Labs is not for
+
 - ENZO V1 baseline work
 - V1 Advanced material
 - V2 Locomotion
@@ -18,7 +24,29 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - Pi-side / T2 work
 - main project canon
 
+Main remains the authoritative ENZO baseline.  
+ENZO-Labs exists as the easier entry ladder.
+
+---
+
+## Start here if you want to
+
+- build smaller ESP32 circuits first
+- learn one concept at a time
+- get quick wins before larger systems
+- work through a clean progression
+
+Recommended first modules:
+1. 001 – RGB LED
+2. 002 – RGB LED Button Cycle
+3. 003 – Potentiometer Input
+
+Then continue through the ladder.
+
+---
+
 ## Current modules
+
 - [001 – RGB LED (3 Channel Output)](enzo-labs/001_rgb_led/README.md)
 - [002 – RGB LED Button Cycle](enzo-labs/002_rgb_led_button_cycle/README.md)
 - [003 – Potentiometer Input](enzo-labs/003_potentiometer_input/README.md)
@@ -33,12 +61,21 @@ It is separate from the main ENZO V1 baseline and is used for smaller public cir
 - [012 – Keypad Password Check](enzo-labs/012_keypad_password_check/README.md)
 - [013 – Keypad LCD Entry Display](enzo-labs/013_keypad_lcd_entry_display/README.md)
 
-## Structure
-Each module is intended to contain:
+---
+
+## Module format
+
+Each ENZO-Labs module is intended to contain:
 - `README.md`
 - `diagram.png`
 - code in the README
 
-## Notes
-Main remains the authoritative ENZO V1 baseline.
-This branch exists so ENZO-Labs can grow separately without touching the main public baseline.
+The aim is to keep modules simple, readable, and repeatable.
+
+---
+
+## Relationship to main ENZO
+
+Main ENZO is the deeper system and authoritative baseline.
+
+ENZO-Labs is the smaller public learning ladder that helps builders work toward that level without being dropped straight into the deep end.
