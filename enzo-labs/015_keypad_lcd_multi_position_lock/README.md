@@ -52,7 +52,7 @@ In this build:
 
 ## Wiring Diagram
 
-![015 – Keypad + LCD Multi-Position Lock](../../images/014.png)
+![015 – Keypad + LCD Multi-Position Lock](../../images/014_keypad_lcd_servo_batterypack.png)
 
 ## Important
 This module reuses the same physical wiring as 014.
