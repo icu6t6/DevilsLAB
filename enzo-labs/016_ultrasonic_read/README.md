@@ -39,6 +39,7 @@ The ESP32 measures the pulse duration and converts it into a distance reading in
 * VCC → VIN / 5V
 * GND → GND
 * TRIG → GPIO5
+* ECHO → GPIO18 through resistor divider
 
 ### ECHO voltage divider
 
@@ -127,6 +128,62 @@ while True:
 
     sleep(0.5)
 ```
+
+---
+
+## Code Explanation
+
+### 1. Trigger and echo pins
+The script sets:
+
+* GPIO5 as the trigger output
+* GPIO18 as the echo input
+
+GPIO5 tells the sensor when to fire.
+GPIO18 reads the return pulse length.
+
+### 2. Trigger pulse
+The ESP32 sends a short pulse on TRIG:
+
+* low briefly
+* high for 10 microseconds
+* low again
+
+That tells the HC-SR04 to send out an ultrasonic burst.
+
+### 3. Echo measurement
+The script then uses `time_pulse_us()` to measure how long the ECHO pin stays high.
+
+That pulse length represents how long the sound took to travel to the object and back.
+
+### 4. Distance calculation
+The line:
+
+```python
+distance_cm = (duration * 0.0343) / 2
+```
+
+converts pulse time into distance in centimetres.
+
+Why this works:
+
+* sound travels at about **0.0343 cm per microsecond**
+* the echo time is a **round trip**
+* dividing by 2 gives the one-way distance to the object
+
+### 5. No echo handling
+If `time_pulse_us()` times out or fails, the result is negative.
+In that case the script prints:
+
+```text
+No echo
+```
+
+That usually means the object is too far away, badly aligned, or the sensor did not receive a usable reflection.
+
+### 6. Repeating readings
+After each reading, the script waits half a second and then measures again.
+That keeps the serial output readable while still giving a live distance update.
 
 ---
 
