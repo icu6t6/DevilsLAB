@@ -198,7 +198,13 @@ The loop at the end keeps the script running so the display stays stable.
   - `ENZO LABS`
   - `LCD OK`
 
+## Definition of done
+- LCD powers correctly
+- I2C scan finds the display address
+- the display initialises cleanly
+- line 1 shows `ENZO LABS`
+- line 2 shows `LCD OK`
+
 ## What this enables next
 - keypad + LCD entry display
 - keypad + LCD password lock
-
