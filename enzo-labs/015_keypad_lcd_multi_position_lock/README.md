@@ -278,6 +278,109 @@ finally:
     servo.deinit()
 ```
 
+## Code Explanation
+
+### 1. LCD setup
+The LCD section is the same style used in 011 and 014.
+It sets up the I2C display and provides helper functions to initialise the LCD, send commands, and write text to each line.
+
+That gives this module a simple menu screen and a code-entry screen.
+
+### 2. Keypad setup
+The keypad section defines:
+- four row pins
+- four column pins
+- the 4x4 key layout
+
+The `scan_keypad()` function checks one row at a time and looks for a high column.
+That lets the ESP32 work out which key is being pressed.
+
+### 3. Servo setup
+The servo is attached to **GPIO5** using PWM at 50 Hz.
+
+The `set_servo_angle()` function converts an angle into a PWM duty value.
+That allows one servo to move to several target positions instead of only locked and unlocked.
+
+### 4. Position map
+The position map is stored as:
+
+```python
+POSITIONS = {
+    "A": 0,
+    "B": 45,
+    "C": 90,
+    "D": 135,
+}
+```
+
+That means:
+- pressing `A` selects 0°
+- pressing `B` selects 45°
+- pressing `C` selects 90°
+- pressing `D` selects 135°
+
+The servo starts at position `A` when the script begins.
+
+### 5. Two operating modes
+This module uses two simple modes:
+- `select`
+- `code`
+
+In `select` mode, the system waits for `A / B / C / D` to choose a target position.
+
+In `code` mode, the system waits for the password entry for that selected position.
+
+That is what makes this module more like a small menu system than a single lock action.
+
+### 6. Selection screen and code screen
+The helper functions:
+- `show_select_screen()`
+- `show_code_screen(position)`
+
+control what the LCD shows.
+
+The selection screen prompts the user to choose `A / B / C / D`.
+After that, the code screen shows which position was chosen and displays the current entry.
+
+### 7. `*` and `#` behaviour
+In code mode:
+- `*` clears the current entry
+- if the entry is already blank, `*` cancels and returns to the selection screen
+- `#` submits the current entry for checking
+
+That gives the user a simple way to both clear and back out.
+
+### 8. Correct code path
+If the entry matches:
+
+```python
+PASSWORD = "1234"
+```
+
+then the system:
+- shows `ACCESS OK`
+- shows which position is being moved to
+- moves the servo to the selected angle
+- waits briefly
+- returns to the selection screen
+
+So the code authorises the selected action.
+
+### 9. Wrong code path
+If the entry is wrong:
+- the LCD shows `DENIED`
+- the servo does not move
+- the code waits briefly
+- the system returns to the selection screen
+
+That keeps the failure path clear and simple.
+
+### 10. Repeating loop
+The main loop keeps scanning continuously.
+The `last_key` check stops one held key from being read repeatedly.
+
+That helps make the menu and code entry behave more cleanly.
+
 ## Test
 - wire the keypad, LCD, and servo exactly as shown
 - run the script
