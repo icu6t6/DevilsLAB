@@ -124,6 +124,61 @@ while True:
     time.sleep(0.1)
 ```
 
+## Code Explanation
+
+### 1. Keypad setup
+The code defines:
+- four row pins
+- four column pins
+- the 4x4 keypad layout
+
+The `keys` list is the map that turns a physical key press into a readable value such as `1`, `5`, `*`, or `#`.
+
+### 2. Password and entry storage
+The password is stored as:
+
+```python
+PASSWORD = "1234"
+```
+
+The variable `entry` stores whatever has been typed so far.
+As keys are pressed, the code builds up that string one character at a time.
+
+### 3. Reading the keypad
+The `scan_keypad()` function checks one row at a time and then looks for a high column.
+
+That lets the ESP32 work out which key is being pressed without needing one GPIO per button.
+
+### 4. Main loop behaviour
+The script runs in a continuous loop and checks for key presses over and over.
+
+When a new key is detected, it prints the key to the serial output and then decides what to do with it.
+
+### 5. `*` behaviour
+If the key is `*`:
+- the current entry is cleared
+- `CLEARED` is printed
+
+That gives a quick way to restart the entry.
+
+### 6. `#` behaviour
+If the key is `#`:
+- the current entry is compared with the password
+- if it matches, the script prints `ACCESS OK`
+- if it does not match, the script prints `DENIED`
+- the entry is then cleared ready for the next try
+
+### 7. Normal key behaviour
+If the key is not `*` or `#`, it is treated as part of the password entry.
+The key is added to the `entry` string and the current value is printed.
+
+That lets the user build a multi-digit code one key at a time.
+
+### 8. Repeating loop and held keys
+The variable `last_key` is used to stop one held press from being counted repeatedly.
+
+That makes the keypad behaviour cleaner and avoids duplicate characters from a slightly long press.
+
 ## Test
 - wire the keypad exactly as in 010
 - run the script
