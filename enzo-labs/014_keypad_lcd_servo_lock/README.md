@@ -247,6 +247,84 @@ finally:
     servo.deinit()
 ```
 
+## Code Explanation
+
+### 1. LCD setup
+The LCD section is the same style used in 011.
+It sets up the I2C display, defines the line addresses, and provides helper functions to:
+- initialise the display
+- send commands
+- write text to line 1 or line 2
+
+That gives the lock system a simple screen for prompts and results.
+
+### 2. Keypad setup
+The keypad section defines:
+- four row pins
+- four column pins
+- the key layout for the 4x4 membrane keypad
+
+The `scan_keypad()` function activates one row at a time and checks which column goes high.
+That lets the ESP32 work out which key is being pressed.
+
+### 3. Servo setup
+The servo is attached to **GPIO5** using PWM at 50 Hz.
+
+The `set_servo_angle()` function converts a target angle into a PWM duty value.
+That lets the code move the servo between the locked and unlocked positions.
+
+In this build:
+- `LOCK_ANGLE = 0`
+- `UNLOCK_ANGLE = 90`
+
+The servo starts in the locked position.
+
+### 4. Password logic
+The password is stored as:
+
+```python
+PASSWORD = "1234"
+```
+
+The variable `entry` stores the digits entered so far.
+As keypad presses come in:
+- normal keys are added to `entry`
+- `*` clears the current entry
+- `#` submits the current entry for checking
+
+### 5. Screen behaviour
+At startup, the LCD shows:
+- line 1: `ENTER CODE`
+- line 2: blank
+
+As keys are pressed, line 2 updates to show the current entry.
+That gives live feedback while the password is being typed.
+
+### 6. Correct password path
+If the entry matches the password:
+- the LCD shows `ACCESS OK`
+- the servo moves to the unlock angle
+- the code waits 2 seconds
+- the servo returns to the lock angle
+- the LCD returns to the `ENTER CODE` screen
+
+So the unlock action is temporary, then the system resets to the locked state.
+
+### 7. Wrong password path
+If the entry is wrong:
+- the LCD shows `DENIED`
+- the servo does not move
+- the code waits briefly
+- the LCD returns to the `ENTER CODE` screen
+
+That keeps the failure path simple and visible.
+
+### 8. Repeating loop
+The main loop keeps scanning for keypad input continuously.
+The `last_key` check stops one long press from being read as repeated presses.
+
+That makes the lock behave more cleanly when keys are held slightly too long.
+
 ## Test
 - wire the keypad, LCD, and servo exactly as shown
 - confirm the servo is on the separate 5V servo rail
