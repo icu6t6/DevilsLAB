@@ -58,7 +58,7 @@ In this build, the 2k section was created using two 1k resistors in series.
 
 ## Wiring Diagram
 
-![016 – Ultrasonic Read](../../images/016_ultrasonic_read.png)
+![016 – Ultrasonic Read](../../images/016_ultrasonic_bringup.png)
 
 ---
 
