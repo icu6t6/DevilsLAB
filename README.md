@@ -29,6 +29,21 @@ ENZO-Labs exists as the easier entry ladder.
 
 ---
 
+## Board used in ENZO-Labs
+
+These ENZO-Labs modules were built and tested using this ESP32 dev board style:
+
+- ESP32 dev board
+- ESP-WROOM-32 module
+- 30-pin layout
+- CP2102 USB interface
+
+[View board photo](images/ESP32DevBoard.jpg)
+
+If you are using a different ESP32 board, pin labels and layout may differ.
+
+---
+
 ## Start here if you want to
 
 - build smaller ESP32 circuits first
