@@ -23,6 +23,18 @@ This module is intended to be a **staged wire-and-test build**.
 That means you do not need to finish every wire before checking behaviour.
 Wire one section, test it, then continue.
 
+### Example ESP stack / “clam” bench assembly
+
+Front / top view:
+
+![Example ESP stack bench assembly](../material/v1/ESP32-S3-CLAM.jpg)
+
+Side view:
+
+[View side profile of the ESP stack](../material/v1/ESP_CLAM_SIDE_VIEW.jpg)
+
+These images show the ESP stack as its own bench-buildable unit before full robot integration.
+
 ---
 
 ## Hardware baseline (important)
@@ -242,7 +254,9 @@ The public V1 baseline firmware files live here:
 
 ## Next Step
 
-If you have not yet completed the power system stage, continue to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
+Module Group A can be built and tested independently on USB bench power.
+
+When you are ready to move beyond bench proof and into the robot power architecture, continue to [MODULE GROUP B — POWER SYSTEM](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
 
 If you want to go beyond the public V1 baseline, V1 Advanced unlocks the next guided stage of the build (Module Group C).
 
