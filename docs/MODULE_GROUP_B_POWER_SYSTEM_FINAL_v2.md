@@ -1,7 +1,7 @@
 # MODULE GROUP B – POWER SYSTEM (ENZO v1)
 
 This module covers **bringing the robot to life electrically**, before the ESP stack is powered.
-Nothing in this module depends on firmware or GPIO configuration.  
+Nothing in this module depends on firmware or GPIO configuration.
 You can complete **Module Group B** with the ESP completely disconnected.
 
 This reflects how ENZO was actually built.
@@ -12,42 +12,43 @@ This reflects how ENZO was actually built.
 
 By the end of this module you will have:
 
-- A **stable input rail**
-- A **common ground rail**
-- A **regulated 5V rail**
-- A **latching power button** that controls the 5V logic rail
-- A safe way to test power *before* connecting the ESP
+- a **stable input rail**
+- a **common ground rail**
+- a **regulated 5V rail**
+- a **latching power button** that controls the 5V logic rail
+- a safe way to test power *before* connecting the ESP
 
 This teaches:
-- Power sequencing
-- Ground discipline
-- Rail isolation
-- Safe bring‑up methodology
+- power sequencing
+- ground discipline
+- rail isolation
+- safe bring-up methodology
 
 ---
 
-## MODULE B1 – INPUT-RAIL & FUSE
+## MODULE B1 – INPUT RAIL & FUSE
 
 **Goal:** Create a protected input source.
 
 ### Parts
-- 2-cell LiPo Battery
-- Deans connector 
-- Double connecting block-connect one end of fuse and 14 AWG wire from GRN Rail
-- Inline fuse holder + fuse
+- 2-cell LiPo battery
+- Deans connector
+- double connecting block
+- inline fuse holder + fuse
 - input rail bus bar
-- Heavy‑gauge wire (14–16 AWG)
+- heavy-gauge wire (14–16 AWG)
 
 ### Steps
-1. Do **NOT** connect the Battery yet
-2. Wire the Deans connector **positive → fuse** 
-3. Fuse output → **input bus bar**
-4. + side after connecting block to fuse and - GND → **ground rail**
+1. Do **NOT** connect the battery yet.
+2. Wire the Deans connector **positive → fuse**.
+3. Wire the fuse output → **input bus bar**.
+4. Connect the battery negative → **ground rail**.
+5. Use the double connecting block where needed to join the fused positive path and the ground return cleanly into the rail layout.
 
 At this stage:
-- input rail exists
-- No loads connected
-- Safe to measure with a multimeter
+- the input rail exists
+- no loads are connected
+- it is safe to measure with a multimeter
 
 ---
 
@@ -56,40 +57,40 @@ At this stage:
 **Goal:** Establish a single electrical reference.
 
 ### Rules
-- The chassis is **NOT** ground
-- Ground rail floats above chassis
-- All grounds eventually meet here
+- The chassis is **NOT** ground.
+- The ground rail floats above the chassis.
+- All grounds eventually meet here.
 
 ### Steps
-1. Mount ground rail on insulated standoffs
-2. Connect Deans - ground to ground rail after connecting block
-3. Do **not** connect ESP yet
+1. Mount the ground rail on insulated standoffs.
+2. Connect battery negative to the ground rail.
+3. Do **not** connect the ESP yet.
 
 This ground rail will later accept:
-- Buck converter ground
+- buck converter ground
 - ESP ground (single heavy wire)
-- Button LED ground
+- button LED ground
 
 ---
 
-## MODULE B3 – BUCK CONVERTER (input rail → 5V)
+## MODULE B3 – BUCK CONVERTER (INPUT RAIL → 5V)
 
 **Goal:** Create a regulated logic supply.
 
 ### Parts
 - UBEC / buck converter
-- Voltmeter (optional but recommended)
+- voltmeter (optional but recommended)
 
 ### Steps
 1. Buck **IN + → input rail**
 2. Buck **IN − → ground rail**
 3. Buck **OUT + → temporary test lead**
 4. Buck **OUT − → ground rail**
-5. Adjust buck to **5.0–5.2V**
+5. Adjust the buck to **5.0–5.2V**
 
 At this point:
-- You can power the buck safely
-- ESP is still disconnected
+- you can power the buck safely
+- the ESP is still disconnected
 
 ---
 
@@ -98,9 +99,9 @@ At this point:
 **Goal:** Distribute regulated logic power.
 
 ### Steps
-1. Mount 5V rail above ground rail "will be above the ESP32 clam"
-2. Buck OUT + → **C1 on latching button**
-3. Do NOT connect ESP yet
+1. Mount the 5V rail above the ground rail.
+2. Buck **OUT + → C1 on the latching button**.
+3. Do **not** connect the ESP yet.
 
 Nothing else connects to this rail yet.
 
@@ -111,16 +112,17 @@ Nothing else connects to this rail yet.
 **Goal:** Control when logic power is enabled.
 
 ### Button Type
-- Latching (press ON / press OFF)
-- Separate LED pins
+- latching (press ON / press OFF)
+- separate LED pins
 - NO / NC / COM terminals
 
 ### Wiring
-- Buck OUT + → **C1**
-- **NO1 → A on the 5V rail**
-- Button LED + → ** slot 1 on 5V rail**
-- Button LED − → **ground rail**
-- NC1 unused -
+- Buck **OUT + → C1**
+- **NO1 → 5V rail input**
+- Button LED **+ → 5V rail**
+- Button LED **− → ground rail**
+- **NC1** unused
+
 ### Result
 - Button OFF → no 5V rail
 - Button ON → 5V rail live + LED illuminated
@@ -133,29 +135,29 @@ This is intentional and mirrors real equipment.
 
 Before connecting the ESP:
 
-- Power the system
-- Measure:
-  - input rail V
-  - Buck output
+- power the system
+- measure:
+  - input rail voltage
+  - buck output
   - 5V rail
-- Verify:
-  - Button correctly enables/disables 5V
-  - No heat buildup
-  - No unexpected voltage
+- verify:
+  - the button correctly enables/disables 5V
+  - no heat buildup
+  - no unexpected voltage
 
-# Early Power Validation (optional)
-Before perminant powerinstalation, a low-current source may be connected to the input rail to verify buck converter operation
-and downstream 5V distrobution.
-This step intended only for validation and should be performed without logic or high current loads connected.
+### Early Power Validation (optional)
+Before permanent power installation, a low-current source may be connected to the input rail to verify buck converter operation and downstream 5V distribution.
+
+This step is intended only for validation and should be performed without logic or high-current loads connected.
 
 ---
 
 ## WHEN TO STOP
 
 If you can:
-- Toggle 5V on/off with the button
-- Read stable voltages
-- See the button LED behave correctly
+- toggle 5V on/off with the button
+- read stable voltages
+- see the button LED behave correctly
 
 **STOP.**
 
@@ -167,9 +169,9 @@ Only now do you proceed to:
 ## WHY THIS ORDER MATTERS
 
 Most beginners destroy boards by:
-- Powering logic before regulation
-- Floating grounds
-- Hot‑plugging rails
+- powering logic before regulation
+- floating grounds
+- hot-plugging rails
 
 This module exists specifically to prevent that.
 
