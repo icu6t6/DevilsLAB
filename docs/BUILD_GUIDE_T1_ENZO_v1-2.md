@@ -5,6 +5,20 @@ T1-ENZO v1 is an educational firmware and reference build package.
 The documentation includes one proven physical implementation (“ENZO”) used to validate the firmware and architecture.
 Builders may replicate this implementation or substitute their own hardware, provided the electrical and pin-mapping rules are preserved.
 
+## How to use this guide
+This file is an **overall project reference**.
+
+For the clearest public V1 build path, use the staged order below:
+1. [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
+2. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
+3. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+4. [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
+
+Do **not** solder, move wires, or change connections while the system is powered.
+Disconnect battery / external power before making physical wiring changes.
+
+---
+
 ## 1. Bill of Materials (Exact)
 
 ### Core Electronics
@@ -22,15 +36,13 @@ Builders may replicate this implementation or substitute their own hardware, pro
 ### Power
 - 2-cell LiPo 7.4V battery
 - Deans connector male with 2 inch wire
-ATTENTION TO POLARITY MATCH
-- Double-connecting block (-) to GND bar, (+) to one end of fuse 
-_ Fuse (+) → input rail (+)
-- UBEC / buck converter (input/source-rail → 5V, "3A minimum buck")
-- Inline fuse holder + fuse
-- input rail 
-- Latching switch w/LED
+- double-connecting block
+- inline fuse holder + fuse
+- UBEC / buck converter (input/source rail → 5V, 3A minimum recommended)
+- input rail
+- latching switch with LED
 - 5V distribution rail
-- Ground bus bar
+- ground bus bar
 
 ### Chassis & Mechanical
 - Gladiator tracked robot chassis
@@ -38,9 +50,9 @@ _ Fuse (+) → input rail (+)
 - M3 risers (20–30mm)
 - M3 bolts, nuts, nylocs
 - 0.5mm steel or aluminium sheet (platforms)
-- Standoffs
-- Heat‑shrink
-- Cable ties
+- standoffs
+- heat-shrink
+- cable ties
 
 ### Wiring
 - 14 AWG (battery / rails)
@@ -55,7 +67,7 @@ _ Fuse (+) → input rail (+)
 ### Step 1: Chassis
 - Assemble tracks and motors
 - Ensure smooth movement
-- Do NOT wire motors yet
+- Do **NOT** wire motors yet
 
 ### Step 2: Level System
 - Level 0: Chassis base
@@ -78,9 +90,9 @@ Double-connecting block
  ↓
 Fuse (5A)
  ↓
-source/intput Bus Bar
+source / input bus bar
  ├
- └── UBEC (source-rail → 5V)
+ └── UBEC (source rail → 5V)
         ↓
       5V Rail
         ↓
@@ -95,7 +107,7 @@ source/intput Bus Bar
 
 ---
 
-## 5. Wiring – ESP32 Core
+## 4. Wiring – ESP32 Core
 
 ### Power
 - 5V → ESP 5V pin
@@ -111,9 +123,9 @@ source/intput Bus Bar
 
 ---
 
-## 6. Firmware
+## 5. Firmware
 
-1. Flash provided firmware files
+1. Flash the provided firmware files
 2. Verify serial output
 3. Test modes:
    - Idle
@@ -126,15 +138,15 @@ source/intput Bus Bar
 
 ---
 
-## 7. Final Checks
+## 6. Final Checks
 - No loose wires
 - Fuse installed
-- Tracks free‑moving
+- Tracks free-moving
 - ESP secure
 
 ---
 
-## 8. When v1 Is Finished
+## 7. When v1 Is Finished
 STOP.
 Do not add features.
 Document.
@@ -143,6 +155,10 @@ Tag firmware.
 
 ## Next Step
 
-Once the physical build is complete, continue to [Module Group B](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md).
+For the practical public V1 path, follow the staged documents in this order:
+1. [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
+2. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
+3. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+4. [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
 
 Do not skip ahead or mix stages out of order.
