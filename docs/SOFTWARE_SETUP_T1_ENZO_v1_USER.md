@@ -140,8 +140,8 @@ The self-test does not modify system state and is safe to run multiple times.
 
 Once software setup is complete and the firmware is flashed successfully, continue to:
 
-1. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
-2. Or [ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+  [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
+   Or [ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
 
 Do not solder or change wiring while the system is powered.
 Disconnect battery / external power before making physical wiring changes.
