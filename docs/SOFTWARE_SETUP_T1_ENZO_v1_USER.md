@@ -78,6 +78,13 @@ If ENZO does not start:
 
 Do not proceed to hardware power integration until this software-only startup behaves as expected.
 
+### Why software comes first
+The firmware is intended to be **tolerant enough for staged bring-up**.
+That means it is useful to flash and verify the software first, then wire the hardware gradually and test as you go.
+
+This does **not** mean every part of the runtime is perfectly non-blocking.
+It means the firmware is suitable for early bring-up and staged bench testing.
+
 ## 6) Optional — Run the ENZO Self-Test (Recommended)
 
 ENZO includes a built-in self-test module to verify wiring correctness before relying on normal behaviour.
@@ -133,6 +140,10 @@ The self-test does not modify system state and is safe to run multiple times.
 
 Once software setup is complete and the firmware is flashed successfully, continue to:
 
-[ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+1. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
+2. then [ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+
+Do not solder or change wiring while the system is powered.
+Disconnect battery / external power before making physical wiring changes.
 
 Do not skip ahead or mix stages out of order.
