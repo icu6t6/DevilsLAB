@@ -27,7 +27,7 @@ Wire one section, test it, then continue.
 
 Front / top view:
 
-![Example ESP stack bench assembly](../material/v1/ESP32-S3-CLAM.jpg)
+[Example ESP stack bench assembly](../material/v1/ESP32-S3-CLAM.jpg)
 
 Side view:
 
