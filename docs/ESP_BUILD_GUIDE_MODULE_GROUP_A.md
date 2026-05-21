@@ -19,6 +19,10 @@ All wires should exit the stack as a tidy bundle (a “tail”), ready to mount 
 
 The tail should exit from the side opposite the USB port, so USB access remains clear during testing, flashing, and later servicing.
 
+This module is intended to be a **staged wire-and-test build**.
+That means you do not need to finish every wire before checking behaviour.
+Wire one section, test it, then continue.
+
 ---
 
 ## Hardware baseline (important)
@@ -61,13 +65,20 @@ This module assumes you have already followed **SOFTWARE_SETUP** and copied the 
 3. Confirm there are **no import errors** on boot.
 4. Confirm you can run the firmware (usually it auto‑runs via `main.py`).
 
+The firmware is intended to be **tolerant enough for staged bring-up**.
+That makes it suitable for loading first, then wiring the hardware gradually and testing as you go.
+
 If you see errors, fix software first (it’s much easier before you have a nest of wires).
+
+### Safety rule during wiring
+Do **not** solder, move wires, or change connections while the system is powered.
+Disconnect USB / battery / external power before making physical wiring changes.
 
 ---
 
 ## A1 — Mount the ESP “stack” (bench build)
 
-**Goal:** secure the ESP so you can wire it without ripping pads off. "Foam block"
+**Goal:** secure the ESP so you can wire it without ripping pads off.
 
 Recommended approach:
 - mount the ESP onto a small **perfboard / protoboard**
