@@ -13,14 +13,22 @@ This project was designed and developed by the author, with support from an AI a
 
 This repository is structured as a **guided baseline build**, not a loose collection of files.
 
-Recommended order:
+### Recommended practical order
 1. Read this document fully ([README Start Here](README_START_HERE_T1_ENZO_v1-2.md))
 2. Review the project overview ([Overview](OVERVIEW_T1_ENZO_v1.md))
 3. Review the Bill of Materials ([BOM](BOM_T1_ENZO_v1.md))
-4. Follow the hardware Build Guide ([Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md))
-5. Consult the [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
-6. Complete software setup and flash firmware ([Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md))
-7. Verify behaviour against the Completion Criteria
+4. Complete software setup and flash firmware first ([Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md))
+5. Build the power system stage ([Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md))
+6. Build and wire the ESP stack as a live test stage ([Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md))
+7. Consult the [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md) as you wire and verify
+8. Verify behaviour against the Completion Criteria
+
+### Where the full Build Guide fits
+The [Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md) remains useful as an overall project reference, but the practical public V1 path is the staged order above.
+
+### Safety rule during assembly
+Do **not** solder, move wires, or change connections while the system is powered.
+Disconnect battery / external power before making physical wiring changes.
 
 Do not skip steps or mix documents out of order.
 
