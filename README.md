@@ -78,6 +78,7 @@ Then continue through the ladder.
 - [014 – Keypad LCD Servo Lock](enzo-labs/014_keypad_lcd_servo_lock/README.md)
 - [015 – Keypad + LCD Multi-Position Lock](enzo-labs/015_keypad_lcd_multi_position_lock/README.md)
 - [016 – Ultrasonic Read](enzo-labs/016_ultrasonic_read/README.md)
+- [017 – LED Bar Graph Sweep](enzo-labs/017_led_bar_graph_sweep/README.md)
 
 ---
 
