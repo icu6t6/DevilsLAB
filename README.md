@@ -29,6 +29,16 @@ ENZO-Labs exists as the easier entry ladder.
 
 ---
 
+## Parts note
+
+Many of the parts used in ENZO-Labs modules 001–017 were tested or experimented with using parts from a **Freenove Ultimate Starter Kit** and similar ESP32 learning kits.
+
+If you already own a kit like this, you may already have many of the parts needed for the early ENZO-Labs modules.
+
+Exact kit contents vary, so always check each module’s parts list and wiring before building.
+
+---
+
 ## Board used in ENZO-Labs
 
 These ENZO-Labs modules use this ESP32 dev board style and pin layout:
