@@ -64,7 +64,7 @@ It focuses on:
 - Safe expansion paths
 - In v1, the input rail is typically supplied by a 2-cell LiPo battery, but the firmware is power-source-agnostic.
 
-This is **not** a toy demo or copy‑paste project.(Its your choice if you want to write out the code while learning or copy paste is fine.)
+This is **not** a toy demo or copy‑paste project. (Its your choice if you want to write out the code while learning or copy paste is fine.)
 
 T1-ENZO v1 is an educational embedded-systems reference designed to teach real-world power and wiring architecture.
 It models how industrial and mobile machines handle raw power: energy enters the system, is protected, regulated, and distributed before reaching logic.
