@@ -77,7 +77,7 @@ The documentation includes one proven physical implementation (“ENZO”) used 
 
 Builders may replicate this implementation exactly. The power architecture may be reused as a platform, but the firmware and pin map are ESP32-S3 specific.
 
-Controller support (V1): The ENZO v1 firmware and Pin Truth Map are authored for the ESP32-S3 dev board and the exact pinout documented in this repository.
+Controller support (V1): The ENZO v1 firmware and Pin Truth Map are authored for the Waveshare ESP32-S3 dev board N8R8 and the exact pinout documented in this repository.
 If you use any other controller (ESP32-WROOM, Pico, Arduino, etc.), the pin map and wiring instructions will not apply.
 Adapting ENZO to a different board is outside v1 scope (V2+ territory) and requires your own remapping and validation.
 
