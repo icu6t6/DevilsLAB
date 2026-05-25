@@ -23,7 +23,6 @@ Disconnect battery / external power before making physical wiring changes.
 
 ### Core Electronics
 - ESP32‑S3 development board (core controller)
-- ESP32‑S3 with LCD (optional, not required for v1)
 - PIR motion sensor (5V)
 - LDR + resistor (3.3V divider)
 - RGB LED module or individual LEDs
