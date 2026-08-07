@@ -97,6 +97,8 @@ V1 Advanced is **not required** for V1.
 ### V2
 Locomotion and external control layer.
 
+👉 [ENZO V2 — Start Here](V2/README.md)
+
 ### V3
 Management and observability layer.
 
