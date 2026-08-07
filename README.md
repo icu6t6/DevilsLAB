@@ -57,14 +57,17 @@ If you are new to ENZO, start here:
 
 👉 [README Start Here](docs/README_START_HERE_T1_ENZO_v1-2.md)
 
-Recommended order:
+Recommended practical order:
 1. Start Here
 2. Overview
 3. Bill of Materials
-4. Build Guide
-5. Wiring Reference
-6. Software Setup
-7. Completion check
+4. Software Setup
+5. Module Group A — ESP Core Stack on USB bench power
+6. Module Group B — robot power system
+7. Wiring Reference / final integration
+8. Completion check
+
+The full Build Guide remains available as an overall project reference.
 
 Do not jump around randomly.  
 This baseline is designed to be followed in order.
