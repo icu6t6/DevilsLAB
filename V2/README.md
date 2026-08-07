@@ -75,9 +75,7 @@ Start here:
 
 [Phase 1 — Module Group D lesson](PH1_GROUP_D_LOCOMOTION/MODULE_GROUP_D_V2_LOCOMOTION.md)
 
-The one-shot proof script is:
-
-[Phase 1 motor proof script](PH1_GROUP_D_LOCOMOTION/motor_proof.py)
+The one-shot proof script is included in the Phase 1 folder and is also shown directly in the lesson.
 
 Phase 1 is a manual validation tool only. It does not replace the permanent V1 runtime.
 
