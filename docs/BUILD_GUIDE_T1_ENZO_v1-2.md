@@ -10,9 +10,11 @@ This file is an **overall project reference**.
 
 For the clearest public V1 build path, use the staged order below:
 1. [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
-2. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
-3. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+2. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+3. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
 4. [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
+
+Module A is built and tested first on USB bench power. Module B is then built and verified with the ESP disconnected before the two are integrated.
 
 Do **not** solder, move wires, or change connections while the system is powered.
 Disconnect battery / external power before making physical wiring changes.
@@ -156,8 +158,8 @@ Tag firmware.
 
 For the practical public V1 path, follow the staged documents in this order:
 1. [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
-2. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
-3. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+2. [Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+3. [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
 4. [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md)
 
 Do not skip ahead or mix stages out of order.
