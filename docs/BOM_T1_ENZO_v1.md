@@ -12,7 +12,7 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ## Core Electronics
 
 ### ESP32 Controller
-- **Item:** ESP32-S3 Dev_Kit_NXR8
+- **Item:** Waveshare ESP32-S3 N8R8 development board
 - **Notes:** Main controller (WiFi + BLE)
 - **Source:** Amazon
 - **Qty:** 1
@@ -99,9 +99,9 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Source:** Pi Hut
 - **Qty:** 1
  
-### RGB LED
-- **Item:** Addressable RGB LED
-- **Notes:** GPIO16
+### NeoPixel Eyes
+- **Item:** 8-pixel WS2812 / NeoPixel module
+- **Notes:** GPIO16; V1 firmware drives an 8-pixel device and uses two pixels as the visible eyes
 - **Source:** Amazon
 - **Qty:** 1
 
