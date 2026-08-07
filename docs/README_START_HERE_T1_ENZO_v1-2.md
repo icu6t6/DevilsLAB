@@ -18,9 +18,9 @@ This repository is structured as a **guided baseline build**, not a loose collec
 2. Review the project overview ([Overview](OVERVIEW_T1_ENZO_v1.md))
 3. Review the Bill of Materials ([BOM](BOM_T1_ENZO_v1.md))
 4. Complete software setup and flash firmware first ([Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md))
-5. Build the power system stage ([Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md))
-6. Build and wire the ESP stack as a live test stage ([Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md))
-7. Consult the [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md) as you wire and verify
+5. Build and test the ESP stack on USB bench power ([Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md))
+6. Build and verify the robot power system with the ESP disconnected ([Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md))
+7. Use the [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md) while integrating the ESP stack with the robot power system
 8. Verify behaviour against the Completion Criteria
 
 ### Where the full Build Guide fits
