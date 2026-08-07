@@ -34,10 +34,12 @@ By completing T-1 ENZO v1, you will learn:
 - How to safely distribute input rail source power "2-cell LiPo" and 5V power in a mobile system
 - What a common ground is and why it matters
 - How to use buck converters correctly
-- How to wire sensors, LEDs, buttons, and motors to an ESP32
+- How to wire sensors, LEDs, and buttons to an ESP32
 - How firmware maps to real hardware pins
 - How to flash, edit, and extend MicroPython firmware
 - How to structure a project so it can grow
+
+Motor control is introduced later in ENZO V2, after the V1 baseline is complete.
 
 ---
 
