@@ -5,269 +5,218 @@
 
 ## Why This Module Exists
 
-This module exists **primarily as a learning and bring-up tool**.
+This module is a learning and bring-up stage between basic motor proof and mobile control.
 
-Experienced builders may choose to bypass this module entirely and proceed directly to Phase 3 (mobile UI control). Doing so will still result in a working system.
+It proves that ENZO can accept an external command source while the ESP remains responsible for motor behaviour and the deadman STOP condition.
 
-However, learners are encouraged to complete this module to understand:
-
-- how external input enters the system  
-- how control is transported and gated  
-- how STOP and safety are enforced  
-- how ENZO is brought up incrementally and provably  
-
-This module demonstrates the **middle ground** between “it works” and “here is how we got there”.
-
-Completion of this module is **not required** for Phase 3 functionality, but it provides valuable insight for curious builders who want to understand the system boundaries before moving on.
+Phase 2 is recommended if you want to understand the control path before moving to Phase 3.
 
 ---
 
 ## What This Module Does
 
-This module runs ENZO in a **temporary manual drive mode** using a PC keyboard.
+Phase 2 temporarily replaces ENZO's normal `main.py` with a drive-only runtime.
 
-While manual drive is active, ENZO boots into a locomotion-focused runtime.  
-During this time, **other ENZO features may not run**.
+During this lesson:
 
-Existing ENZO features are **not deleted**.  
-Stopping the PC control script and/or resetting ENZO returns the system to its normal firmware behaviour.
+- the PC reads your keyboard
+- the PC sends `W / A / S / D / X` over USB serial
+- the ESP receives those commands
+- the ESP drives the motor controller over I²C
+- the ESP stops the motors if valid commands stop arriving
 
----
-
-## PC Requirements (Read Before Starting)
-
-This module requires **Python to be installed on your computer**.
-
-If you have previously only worked with MicroPython on the ESP, you may not yet have a full PC Python environment set up.
-
-### Required on the PC
-
-- Python 3.x installed  
-- `pip` available  
-- The following Python packages installed:
-  - `pyserial`
-  - `pynput`
-
-These packages are used by the PC controller script to:
-- read keyboard input
-- send commands over USB serial
-
-Once these requirements are met, you will **first run the PC controller script**, then **load the drive firmware onto ENZO**.
-
----
-
-## Installing the Required Packages
-
-1. Open a terminal or command prompt on your computer  
-2. Run:
-   ```
-   pip install pyserial pynput
-   ```
-
-If the install completes without errors, the PC environment is ready.
-
-If this step is skipped, the PC control script will not run.
-
----
-
-## Common Clarification
-
-MicroPython on the ESP and Python on your PC are **separate environments**.
-
-Installing Python packages on your PC does **not** affect the ESP, and vice versa.
+The normal V1 runtime is not deleted from the project, but it is **not running while the temporary Phase 2 `main.py` is installed**.
 
 ---
 
 ## Files Used in This Module
 
-In this module you will **run one script on your PC** and **copy one script onto the ESP**.
-
 | File | Runs on | Purpose |
 |---|---|---|
-| `keyboard_to_serial.py` | PC (Local Python 3) | Reads keyboard input and sends commands over USB serial |
-| `main.py` | ESP32 (MicroPython) | Receives commands and drives locomotion |
+| [`keyboard_to_serial.py`](keyboard_to_serial.py) | PC — Python 3 | Reads keyboard input and sends repeated movement commands over USB serial |
+| [`main.py`](main.py) | ESP32 — MicroPython | Temporary Phase 2 runtime; receives commands, controls motors and enforces the 250 ms deadman |
 
-These scripts run at the same time in **different execution contexts**, even though they are launched from the same computer using Thonny.
+The permanent V1 runtime you return to afterwards is here:
 
----
-
-## Module Phase 2 Behaviour
-
-This phase places ENZO into a **manual drive session**.
-
-The ESP runs a drive-focused `main.py` that:
-- listens for external commands
-- controls locomotion
-- enforces STOP and safety rules
-
-This drive firmware is intended for **manual control sessions only** and is not the normal ENZO runtime.
+[`../V1END_V2_START_BASELINE_CODE/main.py`](../V1END_V2_START_BASELINE_CODE/main.py)
 
 ---
 
-## Part 1 — PC Controller Script
+## PC Requirements
 
-### File
+You need:
+
+- Python 3.x
+- `pip`
+- `pyserial`
+- `pynput`
+
+Install the two packages with:
+
+```text
+pip install pyserial pynput
 ```
-keyboard_to_serial.py
-```
 
-### Where to save it
-- On the **PC**
-- Anywhere convenient (Desktop is fine)
-- **Do not upload this file to the ESP**
-
-### Interpreter
-- Thonny
-- **Local Python 3**
-
-### What it does
-- Reads keyboard input  
-- Sends single-character commands over USB serial:
-  - `W`, `A`, `S`, `D`
-- Sends `X` (STOP) on:
-  - key release
-  - space bar  
-- Opens the ENZO USB serial port (e.g. COM7)
-
-The PC does **not** control motors directly.
+MicroPython on ENZO and Python on the PC are separate environments.
 
 ---
 
-### How to run it
+## Before You Start
 
-1. Plug ENZO into the PC  
-2. Open Thonny  
-3. Set the interpreter to **Local Python 3**  
-4. Open `keyboard_to_serial.py`  
-5. Run the script  
+1. Complete Phase 1 and prove the motor driver works.
+2. Keep ENZO lifted so the tracks cannot unexpectedly drive across the bench.
+3. Find ENZO's USB serial port on the PC.
+4. Open [`keyboard_to_serial.py`](keyboard_to_serial.py) and change:
 
-You should see output similar to:
+```python
+PORT = "COM7"
 ```
+
+to the port actually used by your ESP.
+
+On Linux/macOS the port name will not be `COM7`; use the serial device name shown by your system.
+
+---
+
+## Step 1 — Install the temporary Phase 2 runtime
+
+Using Thonny with the **MicroPython** interpreter:
+
+1. Open [`main.py`](main.py).
+2. Save it to the **root of the ESP** as exactly:
+
+```text
+/main.py
+```
+
+3. Reset ENZO.
+4. Confirm the serial output includes:
+
+```text
+WASD DRIVE READY (W forward, S reverse, X/space stop)
+```
+
+This temporary `main.py` is now the ESP runtime for this lesson.
+
+---
+
+## Step 2 — Give the PC controller access to the serial port
+
+The PC sender and Thonny cannot both own the same serial port at the same time.
+
+After the Phase 2 `main.py` is saved and running:
+
+1. Release/disconnect Thonny from ENZO's MicroPython serial port, or switch away from the MicroPython interpreter.
+2. Run [`keyboard_to_serial.py`](keyboard_to_serial.py) using **Local Python 3**.
+3. Confirm you see:
+
+```text
 Serial open on COM7
 ```
 
-Leave this script **running**.
+using your actual port name.
 
 ---
 
-## Part 2 — ENZO Drive Firmware
+## Step 3 — Drive ENZO
 
-### File
+Controls:
+
+- hold **W** → forward
+- hold **S** → reverse
+- hold **A** → left turn
+- hold **D** → right turn
+- release a movement key → STOP
+- press **Space** → STOP
+- press **Esc** → STOP and exit the PC controller
+
+The PC sender refreshes the active command every **120 ms** while a movement key is held.
+
+The ESP deadman is **250 ms**. If commands stop arriving for longer than that, the ESP commands STOP.
+
+That means motor safety lives on the ESP; it does not depend on the PC successfully sending a final STOP packet.
+
+---
+
+## First Test — Required
+
+Keep ENZO lifted off the ground.
+
+Test:
+
+1. **W** — both tracks should drive forward.
+2. **S** — both tracks should reverse.
+3. **A / D** — confirm the expected left/right movement.
+4. Release each key — movement must stop.
+5. While holding a movement key, terminate the PC script or disconnect the serial link — ENZO should stop after the deadman timeout.
+
+Do not continue until STOP behaviour is reliable.
+
+---
+
+## If Forward and Reverse Are Wrong
+
+Do **not** start rewiring a known-good motor installation just to correct command direction.
+
+In [`main.py`](main.py), find:
+
+```python
+FWD_CMD = CMD_RUN_CCW
+REV_CMD = CMD_RUN_CW
 ```
-main.py
+
+If forward and reverse are physically inverted on your build, swap those two assignments:
+
+```python
+FWD_CMD = CMD_RUN_CW
+REV_CMD = CMD_RUN_CCW
 ```
 
-### Where to save it
-- On the **ESP32**
-- Root of the device
-- Filename must be exactly `main.py`
+Retest **W** and **S** with the tracks lifted.
 
-This file runs automatically when ENZO boots.
+If only one side is wrong, stop and verify the motor/channel wiring against the known-good Phase 1 result rather than blindly changing both direction mappings.
 
 ---
 
-### What it does
-- Reads incoming USB serial data  
-- Maps characters to motor commands:
-  - `W` → forward  
-  - `S` → reverse  
-  - `A / D` → pivot turns  
-  - `X / Space / timeout` → STOP  
-- Enforces a deadman timeout  
-- Uses **known-good I²C motor commands**
+## Leaving Phase 2 — Important
 
-The ESP is the **authority** for safety.
+Resetting ENZO **does not** restore V1 while the temporary Phase 2 `main.py` is still installed. A reset simply runs that same Phase 2 file again.
 
----
+To return ENZO to its normal V1 runtime:
 
-### How to install it
+1. Stop the PC controller.
+2. Reconnect Thonny using the **MicroPython** interpreter.
+3. Restore the permanent V1 [`main.py`](../V1END_V2_START_BASELINE_CODE/main.py) to the ESP root as `/main.py`.
+4. Reset ENZO.
+5. Confirm the normal V1 behaviours return.
 
-1. In Thonny, switch interpreter to:
-   ```
-   MicroPython (Generic ESP32)
-   ```
-2. Open `main.py`  
-3. Save it **to the ESP**  
-4. Reset ENZO  
+The rest of the V1 files remain in place; Phase 2 only needs the temporary root `main.py` for this lesson.
 
 ---
 
-## Running the System (Normal Use)
+## What Phase 2 Proves
 
-This is the correct Thonny workflow.
+When complete, you have proven:
 
-### Step 1 — Start the PC script
-- Interpreter: **Local Python 3**
-- Run `keyboard_to_serial.py`
-- Leave it running
+- an external PC can command ENZO over USB serial
+- the ESP remains the motor-control authority
+- command transport and motor behaviour are separate concerns
+- STOP on command loss is enforced locally on the ESP
+- the original V1 runtime can be restored intact after the lesson
 
-### Step 2 — Run the ESP firmware
-- Switch interpreter to **MicroPython**
-- Reset ENZO (or run `main.py`)
-
-Thonny handles the connection switching automatically.
-
----
-
-## Expected Behaviour
-
-- Hold **W** → ENZO moves  
-- Release **W** → STOP  
-- Hold **A / D** → pivot  
-- Hold **S** → reverse  
-- Press **Space** → STOP  
-- Exit PC script → STOP  
-
-Motion only occurs while input is active.
-
----
-
-## First Test (Required)
-
-- Lift ENZO off the ground  
-- Test all directions briefly  
-- Confirm STOP works immediately  
-
-If direction is wrong:
-- Fix it in `main.py`
-- Do not rewire motors
-
----
-
-## Exiting Manual Drive
-
-To stop using manual drive:
-- Exit the PC script **or**
-- Reset ENZO  
-
-ENZO returns to its normal firmware behaviour.
-
-Manual drive does not persist.
-
----
-
-## What This Enables
-
-Because of this module:
-
-- ENZO can accept external control safely  
-- Locomotion is decoupled from input  
-- Existing ENZO features remain intact **in the codebase and return after exiting manual drive**
-
-In Phase 3, the PC control script is replaced by a **mobile UI input script**.  
-The ESP-side safety and locomotion logic does not need to change.
+Phase 3 changes the transport from PC USB serial to ENZO's own Wi-Fi access point and HTTP control.
 
 ---
 
 ## Completion Check
 
-- [ ] PC script runs  
-- [ ] ESP firmware runs  
-- [ ] Forward / reverse work  
-- [ ] STOP works on release  
-- [ ] STOP works on disconnect  
-- [ ] No ENZO features permanently altered  
+- [ ] Correct PC serial port configured
+- [ ] Phase 2 `main.py` installed and boots
+- [ ] PC controller opens the serial port
+- [ ] W / S / A / D produce the expected movement
+- [ ] Release sends STOP
+- [ ] Deadman stops ENZO if commands disappear
+- [ ] Permanent V1 `main.py` restored after the lesson
+- [ ] Normal V1 behaviour returns after reset
 
-When complete:
-
-**V2 Phase 2 is locked.**
+When these are true, Phase 2 is complete.
