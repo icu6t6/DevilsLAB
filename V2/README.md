@@ -24,7 +24,7 @@ You should have:
 - ESP32-S3 running MicroPython
 - working V1 sensors / buttons / eyes / heartbeat
 - robot power architecture completed and verified
-- motor driver wired to the robot power system
+- the V2 motor driver and motors available for the Phase 1 installation / proof stage
 - PC with USB serial access
 - smartphone with Wi-Fi
 
@@ -69,7 +69,7 @@ Do not place every snapshot file at the ESP root.
 
 ## Phase 1 — Group D: locomotion proof
 
-**Goal:** prove the motor driver and I²C motor-control path before adding any external controller.
+**Goal:** install and prove the motor driver and I²C motor-control path before adding any external controller.
 
 Start here:
 
