@@ -1,149 +1,171 @@
+# T1 ENZO V1 — Software Setup
 
 ## 1) Install tools
+
 - Install **Thonny IDE**
-- Download **MicroPython firmware** for ESP32-S3
+- Download **MicroPython firmware** for the ESP32-S3
 
-## 2) Flash MicroPython (via Thonny)
-1. Plug ESP in by USB
-2. Thonny → Tools → Options → Interpreter
-3. Select “MicroPython (ESP32)” and the correct COM port
-4. Click “Install or update MicroPython”
-5. Select the ESP32-S3 firmware file and flash
+---
 
-## 3) If Thonny won’t connect (common)
-Reliable sequence:
-1. Close Thonny
-2. Unplug ESP
-3. Open Thonny and wait
-4. Plug ESP back in
-5. Pick COM port again
+## 2) Flash MicroPython with Thonny
 
-Also try:
-- Another USB cable
-- Another USB port
+1. Plug the ESP32-S3 into the PC by USB.
+2. In Thonny open **Tools → Options → Interpreter**.
+3. Select **MicroPython (ESP32)** and the correct serial / COM port.
+4. Choose **Install or update MicroPython**.
+5. Select the ESP32-S3 firmware and flash it.
 
-## 4) Upload project files to the ESP
-In Thonny:
-- View → Files
-- Copy files from “This computer” to “MicroPython device”
-- Ensure file names match exactly
+### If Thonny will not connect
 
-### File Structure Setup (Required)
-After flashing MicroPython, you must manually place the ENZO project files onto the device.
+Try this sequence:
 
-Copy `main.py` from the ENZO v1 files to the **root** of the MicroPython device, alongside the existing `boot.py`.
+1. Close Thonny.
+2. Unplug the ESP.
+3. Open Thonny and wait for it to finish loading.
+4. Plug the ESP back in.
+5. Select the correct port again.
 
-Create the following folders on the device if they do not already exist:
+Also try another USB cable or USB port if required.
 
-/app
-/actuators
+---
 
-The `app/` folder must contain:
+## 3) Copy the ENZO V1 firmware to the ESP
 
-app/
-├── config.py
-├── eyes.py
-├── leds.py
-├── net.py
-├── state.py
-├── status.py
-├── tasks.py
-└── __init__.py
+The public V1 firmware source is here:
 
-The `actuators/` folder must contain:
+[ENZO V1 firmware files](../material/v1/firmware/)
 
-actuators/
-└── __init__.py
+The repository stores the source files together for easy access. On the ESP, ENZO uses a root `main.py` plus an `/app` package.
 
-**File and folder names must match exactly.**
-Missing folders or misplaced files will prevent the firmware from running correctly.
+### ESP file layout for the normal V1 runtime
 
-## 5) Run and reboot
-- Run `main.py` (or press **Run**)
-- Soft reboot: **Ctrl-D**
+```text
+/
+├── main.py
+├── boot.py                  # MicroPython may already provide this
+├── app/
+│   ├── __init__.py
+│   ├── config.py
+│   ├── eyes_8led.py
+│   ├── leds.py
+│   ├── net.py
+│   ├── state.py
+│   ├── status.py
+│   └── tasks.py
+└── actuators/
+    └── __init__.py          # intentionally empty V1 placeholder package
+```
 
-## Post-Setup Expectations
-After copying the files and rebooting the device, ENZO should start automatically via `main.py`.
+Copy the files with **exactly those names**.
 
-On successful startup, you should observe:
-- The ESP32 runs without import errors
-- The heartbeat/status LEDs behave as defined
-- The NeoPixel “eyes” perform their startup animation
-- The system enters a stable idle state without crashing or rebooting
+Useful source links:
 
-If ENZO does not start:
-- Confirm `main.py` is in the root
-- Confirm `app/` and `actuators/` folders exist
-- Confirm all filenames match exactly
+- [`main.py`](../material/v1/firmware/main.py) → ESP root `/main.py`
+- [`config.py`](../material/v1/firmware/config.py) → `/app/config.py`
+- [`eyes_8led.py`](../material/v1/firmware/eyes_8led.py) → `/app/eyes_8led.py`
+- [`leds.py`](../material/v1/firmware/leds.py) → `/app/leds.py`
+- [`net.py`](../material/v1/firmware/net.py) → `/app/net.py`
+- [`state.py`](../material/v1/firmware/state.py) → `/app/state.py`
+- [`status.py`](../material/v1/firmware/status.py) → `/app/status.py`
+- [`tasks.py`](../material/v1/firmware/tasks.py) → `/app/tasks.py`
+- [`__init__.py`](../material/v1/firmware/__init__.py) → `/app/__init__.py`
 
-Do not proceed to hardware power integration until this software-only startup behaves as expected.
+Create `/actuators/__init__.py` as an empty file if it is not already present. The package is intentionally empty in the V1 baseline.
 
-### Why software comes first
-The firmware is intended to be **tolerant enough for staged bring-up**.
-That means it is useful to flash and verify the software first, then wire the hardware gradually and test as you go.
+### Why `eyes_8led.py` matters
 
-This does **not** mean every part of the runtime is perfectly non-blocking.
-It means the firmware is suitable for early bring-up and staged bench testing.
+The live V1 `tasks.py` imports:
 
-## 6) Optional — Run the ENZO Self-Test (Recommended)
+```python
+from app import eyes_8led as eyes
+```
 
-ENZO includes a built-in self-test module to verify wiring correctness before relying on normal behaviour.
+The runtime file must therefore be named **`eyes_8led.py`**. Do not rename it to `eyes.py`.
 
-### What the self-test checks
-- Heartbeat LED
-- WiFi LED
-- Eye button
-- WiFi button
-- PIR motion sensor
-- LDR (ADC input)
+---
 
-### What this helps catch
-- Miswired pins
-- Missing components
-- Incorrect pull-ups or pull-downs
+## 4) Configure Wi-Fi if you want to use the V1 Wi-Fi button
 
-### When to run the self-test
-- After the software boots successfully
-- After completing Module Group A wiring
-- Before troubleshooting unexpected behaviour
-- Any time hardware wiring has been changed
+The public [`config.py`](../material/v1/firmware/config.py) deliberately contains placeholder values:
 
-### How to run the self-test
-1. Power ENZO normally
-2. Open the MicroPython REPL (via Thonny or serial)
-3. At the `>>>` prompt, enter:
+```python
+WIFI_SSID = "yourSSIDhere"
+WIFI_PASS = "yourPassworHere"
+```
+
+If you want the V1 Wi-Fi button to connect to your network, replace those two values with your own SSID and password **in your private ESP copy** before testing Wi-Fi.
+
+Do not publish your real Wi-Fi password back to a public repository.
+
+If you leave the placeholders unchanged, the rest of V1 can still be tested, but a Wi-Fi connection attempt will fail or time out because no matching network credentials were supplied.
+
+---
+
+## 5) Boot the normal V1 runtime
+
+1. Confirm `main.py` is at the ESP root.
+2. Confirm the `/app` files are present with the exact names above.
+3. Reset the ESP or press **Ctrl-D** for a soft reboot.
+
+On a normal boot, root `main.py` starts the application by importing:
+
+```python
+from app.tasks import run
+run()
+```
+
+### Expected early behaviour
+
+With the relevant hardware connected, you should see the V1 runtime start without import errors and then observe the normal V1 behaviours such as:
+
+- heartbeat activity
+- NeoPixel eye startup / idle behaviour
+- button handling
+- PIR handling after its warm-up period
+- LDR response
+
+Do not move on to robot power integration if the firmware is failing with import errors.
+
+---
+
+## 6) Build Module Group A on USB bench power
+
+Once the firmware is installed, continue to:
+
+[Module Group A — ESP Core Stack](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+
+Module A is deliberately built and tested on USB first. Wire and test one section at a time.
+
+Do **not** solder, move wires, or change connections while the ESP is powered.
+
+---
+
+## 7) Optional self-test
+
+The normal V1 runtime does **not** import `selftest.py` or `pins.py` during boot.
+
+If you want to use the optional self-test, also copy:
+
+- [`selftest.py`](../material/v1/firmware/selftest.py) → `/app/selftest.py`
+- [`pins.py`](../material/v1/firmware/pins.py) → `/app/pins.py`
+
+Then, from the MicroPython REPL, run:
 
 ```python
 import app.selftest as st
 st.run()
 ```
 
-### Interpreting results
-Each check prints either:
-- `[PASS] <description>`
-- `[FAIL] <description>`
-
-At the end:
-- **SELF-TEST RESULT: PASS** — all tested hardware is responding correctly
-- **SELF-TEST RESULT: FAIL** — one or more peripherals are missing or miswired
-
-If a test fails:
-- Recheck wiring against the Pin Truth Map
-- Correct the issue
-- Run the self-test again
-
-The self-test does not modify system state and is safe to run multiple times.
+Treat this as an additional diagnostic aid, not a replacement for the staged physical checks in Module A.
 
 ---
 
-## Next Step
+## 8) After Module A
 
-Once software setup is complete and the firmware is flashed successfully, continue to:
+When the ESP stack is working correctly on USB bench power, continue to:
 
-  [Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
-   Or [ESP Build Guide — Module Group A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md)
+[Module Group B — Power System](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md)
 
-Do not solder or change wiring while the system is powered.
-Disconnect battery / external power before making physical wiring changes.
+Build and validate the robot power system with the ESP disconnected before integrating the finished Module A stack.
 
-Do not skip ahead or mix stages out of order.
+The [Wiring Reference](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md) is the reference to use during final integration.
