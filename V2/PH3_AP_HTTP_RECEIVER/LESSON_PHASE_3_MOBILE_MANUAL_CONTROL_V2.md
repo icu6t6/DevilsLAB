@@ -2,11 +2,9 @@
 
 ## Lesson Position
 
-This lesson sits **after Phase 2** and before any autonomy or higher-level behaviour.
+Phase 3 moves the external control path from PC USB serial to ENZO's own Wi-Fi access point and HTTP server.
 
-It teaches how to add **mobile manual control** to ENZO **without breaking or replacing** existing functionality.
-
-Phase 3 is treated as a **tool**, not a takeover.
+It is still a **temporary bring-up runtime**. The permanent V1 runtime is integrated with mobile control in Phase 4.
 
 ---
 
@@ -14,192 +12,195 @@ Phase 3 is treated as a **tool**, not a takeover.
 
 By the end of this lesson:
 
-- ENZO can be driven from a phone using a browser
-- No USB cable is required
-- ENZO still stops immediately when control is released
-- Existing ENZO behaviour is not permanently altered
+- ENZO creates its own Wi-Fi access point
+- a phone can connect directly to ENZO
+- ENZO serves the control dashboard from the ESP
+- W / A / S / D / X commands arrive over HTTP
+- the ESP still enforces the motor deadman
+
+No internet connection is required.
 
 ---
 
 ## Prerequisites
 
-Before starting this lesson, you must have:
+You must have:
 
-- Completed **Phase 2 – Manual Locomotion**
-- Proven that ENZO responds correctly to:
-  - `W` = forward
-  - `S` = reverse
-  - `A` = left
-  - `D` = right
-  - `X` = stop
-- Observed that ENZO:
-  - Moves only while commands are actively received
-  - Stops when commands stop
+- completed V1
+- completed Phase 1 and proven the motor driver / I²C path
 
-If Phase 2 is not working, stop here.
+Phase 2 is **recommended for the learning path** because it demonstrates the same external-command idea over USB serial first, but Phase 3 does not require the Phase 2 PC controller in order to function.
+
+If your motor driver has not been proven in Phase 1, stop here and fix that first.
 
 ---
 
 ## Files Used in This Lesson
 
-This lesson uses **two files**.
+### Working ESP bring-up runtime
 
-### ESP-Side (runs on ENZO)
+[`Phase-3_AP_HOST_main.py`](Phase-3_AP_HOST_main.py)
 
-**File:** `Phase-3_AP_HOST_main.py`
+This file:
 
-**Purpose:**
+- runs ENZO as Wi-Fi access point `ENZO_HOST`
+- hosts the working mobile control page
+- receives `/cmd?c=...` requests over HTTP
+- drives the motor controller using the proven V2 motor commands
+- repeats movement only while commands continue arriving
+- enforces a **250 ms deadman** on the ESP
 
-- Runs ENZO as a Wi-Fi Access Point
-- Hosts a simple web control page
-- Receives locomotion commands over HTTP
-- Injects commands into the existing locomotion control path
-- Enforces deadman safety
+For this lesson it is copied to the ESP root **as `/main.py`**.
 
-**How it is used:**
+### Optional UI proof artefact
 
-- Upload this file to ENZO **as `main.py`**
-- This temporarily replaces the normal runtime
-- This is intentional for bring-up
+[`PH3_UI_HTML_EXPORT/enzo.host.html`](PH3_UI_HTML_EXPORT/enzo.host.html)
 
----
+This standalone HTML file is a **dashboard/layout proof only**.
 
-### Phone-Side (control interface)
+It displays W / A / S / D / STOP controls and logs button presses locally in the browser, but the current file does **not** send commands to ENZO over HTTP. It is not an alternative control path.
 
-**File:** `enzo.host.html`
-
-**Purpose:**
-
-- Provides on-screen buttons for locomotion
-- Sends `W / A / S / D / X` commands to ENZO over HTTP
-
-**How it is used:**
-
-- If provided as `.html`, open it directly in a browser
-- If provided as `.py`, copy the contents and save as `enzo.host.html`
-- No build step is required
+The actual working dashboard is embedded inside `Phase-3_AP_HOST_main.py` and is served directly by ENZO.
 
 ---
 
-## Step 1 — Run the Phase 3 Host on ENZO
+## Step 1 — Install the temporary Phase 3 runtime
 
-1. Copy `Phase-3_AP_HOST_main.py` to ENZO
-2. Rename it to `main.py`
-3. Reboot ENZO
+1. Open [`Phase-3_AP_HOST_main.py`](Phase-3_AP_HOST_main.py) in Thonny.
+2. Save it to the ESP root as exactly:
 
-You should see output indicating:
+```text
+/main.py
+```
 
-- ENZO Wi-Fi Access Point is active
-- An IP address is shown (typically `192.168.4.1`)
+3. Reset ENZO.
+4. Watch the serial output.
 
----
+You should see ENZO report that its access point is up and show an IP address, normally:
 
-## Step 2 — Connect Your Phone to ENZO
+```text
+192.168.4.1
+```
 
-1. On your phone, open Wi-Fi settings
-2. Connect to ENZO’s Wi-Fi network
-3. Ignore any “no internet” warnings
-
-This is expected.
-
-ENZO **is** the network.
+The Phase 3 file temporarily replaces the normal V1 `main.py`. That is intentional for this bring-up stage.
 
 ---
 
-## Step 3 — Open the Control Page
+## Step 2 — Connect the phone to ENZO
 
-You may use either method below.
+On the phone:
 
-### Option A — Page Hosted by ENZO (recommended)
+1. Open Wi-Fi settings.
+2. Connect to:
 
-1. Open a browser on the phone
-2. Navigate to the IP address shown by ENZO
-3. The control page loads from ENZO
+```text
+ENZO_HOST
+```
+
+3. Use the password defined in the Phase 3 runtime:
+
+```text
+enzo1234
+```
+
+4. Ignore any **No internet** warning.
+
+ENZO is acting as the local network and web server. Internet access is not required.
 
 ---
 
-### Option B — Local HTML File (teaching path)
+## Step 3 — Open the working dashboard
 
-1. Open `enzo.host.html` on the phone
-2. Buttons send commands to ENZO over HTTP
+With the phone connected to `ENZO_HOST`, open a browser and go to:
 
-This option exists to demonstrate that:
+```text
+http://192.168.4.1
+```
 
-- The UI itself is not special
-- Only the transport matters
+If the ESP printed a different AP address, use the address it printed instead.
+
+The page you see is being served directly by ENZO from the HTML embedded in [`Phase-3_AP_HOST_main.py`](Phase-3_AP_HOST_main.py).
+
+There is no separate HTML file to install on the phone for the working control path.
 
 ---
 
 ## Step 4 — Drive ENZO
 
-1. Press and hold a movement button
-2. Observe ENZO move
-3. Release the button
-4. Observe ENZO stop immediately
+Keep ENZO lifted for the first test.
 
-Repeat for all directions.
+- hold **W** → forward
+- hold **S** → reverse
+- hold **A** → pivot left
+- hold **D** → pivot right
+- release a movement control → STOP
+- press **STOP** → STOP
 
-ENZO should stop if:
+The hosted dashboard resends an active movement command every **120 ms**.
 
-- You release the button
-- The page loses focus
-- The connection drops
+The ESP deadman is **250 ms**. If valid commands stop arriving, the ESP commands STOP even if the browser fails to send a final `X`.
 
----
-
-## What to Observe During This Lesson
-
-While driving ENZO, observe that:
-
-- The same commands from Phase 2 are being used
-- Only the **source** of commands has changed
-- Safety behaviour is unchanged
-- ENZO does not continue moving on its own
-
-If ENZO briefly moves and then stops, this is the deadman safety working.
+This is deliberate: motor safety remains on the receiver.
 
 ---
 
-## What This Lesson Teaches
+## Step 5 — Prove the deadman
 
-This lesson demonstrates that:
+With ENZO still lifted:
 
-- Manual control does not depend on USB
-- Safety does not depend on a PC
-- Transport can change without changing behaviour
-- Safety must live at the receiver
+1. Hold a movement control and confirm the expected movement.
+2. Release it and confirm immediate STOP.
+3. Start movement again, then deliberately break the control path — for example close/kill the page or disconnect the phone from ENZO Wi-Fi.
+4. Confirm the motors stop when command refresh disappears.
 
-ENZO has not become autonomous.
-
-Control has become **portable**.
+Do not continue if ENZO can continue driving after control is lost.
 
 ---
 
-## V2 Intent (Important)
+## What Phase 3 Teaches
 
-In V2, mobile control is treated as a **tool**, not a replacement.
+Compare the control paths:
 
-The intended behaviour is:
+```text
+Phase 2:
+PC keyboard → USB serial → ESP → motor driver
 
-- ENZO runs normally
-- Mobile control can be enabled at any time
-- Control can be released without rebooting
-- ENZO continues operating as before
+Phase 3:
+Phone browser → HTTP over ENZO Wi-Fi → ESP → motor driver
+```
 
-This lesson proves that capability.
+The transport changed. The principle did not:
+
+- external input requests movement
+- the ESP decides what motor command is applied
+- the ESP enforces STOP when commands disappear
+
+Phase 4 keeps that model but integrates it into the permanent V1 behaviour loop instead of replacing `main.py` with a drive-only bring-up runtime.
+
+---
+
+## Leaving Phase 3
+
+The Phase 3 `main.py` is temporary.
+
+Resetting ENZO while it is still installed simply runs Phase 3 again.
+
+Before returning to normal V1 operation, restore the permanent V1 root runtime from:
+
+[`../V1END_V2_START_BASELINE_CODE/main.py`](../V1END_V2_START_BASELINE_CODE/main.py)
+
+Phase 4 also starts from that permanent V1 runtime model and integrates mobile control through application modules instead of replacing `main.py`.
 
 ---
 
 ## Lesson Complete When
 
-This lesson is complete when:
+- [ ] ENZO creates `ENZO_HOST`
+- [ ] Phone connects directly to ENZO
+- [ ] `http://192.168.4.1` loads the hosted dashboard
+- [ ] W / A / S / D work as expected
+- [ ] releasing control stops movement
+- [ ] command loss triggers the ESP deadman STOP
+- [ ] you understand that the standalone HTML export is a UI proof, not the working transport
 
-- ENZO can be driven from a phone
-- USB is not required
-- ENZO stops when input stops
-- Behaviour matches Phase 2
-- Existing ENZO functionality is unaffected
-
----
-
-End of Lesson — Phase 3
+When these are true, Phase 3 is complete.
