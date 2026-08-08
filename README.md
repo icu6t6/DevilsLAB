@@ -95,8 +95,6 @@ Used to:
 
 V1 Advanced is **not required** for V1.
 
-👉 https://devilslab.gumroad.com/l/qposal
-
 ### V2
 Locomotion and external control layer.
 
@@ -181,10 +179,6 @@ That is the point of the baseline.
 If you want the main baseline:
 
 👉 [Start Here](docs/README_START_HERE_T1_ENZO_v1-2.md)
-
-If you want the optional diagnostics/validation layer after V1:
-
-👉 https://devilslab.gumroad.com/l/qposal
 
 If you want smaller public learning circuits first:
 
