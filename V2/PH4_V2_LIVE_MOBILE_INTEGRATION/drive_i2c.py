@@ -47,7 +47,7 @@ def _send(cmd, motor, speed=0):
     try:
         _i2c.writeto(ADDR, bytes([cmd, motor, speed]))
     except Exception:
-        # Fail-safe is enforced by deadman tick; ignore transient I2C errors.
+        # A later deadman window will retry STOP if comms remain silent.
         pass
 
 
@@ -122,8 +122,7 @@ def tick():
 
     now = time.ticks_ms()
     if time.ticks_diff(now, _last_rx_ms) > FAILSAFE_MS:
-        # Only spam STOP once per timeout window
-        if _last_cmd != "X":
-            stop_all()
-            _last_cmd = "X"
+        # Retry STOP once per deadman window for as long as commands stay silent.
+        stop_all()
+        _last_cmd = "X"
         _last_rx_ms = now
