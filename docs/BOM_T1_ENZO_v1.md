@@ -158,7 +158,9 @@ Where exact model numbers were not written explicitly, they are noted and can be
 
 ## Next Step
 
-Once you have gathered the required parts, continue to the [Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md).
+Once you have gathered the required parts, continue to [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md), then follow the staged public V1 path through Module A, Module B and final wiring integration.
+
+The [Full Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md) remains available as an overall reference.
 
 Gather first. Build second. Do not skip ahead.
 
