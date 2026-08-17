@@ -188,11 +188,14 @@ def init():
     if _ready:
         return True
 
-    # Ensure motor service is ready
+    # Fail closed: never bring up remote control unless both motors accepted
+    # an initial STOP through the I2C driver.
     try:
         drive.init()
     except Exception as e:
+        _ready = False
         print("[PH4] drive.init fail:", e)
+        raise
 
     _ap = network.WLAN(network.AP_IF)
     _ap.active(True)
@@ -255,15 +258,26 @@ def tick():
 
         if path == "/cmd":
             c = _get_qs_value(qs, "c")
+            normalized = (c or "").upper()
+
+            if normalized not in ("W", "A", "S", "D", "X", " "):
+                _http_reply(
+                    conn,
+                    status="400 Bad Request",
+                    content_type="text/plain",
+                    body="BAD c=%s" % (c,),
+                )
+                return
+
             ok = drive.set_cmd(c)
             if ok:
                 _http_reply(conn, content_type="text/plain", body="OK c=%s" % (c,))
             else:
                 _http_reply(
                     conn,
-                    status="400 Bad Request",
+                    status="503 Service Unavailable",
                     content_type="text/plain",
-                    body="BAD c=%s" % (c,),
+                    body="MOTOR FAULT c=%s err=%s" % (c, drive.last_error()),
                 )
             return
 
