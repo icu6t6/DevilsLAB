@@ -65,6 +65,42 @@ def test_adc(cfg):
         return _print(False, f"{cfg['desc']} ({e})")
 
 
+# ============================
+# OPTIONAL SENSOR: DHT22
+# Informational / add-only
+# ============================
+
+def test_dht22():
+    """
+    Optional DHT22 self-test.
+    Reports the real reading when available.
+    Missing/unreadable DHT22 does NOT fail the overall V1 self-test.
+    """
+    try:
+        import dht
+    except Exception as e:
+        print("[INFO] DHT22 self-test skipped (dht module unavailable):", e)
+        return None
+
+    if not hasattr(pins, "DHT22"):
+        print("[INFO] DHT22 not defined in app.pins")
+        return None
+
+    cfg = pins.DHT22
+
+    try:
+        sensor = dht.DHT22(Pin(cfg["pin"], Pin.IN))
+        time.sleep_ms(200)
+        sensor.measure()
+        t = sensor.temperature()
+        h = sensor.humidity()
+        print(f"[PASS] DHT22: {t:.1f}C  {h:.1f}%")
+        return True
+    except Exception as e:
+        print("[INFO] DHT22 present but not readable:", repr(e))
+        return None
+
+
 def run():
     print("\n=== ENZO v1 SELF-TEST ===")
     results = []
@@ -79,6 +115,9 @@ def run():
     results.append(test_pir(pins.PIR))
     results.append(test_adc(pins.LDR))
 
+    # Optional / informational only: never contributes to PASS / FAIL.
+    test_dht22()
+
     passed = all(results)
 
     print("------------------------")
@@ -88,49 +127,3 @@ def run():
         print("SELF-TEST RESULT: FAIL ❌")
 
     return passed
-
-# ============================
-# OPTIONAL SENSOR: DHT22
-# Non-blocking, add-only
-# ============================
-
-def test_dht22():
-    """
-    Optional DHT22 self-test.
-    Does NOT fail overall self-test if missing or errored.
-    """
-    try:
-        import dht
-        from machine import Pin
-        import pins
-        import time
-    except Exception as e:
-        print("[INFO] DHT22 self-test skipped (imports unavailable):", e)
-        return
-
-    if not hasattr(pins, "DHT22"):
-        print("[INFO] DHT22 not defined in pins.py")
-        return
-
-    cfg = pins.DHT22
-
-    try:
-        sensor = dht.DHT22(Pin(cfg["pin"], Pin.IN))
-        time.sleep_ms(200)
-
-        sensor.measure()
-        t = sensor.temperature()
-        h = sensor.humidity()
-
-        print(f"[PASS] DHT22: {t:.1f}C  {h:.1f}%")
-
-    except Exception as e:
-        print("[INFO] DHT22 present but not readable:", repr(e))
-
-
-# ---- register with existing self-test runner ----
-try:
-    SELF_TESTS.append(test_dht22)
-except Exception:
-    pass
-
