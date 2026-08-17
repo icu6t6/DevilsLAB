@@ -8,7 +8,7 @@ SOURCE FILES IN THIS PH4 FOLDER
 
 - drive_i2c.py
   https://github.com/icu6t6/DevilsLAB/blob/main/V2/PH4_V2_LIVE_MOBILE_INTEGRATION/drive_i2c.py
-  Motor authority + 250 ms deadman safety.
+  Motor authority + 250 ms deadman + confirmed fail-closed STOP handling.
 
 - control_ap_http.py
   https://github.com/icu6t6/DevilsLAB/blob/main/V2/PH4_V2_LIVE_MOBILE_INTEGRATION/control_ap_http.py
@@ -61,6 +61,8 @@ The PH4 tasks.py then:
 - starts ENZO_HOST and the HTTP server
 - calls the HTTP and deadman tick functions inside the existing V1 loop
 
+Before remote control is brought up, drive_i2c.py requires both motor channels to accept an initial STOP. If that cannot be confirmed, PH4 initialisation fails closed instead of presenting remote control as ready.
+
 You should see output including:
 
 [PH4] Integrated mobile control READY
@@ -91,6 +93,10 @@ The browser refreshes an active movement command every 120 ms.
 
 The ESP motor service uses a 250 ms deadman. If valid commands disappear, drive_i2c.py commands STOP.
 
+Motor writes are checked rather than silently assumed. If only part of a movement command is accepted, ENZO immediately attempts STOP. An unconfirmed STOP remains pending and is retried every 50 ms, and further movement is refused until STOP has been confirmed.
+
+If the HTTP adapter receives a valid command that the motor service cannot safely apply, it reports a motor fault instead of replying as though movement succeeded.
+
 Motor authority therefore remains on the ESP rather than in the browser.
 
 PH4 FIRST TEST
@@ -108,9 +114,11 @@ Confirm:
 - release stops movement
 - losing the control connection triggers STOP
 
+Where practical, also verify that a motor/I2C fault does not permit further movement to be accepted until STOP has been confirmed.
+
 PH4 IS COMPLETE WHEN
 
-Mobile control works while the existing V1 behaviour loop continues to operate.
+Mobile control works while the existing V1 behaviour loop continues to operate and the motor service remains fail-closed on command/STOP write failure.
 
 At that point the integrated PH4 runtime is the V2 end state.
 
