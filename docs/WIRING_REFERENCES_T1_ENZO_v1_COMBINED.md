@@ -12,15 +12,22 @@ It is intended to give a clear V1 view of:
 ---
 
 ## Combined V1 Wiring / Architecture View
-This combined diagram reflects the **free V1 build**.
+This diagram is based on the physical ENZO wiring and includes some later/as-built hardware detail around the core Free V1 architecture.
 
-It includes:
-- power path / architecture
-- source rail / distribution view
-- ESP32-S3 peripheral wiring
+For the **required Free V1 build**, follow the BOM and staged Module A / Module B instructions. The 4-way fuse block visible in the diagram is a later/as-built distribution feature and is **not required hardware for Free V1**.
+
+The required Free V1 power architecture remains:
+
+```text
+Battery → Fuse → Main Schottky → Source/Input Rail → Buck → Latching Switch → 5V Rail
+```
+
+plus the two ESP/5V Schottky isolation channels documented in the dedicated Schottky reference.
+
+The diagram also shows the V1 peripheral connections for:
 - MODE button
 - Wi-Fi button
-- RGB
+- RGB / NeoPixel eyes
 - LDR
 - PIR
 
@@ -33,12 +40,8 @@ This answers:
 ---
 
 ## Usage Rule
-This image is intended to function as a single combined V1 reference.
+Use the **BOM + Module A + Module B** as the authority for what a Free V1 builder must install.
 
-It should be read as:
-- **power architecture**
-- **peripheral wiring**
+Use this image as a combined physical reference. Any extra distribution hardware visible in the image that is not listed in the Free V1 BOM or staged modules should be treated as historical/as-built detail, not a mandatory Free V1 component.
 
-in one diagram.
-
-It is a V1 baseline reference and is not intended to document V1 Advanced or V2-only additions.
+It is a V1 reference and is not intended to make later/as-built extras into V1 Free requirements.
