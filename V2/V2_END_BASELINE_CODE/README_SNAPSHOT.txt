@@ -5,8 +5,8 @@ This folder represents the completed V2 state produced from the V1 end baseline 
 Runtime placement on the ESP:
 - main.py -> /main.py
 - application modules in this folder -> /app/
-- actuators/__init__.py -> /app/actuators/__init__.py
+- actuators/__init__.py -> /actuators/__init__.py
 
-pins.py and selftest.py are retained from the V1 baseline as optional diagnostic/reference files. They are not imported by the normal V2 runtime and are not required for normal boot.
+pins.py and selftest.py are retained from the V1 baseline as optional diagnostic/reference files. They are not imported by the normal V2 runtime and are not required for normal boot. They are not required to reach the PH4 operational state, and their presence in this complete snapshot does not mean PH4 adds them.
 
 The empty actuators package is intentionally retained from the V1 baseline structure.
