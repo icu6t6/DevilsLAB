@@ -124,11 +124,7 @@ The working dashboard is embedded inside that ESP file and served by ENZO at its
 http://192.168.4.1
 ```
 
-The separate file below is retained only as an optional UI/layout proof:
-
-[Standalone Phase 3 HTML UI proof](PH3_AP_HTTP_RECEIVER/PH3_UI_HTML_EXPORT/enzo.host.html)
-
-That standalone HTML file does **not** currently send HTTP commands to ENZO and is not the working control path.
+There is no separate dashboard file to install for the working Phase 3 control path.
 
 ---
 
