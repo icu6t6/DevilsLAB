@@ -46,6 +46,16 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Source:** Amazon
 - **Qty:** 1
 
+### Schottky Diodes
+- **Item:** Schottky power diodes suitable for the V1 current path
+- **Qty:** 3
+- **Purpose:**
+  - 1× main-path reverse-protection diode after the fuse and before the source/input rail
+  - 1× ESP/USB → 5V rail isolation channel
+  - 1× 5V rail → ESP isolation channel
+- **Orientation:** follow the dedicated V1 Schottky wiring reference exactly
+- **Notes:** These three diodes are part of the verified V1 power architecture and must not be omitted from a faithful ENZO V1 build
+
 ### Buck Converter
 - **Item:** DC-DC Buck Converter (input/source-rail → 5V)
 - **Notes:** Powers the 5V logic rail
@@ -113,8 +123,8 @@ Where exact model numbers were not written explicitly, they are noted and can be
 - **Qty:** 2
 
 ### Buttons
-- **Button 1:** GPIO4
-- **Button 2:** GPIO5
+- **Mode / Eyes button:** GPIO4
+- **Wi-Fi button:** GPIO5
 - **Notes:** Momentary push buttons
 - **Source:** Amazon
 - **Qty:** 2
@@ -124,9 +134,8 @@ Where exact model numbers were not written explicitly, they are noted and can be
 ## Mechanical / Structure
 
 ### Chassis
-- **Item:** DFR “radiator-style” chassis
-- **Notes:** Custom or repurposed metal chassis
-- **Source:** Existing or custom
+- **Item:** Black Gladiator tracked robot chassis
+- **Source:** Pi Hut
 - **Qty:** 1
 
 ### Battery Tray
@@ -137,11 +146,13 @@ Where exact model numbers were not written explicitly, they are noted and can be
 
 ## Notes & Assumptions
 
+- Canonical battery-positive path is **Battery → Fuse → Main Schottky → Source/Input Rail**
 - All grounds ultimately tie back to the **Ground Rail**
 - ESP32 ground is connected to ground rail via a single heavy reference wire
 - Sensors may ground locally at ESP, but share common ground via rail
 - All power wiring is done **with battery disconnected**
 - Parts listed can be substituted with equivalents if specs are matched
+- For diode orientation and USB/battery isolation, use [V1 schottky OR-ing method.txt](V1%20schottky%20OR-ing%20method.txt)
 
 ---
 
