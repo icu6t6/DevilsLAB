@@ -187,6 +187,10 @@ If both tracks move together in the expected direction and then stop, locomotion
 
 If the tracks move together but in the opposite vehicle direction, the I²C path and motor channels are still functioning; establish the correct CW/CCW mapping for that physical orientation before continuing.
 
+### How to run the proof script
+
+Open `V2_PROOF_OF_LIFE.py` in Thonny with the ESP connected and run it directly as a temporary/manual proof. It does **not** replace the permanent root `/main.py`, does **not** become part of the permanent runtime, and normal V1 remains the baseline after the test.
+
 ---
 
 ## Proof-of-Life Script
