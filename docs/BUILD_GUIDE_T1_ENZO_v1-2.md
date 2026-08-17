@@ -27,26 +27,27 @@ Disconnect battery / external power before making physical wiring changes.
 - ESP32‑S3 development board (core controller)
 - PIR motion sensor (5V)
 - LDR + resistor (3.3V divider)
-- RGB LED module or individual LEDs
+- 8-pixel WS2812 / NeoPixel eyes module
 - Heartbeat LED (single)
 - Wi‑Fi status LED (single)
 - Push buttons:
-  - Mode button
-  - Power / function buttons
+  - Mode / eyes button (GPIO4)
+  - Wi‑Fi button (GPIO5)
 
 ### Power
 - 2-cell LiPo 7.4V battery
 - Deans connector male with 2 inch wire
 - double-connecting block
 - inline fuse holder + fuse
+- **3× Schottky diodes** for the verified V1 protection/isolation arrangement
 - UBEC / buck converter (input/source rail → 5V, 3A minimum recommended)
-- input rail
+- input/source rail
 - latching switch with LED
 - 5V distribution rail
 - ground bus bar
 
 ### Chassis & Mechanical
-- Gladiator tracked robot chassis
+- **Black Gladiator tracked robot chassis (Pi Hut)**
 - DC motors (12V, ~300 RPM)
 - M3 risers (20–30mm)
 - M3 bolts, nuts, nylocs
@@ -66,7 +67,7 @@ Disconnect battery / external power before making physical wiring changes.
 ## 2. Mechanical Assembly
 
 ### Step 1: Chassis
-- Assemble tracks and motors
+- Assemble the black Gladiator tracked chassis and motors
 - Ensure smooth movement
 - Do **NOT** wire motors yet
 
@@ -83,22 +84,36 @@ Nothing should touch the chassis metal directly.
 
 ## 3. Power System (CRITICAL)
 
-### Power Flow
-```
+### Canonical V1 Power Flow
+```text
 2S 7.4V LiPo (Battery)
  ↓
-Double-connecting block
+Double-connecting block / input connection
  ↓
-Fuse (5A)
+Fuse (~5A)
  ↓
-source / input bus bar
- ├
- └── UBEC (source rail → 5V)
-        ↓
-      5V Rail
-        ↓
-      ESP32 + Sensors
+Main Schottky diode
+ ↓
+Source / input bus bar
+ ↓
+UBEC / buck converter
+ ↓
+Latching switch
+ ↓
+5V Rail
 ```
+
+Main-path Schottky orientation:
+- **band faces the source/input rail / downstream side**
+
+V1 also uses two additional Schottky isolation channels around the ESP 5V connection:
+
+```text
+USB / ESP 5V pin → Schottky → 5V Rail
+5V Rail → Schottky → ESP 5V pin
+```
+
+Use the dedicated [V1 Schottky OR-ing reference](V1%20schottky%20OR-ing%20method.txt) for exact diode direction. The V1 arrangement uses **three Schottky diodes total**.
 
 ### Grounding Rule
 - ONE heavy ground from ESP → ground rail
@@ -111,13 +126,14 @@ source / input bus bar
 ## 4. Wiring – ESP32 Core
 
 ### Power
-- 5V → ESP 5V pin
+- 5V rail / USB isolation is connected to the ESP through the documented two-Schottky V1 arrangement
 - GND → ESP GND pin (single heavy wire to rail)
 
 ### Sensors
 - PIR → GPIO14 (5V + GND)
 - LDR → GPIO7 (3.3V divider)
-- Buttons → GPIO4 / GPIO5
+- Mode / eyes button → GPIO4
+- Wi‑Fi button → GPIO5
 - Heartbeat LED → GPIO2
 - Wi‑Fi LED → GPIO12 (active HIGH)
 - RGB / Eyes → GPIO16
@@ -135,13 +151,15 @@ source / input bus bar
    - Angry
    - Happy
 4. Test PIR motion reaction
-5. Test Wi‑Fi LED toggle
+5. Test Wi‑Fi button / LED behaviour
 
 ---
 
 ## 6. Final Checks
 - No loose wires
 - Fuse installed
+- Main Schottky installed with correct polarity
+- ESP/5V isolation Schottkys installed with correct polarity
 - Tracks free-moving
 - ESP secure
 
