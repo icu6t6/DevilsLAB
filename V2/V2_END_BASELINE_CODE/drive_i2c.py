@@ -85,9 +85,13 @@ def _motion_pair(left_cmd, right_cmd):
         _stop_pending = False
         return True
 
+    # A partial command is unsafe. Attempt STOP immediately; tick() keeps
+    # retrying if either STOP write also fails.
     motion_error = _last_error or "motor movement write was not accepted"
     _stop_pending = True
     if stop_all():
+        # Keep the movement failure available to the HTTP error response even
+        # though the immediate recovery STOP succeeded.
         _last_error = motion_error
     return False
 
@@ -101,10 +105,12 @@ def reverse():
 
 
 def pivot_left():
+    # Left backwards, right forwards
     return _motion_pair(REV_CMD, FWD_CMD)
 
 
 def pivot_right():
+    # Right backwards, left forwards
     return _motion_pair(FWD_CMD, REV_CMD)
 
 
@@ -124,6 +130,10 @@ def _apply_cmd_now(c: str) -> bool:
 
 
 def set_cmd(c: str) -> bool:
+    """
+    Called by input adapters (HTTP, USB, etc.)
+    Updates last_rx timestamp and applies the command immediately.
+    """
     global _last_rx_ms, _last_cmd, _last_error
     normalized = (c or "").upper()
 
@@ -131,6 +141,8 @@ def set_cmd(c: str) -> bool:
         _last_error = "invalid command"
         return False
 
+    # Do not accept more movement while a previous STOP is unconfirmed.
+    # A repeated dashboard request can move again after tick() confirms STOP.
     if _stop_pending and normalized not in ("X", " "):
         if stop_all():
             _last_error = "previous STOP was pending; retry movement command"
@@ -144,12 +156,17 @@ def set_cmd(c: str) -> bool:
 
 
 def tick():
+    """
+    Called frequently by tasks loop.
+    Enforces deadman STOP when input goes quiet.
+    """
     global _last_rx_ms, _last_cmd
     if _i2c is None:
         return
 
     now = time.ticks_ms()
 
+    # A failed STOP remains pending until both motors acknowledge STOP.
     if _stop_pending:
         if time.ticks_diff(now, _last_stop_attempt_ms) >= STOP_RETRY_MS:
             stop_all()
