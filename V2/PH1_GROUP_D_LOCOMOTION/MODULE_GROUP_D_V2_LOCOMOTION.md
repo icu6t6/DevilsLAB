@@ -58,13 +58,23 @@ Specifically:
 
 ## Hardware Overview
 
-Locomotion is provided by a dual H-bridge motor driver with an onboard I²C controller.
+The ENZO V2 locomotion build uses the **Seeed Studio Grove - I2C Motor Driver (TB6612FNG)**.
 
-Key characteristics:
+It is a dual-channel motor driver with an onboard MCU and Grove I²C interface. The factory/default I²C address used by ENZO is:
 
-- Two independent motor channels
+```text
+0x14
+```
+
+Key characteristics relevant to ENZO:
+
+- TB6612FNG dual motor driver
+- onboard MCU
+- two independent DC motor channels
 - I²C control interface
-- Separate logic and motor power domains
+- separate logic and motor power domains
+- motor supply input labelled **VM**
+- channel outputs **A1/A2** and **B1/B2**
 
 Motor driver behaviour is **command-driven**, not GPIO-driven.
 
@@ -75,11 +85,11 @@ Motor driver behaviour is **command-driven**, not GPIO-driven.
 Motor driver power is connected as follows:
 
 ### Motor Power
-- **UM** → 2S rail (≈7.4–7.8 V)
+- **VM** → 2S rail (≈7.4–7.8 V)
 - **GND** → ground rail
 
 ### Logic Power
-- **VCC** → 3.3v ESP
+- **VCC** → 3.3V ESP
 - **GND** → ground rail
 
 All grounds reference the same physical ground rail.
@@ -101,7 +111,7 @@ These pins are shared with the OLED in other configurations; for this module, th
 
 The motor driver responds at I²C address:
 
-```
+```text
 0x14  (decimal 20)
 ```
 
@@ -112,7 +122,7 @@ The motor driver responds at I²C address:
 Two motors are connected directly to the driver outputs:
 
 - **Motor A** → A1 / A2 terminals  
-- **Motor B** → B1 / B2 terminals  
+- **Motor B** → B1 / B2 terminals
 
 Motor polarity determines direction and can be corrected later by swapping A1/A2 or B1/B2 if required.
 
@@ -123,7 +133,7 @@ Motor polarity determines direction and can be corrected later by swapping A1/A2
 The motor driver uses indexed channels:
 
 - **Motor ID 0** → Channel A  
-- **Motor ID 1** → Channel B  
+- **Motor ID 1** → Channel B
 
 All commands reference motors by these IDs.
 
