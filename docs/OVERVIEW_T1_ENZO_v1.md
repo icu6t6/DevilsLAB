@@ -107,5 +107,10 @@ T-1 ENZO is built around understanding, not shortcuts.
 
 ## Next Step
 
-- Building hardware from scratch → go to [BOM](BOM_T1_ENZO_v1.md), then [Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md)
-- Already have compatible hardware → go to [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
+If you are following the public V1 build path:
+
+1. Confirm the required parts in the [BOM](BOM_T1_ENZO_v1.md).
+2. Continue to [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md).
+3. Follow Module A, Module B and final wiring integration in the staged order from the [Start Here](README_START_HERE_T1_ENZO_v1-2.md) page.
+
+The [Full Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md) remains available as an overall reference, but it does not replace the staged public build order.
