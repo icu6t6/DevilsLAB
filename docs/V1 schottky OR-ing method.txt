@@ -37,14 +37,20 @@ USB → ESP32-S3 5V Pin → Schottky Channel A → 5V Rail (A)
 
 ---
 
-## 3. Loads on the 5V Rail
-- Voltmeter
+## 3. 5V Rail Loads
+
+### Required / normal Free V1 loads
 - Latching switch LED
-- OLED
-- RGB
+- RGB / NeoPixel eyes
 - PIR
-- DHT22
 - ESP32-S3 (via Channel B)
+
+### Historical / optional / later loads seen on the physical ENZO build
+- Voltmeter
+- OLED
+- DHT22
+
+The optional/historical items above are **not required Free V1 hardware**. Their presence in as-built references does not change the Free V1 BOM or staged build requirements.
 
 ---
 
