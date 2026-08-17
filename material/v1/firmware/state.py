@@ -31,4 +31,4 @@ DEFAULT_STATE = {
 state = DEFAULT_STATE.copy()
 
 def set_error(msg):
-    start["status"]["last_error"] = msg
+    state["status"]["last_error"] = msg
