@@ -126,6 +126,22 @@ Two motors are connected directly to the driver outputs:
 
 Motor polarity determines direction and can be corrected later by swapping A1/A2 or B1/B2 if required.
 
+### CW / CCW direction note
+
+`CW` and `CCW` describe the rotation command sent to the motor driver. They do **not** define a universal vehicle-forward direction.
+
+Whether a given command makes ENZO move forward or reverse depends on the physical build, including:
+
+- motor / gearbox mounting orientation
+- motor polarity
+- A1/A2 and B1/B2 wiring orientation
+- left/right installation in the chassis
+- track orientation
+
+The Phase 1 proof script reflects the tested orientation used during that bring-up. On another otherwise-correct build, the opposite rotation command may be the one that produces vehicle-forward motion.
+
+Establish the correct forward/reverse mapping with the tracks lifted, then keep that mapping consistent through the later V2 control phases.
+
 ---
 
 ## Motor Addressing Model
@@ -163,11 +179,13 @@ Validation consists of a single, deterministic script.
 
 The script:
 
-1. Commands both motors to run forward
+1. Commands both motors to run in the tested forward direction for this build
 2. Holds movement briefly
 3. Commands both motors to stop
 
-If this succeeds, locomotion is considered functional.
+If both tracks move together in the expected direction and then stop, locomotion is considered functional.
+
+If the tracks move together but in the opposite vehicle direction, the I²C path and motor channels are still functioning; establish the correct CW/CCW mapping for that physical orientation before continuing.
 
 ---
 
@@ -192,7 +210,7 @@ CMD_STOP   = 0x01
 def send(cmd, motor, speed=0):
     i2c.writeto(ADDR, bytes([cmd, motor, speed]))
 
-# Run both motors forward
+# Run both motors in the tested forward direction for this build
 send(CMD_RUN_CW, MOTOR_A, 200)
 send(CMD_RUN_CW, MOTOR_B, 200)
 
@@ -209,11 +227,12 @@ send(CMD_STOP, MOTOR_B)
 
 When the script is run:
 
-- Both tracks move forward together
+- Both tracks move together
+- Direction matches the mapping established for the physical build
 - Movement is smooth and controlled
 - Both tracks stop together after the delay
 
-Any deviation indicates a wiring or addressing issue that must be resolved before continuing.
+If only one side behaves differently, stop and verify that side's motor/channel wiring before continuing.
 
 ---
 
@@ -224,6 +243,7 @@ At this point:
 - Locomotion hardware is verified
 - Power integration is validated
 - Control path is proven
+- Forward/reverse mapping for the physical build is understood
 
 No further features are added in this module.
 
