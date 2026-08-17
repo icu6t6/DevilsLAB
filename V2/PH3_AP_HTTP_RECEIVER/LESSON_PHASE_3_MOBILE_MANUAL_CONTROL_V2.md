@@ -35,7 +35,7 @@ If your motor driver has not been proven in Phase 1, stop here and fix that firs
 
 ---
 
-## Files Used in This Lesson
+## File Used in This Lesson
 
 ### Working ESP bring-up runtime
 
@@ -52,15 +52,7 @@ This file:
 
 For this lesson it is copied to the ESP root **as `/main.py`**.
 
-### Optional UI proof artefact
-
-[`PH3_UI_HTML_EXPORT/enzo.host.html`](PH3_UI_HTML_EXPORT/enzo.host.html)
-
-This standalone HTML file is a **dashboard/layout proof only**.
-
-It displays W / A / S / D / STOP controls and logs button presses locally in the browser, but the current file does **not** send commands to ENZO over HTTP. It is not an alternative control path.
-
-The actual working dashboard is embedded inside `Phase-3_AP_HOST_main.py` and is served directly by ENZO.
+The working dashboard is embedded directly in this file and served by ENZO. There is no separate HTML file to install or choose between.
 
 ---
 
@@ -201,6 +193,5 @@ Phase 4 also starts from that permanent V1 runtime model and integrates mobile c
 - [ ] W / A / S / D work as expected
 - [ ] releasing control stops movement
 - [ ] command loss triggers the ESP deadman STOP
-- [ ] you understand that the standalone HTML export is a UI proof, not the working transport
 
 When these are true, Phase 3 is complete.
