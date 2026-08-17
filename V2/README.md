@@ -79,6 +79,8 @@ The one-shot proof script is included in the Phase 1 folder and is also shown di
 
 Phase 1 is a manual validation tool only. It does not replace the permanent V1 runtime.
 
+**Direction note:** `CW` / `CCW` are motor rotation commands, not universal vehicle-forward definitions. Actual forward/reverse depends on motor mounting, polarity, output wiring and track/chassis orientation. Establish the correct mapping on the physical build with the tracks lifted, then keep it consistent through the later phases.
+
 When the motor driver and both tracks behave correctly, continue to Phase 2.
 
 ---
@@ -140,7 +142,7 @@ Start here:
 
 Files added / replaced inside `/app`:
 
-- [drive_i2c.py](PH4_V2_LIVE_MOBILE_INTEGRATION/drive_i2c.py) — motor authority + deadman
+- [drive_i2c.py](PH4_V2_LIVE_MOBILE_INTEGRATION/drive_i2c.py) — motor authority + deadman + fail-closed STOP handling
 - [control_ap_http.py](PH4_V2_LIVE_MOBILE_INTEGRATION/control_ap_http.py) — non-blocking AP / HTTP adapter + hosted dashboard
 - [tasks.py](PH4_V2_LIVE_MOBILE_INTEGRATION/tasks.py) — V1 tasks loop with PH4 services integrated
 
@@ -151,6 +153,8 @@ Phase 4 uses the permanent V1 root runtime again:
 [V1 permanent `main.py`](V1END_V2_START_BASELINE_CODE/main.py)
 
 That permanent `main.py` still starts `app.tasks.run()`. The V2 capability is integrated through the Phase 4 application modules.
+
+At the completed V2 stage, motor writes are checked rather than silently assumed: partial movement failure triggers STOP, an unconfirmed STOP is retried, and further movement is refused until STOP has been confirmed.
 
 ---
 
@@ -178,6 +182,7 @@ V2 is complete when:
 - W / A / S / D movement works
 - release / STOP works
 - command loss triggers the ESP deadman STOP
+- failed/unconfirmed motor STOP prevents further movement until STOP is confirmed
 - V1 eyes / heartbeat / PIR / LDR / buttons continue to operate alongside mobile control
 
 The complete final reference is here:
