@@ -14,6 +14,7 @@ A self‑contained ESP assembly with:
 - **PIR sensor** input (motion)
 - **LDR** input (light level)
 - **Mode / Big button** input
+- **Wi‑Fi button** input
 
 All wires should exit the stack as a tidy bundle (a “tail”), ready to mount later.
 
@@ -62,7 +63,7 @@ These are the pins ENZO V1 code expects:
 | PIR input | **GPIO 14** |
 | Eyes (NeoPixel data) | **GPIO 16** |
 | Mode / Big button | **GPIO 4** |
-| (Optional) Aux button (reserved) | **GPIO 5** |
+| Wi‑Fi button | **GPIO 5** |
 
 > If your hardware uses different pins, **change the constants in `config.py` / `tasks.py`** to match (and document it for your build).
 
@@ -95,7 +96,7 @@ Disconnect USB / battery / external power before making physical wiring changes.
 Recommended approach:
 - mount the ESP onto a small **perfboard / protoboard**
 - use standoffs so the board is protected and doesn’t short on metal
-- label the board edge with the key GPIO numbers (2, 4, 7, 12, 14, 16)
+- label the board edge with the key GPIO numbers (2, 4, 5, 7, 12, 14, 16)
 
 This becomes the “core module” you later bolt onto ENZO’s deck.
 
@@ -211,9 +212,19 @@ Firmware uses an internal pull‑up (so the pin reads HIGH normally, LOW when pr
 
 ---
 
-## A8 — (Optional) Aux button (GPIO 5)
+## A8 — Wire the Wi‑Fi Button (GPIO 5)
 
-GPIO5 is reserved for expansion. If you wire a second button, document what you use it for (V2+).
+GPIO5 is the V1 Wi‑Fi toggle button. It is **not an unused / reserved auxiliary input** in the public V1 firmware.
+
+**Wiring**
+- One leg of the button → **GPIO5**
+- Other leg → **GND**
+
+The firmware uses an internal pull‑up, so the input is normally HIGH and goes LOW when pressed.
+
+**Test**
+- If you configured valid private Wi‑Fi credentials in `config.py`, pressing the button should request connection / disconnection and the Wi‑Fi status LED should follow the resulting state.
+- If the public placeholder credentials are still present, the connection attempt is expected to fail or time out; the important hardware check is that the button press is detected.
 
 ---
 
@@ -240,6 +251,7 @@ You’re done with Module Group A when:
 - [ ] PIR triggers reliably (GPIO14)
 - [ ] LDR readings change with light (GPIO7)
 - [ ] Mode button is detected (GPIO4)
+- [ ] Wi‑Fi button is detected (GPIO5)
 - [ ] Wiring is bundled and labelled (so later mounting is easy)
 
 ---
