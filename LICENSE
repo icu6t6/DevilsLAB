@@ -1,0 +1,105 @@
+ENZO V1 Free — Personal, Educational and Non-Commercial Licence v1.0
+
+Licensor: the ENZO project author, GitHub account icu6t6.
+
+1. Scope
+
+This licence grants only rights the Licensor is entitled to grant in the files
+listed at the end of this document (the Covered Material), as distributed with
+this licence. It is not a repository-wide licence. Linked files and directories
+do not become licensed merely because a covered document mentions them.
+
+2. Permission
+
+Subject to these terms, you may download, run, copy, study and modify the Covered
+Material for personal, non-commercial educational and experimental purposes.
+You may use it to build and operate your own non-commercial ENZO V1 device.
+You may share original or modified Covered Material without charging a fee,
+including through public non-commercial forks, classroom handouts and build logs.
+You may privately modify it without publishing your changes.
+
+Non-commercial classroom use by teachers and students is permitted, including
+ordinary teaching in an educational institution. Selling an ENZO-based course,
+kit or paid build service is not included in that permission.
+
+3. Attribution and sharing
+
+Keep this licence and existing copyright/attribution notices with shared copies.
+Credit the ENZO V1 project and link to https://github.com/icu6t6/DevilsLAB where
+practical. Identify material changes and do not present a modified build as the
+official, validated V1 baseline or imply endorsement by the author.
+
+Recipients receive the same permissions for the Licensor's material. Do not
+offer that material under terms that remove its non-commercial restriction.
+You retain any rights in your own original additions.
+
+4. Commercial permission is reserved
+
+This licence does not grant commercial use rights. Obtain the Licensor's prior
+written permission for commercial copying, distribution, modification or use
+of the Covered Material, including selling ENZO-based kits or assembled devices
+that use it, commercial derivatives, preloaded firmware products, paid build
+services, or deploying it as part of a paid engineering service.
+
+You may request permission through a repository issue without posting confidential
+business details. A request, silence or public availability is not permission.
+The Licensor may offer separate commercial terms for material they own.
+
+5. Rights not granted or restricted
+
+V2, CURRENT_ESP_FIRMWARE, T2, Lifetime, unrelated later-tier material, photographs
+not explicitly listed below, and third-party libraries/firmware are outside
+this licence. Any separate valid third-party terms continue to apply.
+
+No trademark endorsement or third-party patent rights are granted. This licence
+does not restrict rights or exceptions you already have under applicable law.
+It does not claim ownership of general electrical principles, facts, commodity
+hardware or independently created designs, and does not itself establish an
+exclusive right to manufacture every device with similar functionality.
+
+6. Warranty and responsibility
+
+The Covered Material is provided as-is, without a promise of fitness, accuracy,
+support or successful replication. You are responsible for checking component
+ratings, wiring and operating conditions. To the extent the law permits, the
+Licensor excludes warranties and liability arising from use of the material.
+Nothing excludes liability that cannot lawfully be excluded.
+
+7. Compliance
+
+Permissions under this licence depend on compliance with these terms. If you
+breach them, stop the activity outside the granted permissions and seek the
+Licensor's written agreement before resuming it. Separate written permissions
+remain governed by their own terms.
+
+Covered files (paths relative to the repository root; no wildcard expansion):
+
+- .github/ISSUE_TEMPLATE/build-report.yml
+- CONTRIBUTING.md
+- README.md
+- docs/BOM_T1_ENZO_v1.md
+- docs/BUILD_GUIDE_T1_ENZO_v1-2.md
+- docs/ESP_BUILD_GUIDE_MODULE_GROUP_A.md
+- docs/LICENCE_T1_ENZO_V1.md
+- docs/MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md
+- docs/OVERVIEW_T1_ENZO_v1.md
+- docs/README_START_HERE_T1_ENZO_v1-2.md
+- docs/SOFTWARE_SETUP_T1_ENZO_v1_USER.md
+- docs/V1 schottky OR-ing method.txt
+- docs/WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md
+- docs/WIRING_T1_ENZO_V1.svg
+- docs/updated_v1_wiring_diagram_ELF.png
+- material/v1/firmware/README.md
+- material/v1/firmware/__init__.py
+- material/v1/firmware/config.py
+- material/v1/firmware/eyes_8led.py
+- material/v1/firmware/leds.py
+- material/v1/firmware/main.py
+- material/v1/firmware/net.py
+- material/v1/firmware/pins.py
+- material/v1/firmware/selftest.py
+- material/v1/firmware/state.py
+- material/v1/firmware/status.py
+- material/v1/firmware/tasks.py
+- material/v1/hardware/wiring/README.md
+- material/v1/hardware/wiring/updated_v1_wiring_diagram.png

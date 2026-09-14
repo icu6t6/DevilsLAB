@@ -2,10 +2,11 @@
 
 **Status:** As-built / Canon reference
 
-This document describes the final, verified power architecture and the dual-Schottky 5V isolation scheme used in **ENZO V1**. It reflects the physical wiring that has been tested and confirmed working with:
-- Battery only
-- USB only
-- Seamless handover without back-feed
+This document records the three external **SR560** Schottky paths used in **ENZO V1** with the Waveshare ESP32-S3-DEV-KIT-N8R8. All three external diodes were the same part: SR560, rated 5A average forward current, 60V repetitive peak reverse voltage and 150A non-repetitive forward surge. The original builder reported working operation on battery only, USB only and with both connected; that historical result does not guarantee arbitrary substituted converters.
+
+The board schematic shows USB VBUS → onboard D1 (B5819WS) → VDDUSB, which is connected to the ESP board 5V header. D1’s cathode is on the board side. The two external ESP/rail diodes provide opposite-direction supply paths between the same two nodes; onboard D1 provides the USB-side reverse block.
+
+Manufacturer schematic: https://files.waveshare.com/wiki/ESP32-S3-DEV-KIT-N8R8/ESP32-S3-DEV-KIT-N8R8-schematic.pdf
 
 ---
 
@@ -18,7 +19,7 @@ Battery → Fuse → Schottky (reverse protection) → Source Rail → Buck Conv
 
 ### USB Path
 ```
-USB → ESP32-S3 5V Pin → Schottky Channel A → 5V Rail (A)
+USB VBUS → onboard D1 → ESP32-S3 5V header → external Schottky Channel A → 5V Rail (A)
 ```
 
 ---
@@ -54,14 +55,20 @@ The optional/historical items above are **not required Free V1 hardware**. Their
 
 ---
 
-## 4. Verified Behaviour
+## 4. Original Builder-Reported Operation
 
 | Scenario | Result |
 |--------|--------|
 | Battery only | OK |
 | USB only | OK |
-| Battery + USB | OK (no backfeed) |
+| Battery + USB | Supported by the documented V1 OR-ing arrangement; historical V1 operated successfully in this state. For substitute UBECs, use the combined-source rule below |
 
 ---
 
-**ENZO V1 power architecture is LOCKED once referenced in baseline documentation.**
+## 5. Integrated USB State and Component Limits
+
+USB can feed the rail downstream of the latching switch, so button OFF does not guarantee a dead 5V rail after ESP integration. Historical V1’s fixed RC-style UBEC tolerated the documented combined-source state in use, but its exact brand/SKU and reverse-drive specification are unavailable; do not generalise that behaviour to a substitute converter.
+
+Combined battery + USB operation is only a supported V1 state after the three SR560 paths, common ground and latching-switch wiring are installed and both single-source checks pass. If a substitute UBEC does not explicitly permit its output to be externally driven, leave the latching switch OFF while USB is connected. Disconnect battery and USB before changing wiring.
+
+**The documented V1 topology is preserved. This clarification does not propose replacement circuitry.**

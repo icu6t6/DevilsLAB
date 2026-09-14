@@ -1,0 +1,77 @@
+name: Building ENZO / show your build
+description: Ask a parts question, share progress, or show a finished V1 build.
+title: "[Build] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Tell us where you have reached. A short update is enough; partial builds and questions are welcome.
+        Photos are optional. Keep passwords and personal details out of anything you upload.
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Where are you with ENZO?
+      options:
+        - Considering a build / parts question
+        - Ordering or collecting parts
+        - Building Module A on USB
+        - Module A working
+        - Building or testing Module B
+        - Integrating ESP and power
+        - Full V1 checks passed
+        - Paused / partial build
+    validations:
+      required: true
+  - type: textarea
+    id: update
+    attributes:
+      label: Your update or question
+      description: What have you tried, what works, and where would help be useful?
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: Source release or commit, if known
+  - type: textarea
+    id: hardware
+    attributes:
+      label: Hardware and substitutions
+      description: Tell us which ESP board and power parts you used, particularly any substitutions.
+  - type: checkboxes
+    id: completed
+    attributes:
+      label: Stages completed, if any
+      options:
+        - label: Module A checks passed
+        - label: Module B checks passed
+        - label: ESP and power integrated
+        - label: All documented V1 completion checks passed
+  - type: textarea
+    id: photos
+    attributes:
+      label: Photos or build-log link (optional)
+      description: You can drag photos here or paste a public link.
+  - type: textarea
+    id: gaps
+    attributes:
+      label: Problems or documentation gaps (optional)
+      description: A file name and build stage help us locate the problem.
+  - type: dropdown
+    id: first_esp32
+    attributes:
+      label: Is this your first ESP32 build? (optional)
+      options: ["Yes", "No", "Prefer not to say"]
+  - type: dropdown
+    id: outside_help
+    attributes:
+      label: Have you needed outside help? (optional)
+      options: ["Yes", "No", "Not yet sure"]
+  - type: input
+    id: discovery
+    attributes:
+      label: How did you find ENZO? (optional)
+  - type: input
+    id: country
+    attributes:
+      label: Country (optional)

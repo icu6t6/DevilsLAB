@@ -4,7 +4,13 @@
 
 ENZO is a structured embedded systems reference project built around a known-good ESP32 baseline.
 
-This repository is the **free V1 baseline**.
+This repository hosts the **free V1 baseline** alongside separately scoped later-tier material.
+
+You will build an ESP32-S3 sensor/UI assembly, a protected battery and 5V power system, and integrate the two. The tracked ENZO is the reference installation; chassis mounting is optional and locomotion starts in V2.
+
+**V1 firmware:** [material/v1/firmware](material/v1/firmware/). Use [Software Setup](docs/SOFTWARE_SETUP_T1_ENZO_v1_USER.md) for the ESP file layout. `CURRENT_ESP_FIRMWARE/` and `V2/` are later sources, not the Free V1 installation.
+
+**Licence:** [custom V1 non-commercial terms](LICENSE), with an explicit file scope. Personal and non-commercial educational building and modification are permitted; commercial use requires prior permission.
 
 It is designed to help builders move from:
 "copying small examples"
@@ -161,6 +167,12 @@ You do **not** need to be an expert.
 But this repository is meant to teach proper system thinking, not just quick copy-paste results.
 
 ---
+
+## Building ENZO?
+
+Parts questions, partial builds and finished builds are welcome. [Show your build or ask for build help](https://github.com/icu6t6/DevilsLAB/issues/new?template=build-report.yml). A short description of your stage is enough; photos are optional.
+
+For corrections, identify the document and build stage. See [Contributing](CONTRIBUTING.md).
 
 ## Main idea
 

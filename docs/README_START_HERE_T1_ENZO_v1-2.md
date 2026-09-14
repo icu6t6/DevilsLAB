@@ -6,6 +6,10 @@ The documentation includes one proven physical implementation (“ENZO”) used 
 Builders may replicate this implementation or substitute their own hardware, provided the electrical and pin-mapping rules are preserved.
 This project is **NOT a physical product or kit**.
 
+ENZO V1 Free is complete when the ESP32-S3 sensor/UI assembly works, Module A is complete, the protected battery and 5V power system has passed Module B, the ESP and power system are integrated, and the documented V1 completion checks pass. The photographed tracked chassis is a reference installation and optional mounting context. Locomotion begins in V2.
+
+Use the [canonical V1 firmware](../material/v1/firmware/) and the [Software Setup file layout](SOFTWARE_SETUP_T1_ENZO_v1_USER.md). Do not substitute `CURRENT_ESP_FIRMWARE/` or `V2/` files.
+
 ## Acknowledgement
 This project was designed and developed by the author, with support from an AI assistant used for analysis, discussion, and continuity during development.
 
@@ -28,7 +32,7 @@ The [Build Guide](BUILD_GUIDE_T1_ENZO_v1-2.md) remains useful as an overall proj
 
 ### Safety rule during assembly
 Do **not** solder, move wires, or change connections while the system is powered.
-Disconnect battery / external power before making physical wiring changes.
+Disconnect the battery, USB and any external power before making physical wiring changes. The latching button does not disconnect USB power.
 
 Do not skip steps or mix documents out of order.
 
@@ -75,15 +79,13 @@ USB power is acceptable for firmware flashing and early bench testing, but the a
 
 The documentation includes one proven physical implementation (“ENZO”) used to validate the firmware and architecture.
 
-Builders may replicate this implementation exactly. The power architecture may be reused as a platform, but the firmware and pin map are ESP32-S3 specific.
+Builders may reproduce the documented electrical baseline. The photographed chassis and layered mounting are reference examples; exact mechanical reproduction is not a V1 completion requirement. The firmware and pin map are ESP32-S3 specific.
 
 Controller support (V1): The ENZO v1 firmware and Pin Truth Map are authored for the Waveshare ESP32-S3 dev board N8R8 and the exact pinout documented in this repository.
 If you use any other controller (ESP32-WROOM, Pico, Arduino, etc.), the pin map and wiring instructions will not apply.
 Adapting ENZO to a different board is outside v1 scope (V2+ territory) and requires your own remapping and validation.
 
-What you may substitute: You may reuse the power architecture (2S → protected input rail → regulated 5V rail → ground rail) as a general-purpose test bench,
-and connect your own controller to the 5V/GND rails.
-In that case, ENZO’s firmware is not the product you’re using — you’re using ENZO’s electrical baseline.
+Substituted parts must preserve the documented electrical functions, pin rules and verified operating limits. A different controller or USB power circuit requires its own validation; the Waveshare board’s USB isolation cannot be assumed for another board.
 
 ---
 
@@ -108,13 +110,14 @@ You do **not** need to be an expert.
 ---
 
 ## Completion Criteria (v1)
-T1‑ENZO v1 is considered complete when:
-- Firmware boots successfully
-- LEDs respond as expected
-- Buttons register correctly
-- PIR input is stable
-- No pin conflicts exist
-- Files are named exactly as specified
+ENZO V1 Free is complete when the ESP32-S3 sensor/UI assembly works, Module A is complete, the protected battery and 5V power system has passed Module B, the ESP and power system are integrated, and the documented V1 completion checks pass. The photographed tracked chassis is a reference installation and optional mounting context. Locomotion begins in V2.
+
+- [ ] Pass the [Module A checks](ESP_BUILD_GUIDE_MODULE_GROUP_A.md#completion-criteria-module-group-a).
+- [ ] Pass [Module B](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md) with the ESP disconnected.
+- [ ] Complete the [integration and completion checks](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md#integration-and-v1-completion).
+- [ ] Record any substituted hardware and unresolved issue. An unresolved failed check means a partial build, not full completion.
+
+[Building ENZO / show your build](https://github.com/icu6t6/DevilsLAB/issues/new?template=build-report.yml) — a partial build or parts question is welcome.
 
 ---
 
@@ -141,10 +144,6 @@ V1 Advanced is an educational overlay and is not a dependency.
 ---
 
 ## Licensing
-This project is released under a **custom license**.
+The [root LICENSE](../LICENSE) contains the custom V1 non-commercial terms and exact file scope. It permits personal and non-commercial educational use, experimentation, modification and sharing with attribution. Commercial use requires prior permission.
 
-- Open for learning, modification, and experimentation
-- Commercial use is reserved by the author
-- Commercial licensing for V2+ is reserved by the author
-
-See: [LICENCE_T1_ENZO_V1.md](LICENCE_T1_ENZO_V1.md)
+The V1 licence does not grant rights to V2, current later-tier firmware, T2 or Lifetime. See the [licence guide](LICENCE_T1_ENZO_V1.md).

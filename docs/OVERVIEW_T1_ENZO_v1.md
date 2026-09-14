@@ -6,7 +6,7 @@ T-1 ENZO is an educational ESP32 firmware and reference build platform.
 
 It is designed to teach real-world electronics, power systems, wiring discipline, and firmware structure — not just “plug it in and it works”.
 
-You build a tracked robot from the ground up, wire it correctly, flash real firmware, and end up with a system you actually understand.
+You build and test an ESP32-S3 sensor/UI assembly, build its protected battery and 5V power system, and integrate them. The tracked ENZO shows one physical installation; a tracked chassis is optional for V1 Free.
 
 This is not a toy and not a finished consumer robot.
 It is a learning platform.
@@ -47,10 +47,11 @@ Motor control is introduced later in ENZO V2, after the V1 baseline is complete.
 
 At the end, you will have:
 
-- A tracked ESP32 robot that:
+- A working ESP32-S3 sensor/UI and power baseline that:
   - Boots with LED status states
-  - Reads sensors
-  - Is fully editable and expandable
+  - Reads the documented sensors and responds to buttons
+  - Passes Module A, Module B and final integration checks
+  - Can be mounted on a suitable insulated base or the reference chassis
 - A working understanding of how it actually works
 - A project you can modify instead of starting over
 
@@ -69,11 +70,12 @@ Those come later, if you choose.
 
 ## How long does it take?
 
-- Build time: ~1–3 evenings (depending on experience)
+- Original author estimate: ~1–3 evenings for the electrical build once parts are available; independent builder timing has not yet been established. Sourcing and custom chassis fabrication can add time.
 - Skill level: Beginner → Intermediate
 - Tools required:
   - Soldering iron
   - Screwdrivers
+  - Multimeter for power and divider checks
   - Computer (Windows/Linux/macOS)
   - Patience
 

@@ -35,6 +35,8 @@ The public V1 firmware source is here:
 
 [ENZO V1 firmware files](../material/v1/firmware/)
 
+Use one complete V1 source revision. The V1 entry point reports firmware version `0.1.0`; do not select `CURRENT_ESP_FIRMWARE/0.1.1-safety-rc1` merely because its folder name says current. That is later-tier firmware. `V2/` is also outside this installation.
+
 The repository stores the source files together for easy access. On the ESP, ENZO uses a root `main.py` plus an `/app` package.
 
 ### ESP file layout for the normal V1 runtime
@@ -122,7 +124,7 @@ With the relevant hardware connected, you should see the V1 runtime start withou
 - NeoPixel eye startup / idle behaviour
 - button handling
 - PIR handling after its warm-up period
-- LDR response
+- LDR sampling; verify the physical divider using Module A A6 rather than expecting a visible brightness change or a raw ADC printout
 
 Do not move on to robot power integration if the firmware is failing with import errors.
 
@@ -156,7 +158,7 @@ import app.selftest as st
 st.run()
 ```
 
-Treat this as an additional diagnostic aid, not a replacement for the staged physical checks in Module A.
+This is a legacy optional diagnostic aid. It is not part of the Free V1 completion requirement. The public self-test also attempts an informational DHT22 check; missing DHT hardware is not a Free V1 failure and is not a reason to buy or install a DHT22. Do not change the baseline to satisfy optional diagnostics.
 
 ---
 

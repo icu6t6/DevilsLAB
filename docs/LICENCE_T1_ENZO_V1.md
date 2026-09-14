@@ -1,86 +1,11 @@
-# T1-ENZO v1 — Educational ESP32 Firmware & Reference Project
+# ENZO V1 Free — Licence Guide
 
-## IMPORTANT — READ FIRST
-This project is **NOT a physical product or kit**.
+The [root LICENSE](../LICENSE) is the complete V1 licence text and exact list of covered files. It permits personal and non-commercial educational building, study, experimentation, private modification and non-commercial sharing with attribution.
 
-**T1-ENZO v1 provides:**
-- Firmware
-- Pin mappings
-- Reference wiring logic
-- Documentation
-- Educational structure
+Commercial use of the covered material requires the author’s prior written permission. That includes commercial kits, preloaded firmware products, assembled devices and derivatives using the covered material.
 
-**T1-ENZO v1 does NOT provide:**
-- A robot
-- A chassis
-- Motors
-- Batteries
-- Power electronics
-- Any assembled hardware
+The V1 licence does not automatically cover `V2/`, `CURRENT_ESP_FIRMWARE/`, T2, Lifetime, third-party dependencies or unlisted photographs. Later ENZO tiers may have separate terms.
 
-You are expected to source, fabricate, or design your own hardware.
+V1 Free is a source-available, non-commercial reference project. Its availability without charge does not mean it uses an unrestricted open-source licence. The licence cannot create rights over general electrical principles or independently created hardware that the author does not otherwise own.
 
----
-
-## What This Project Is
-T1‑ENZO v1 is an **educational embedded‑systems firmware baseline** designed to help learners move from
-“I can follow tutorials” to “I can design and reason about a complete system.”
-
-It focuses on:
-- Power architecture (12V → 5V → logic)
-- Grounding strategy
-- GPIO planning
-- Modular firmware structure
-- Safe expansion paths
-
-This is **not** a toy demo or copy‑paste project.
-
----
-
-## Who This Is For
-You should be comfortable with:
-- Arduino / ESP32 basics
-- Uploading firmware
-- Editing Python files
-- Basic electronics concepts
-
-You do **not** need to be an expert.
-
----
-
-## What You Will Learn
-- Why grounding matters
-- How to separate high‑current and logic domains
-- How to plan GPIO usage
-- How to structure firmware cleanly
-- How to expand without breaking a baseline
-
----
-
-## Completion Criteria (v1)
-T1‑ENZO v1 is considered complete when:
-- Firmware boots successfully
-- LEDs respond as expected
-- Buttons register correctly
-- PIR input is stable
-- No pin conflicts exist
-- Files are named exactly as specified
-
----
-
-## Baseline Rules
-- Do not rename files
-- Do not partially copy files
-- Replace entire files only
-- Maintain pin assignments
-
----
-
-## Licensing
-This project is released under a **custom license**.
-
-- Open for learning, modification, and experimentation
-- Commercial use is reserved by the author
-- Monetisation applies to V2+
-
-See: LICENSE_T1_ENZO_v1.md
+For the build definition and completion checks, use [Start Here](README_START_HERE_T1_ENZO_v1-2.md). Hardware is sourced separately; no assembled kit is supplied by this repository.

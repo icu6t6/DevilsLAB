@@ -47,7 +47,7 @@ If you use a different ESP32 (e.g. ESP32‑WROOM / “Vroom”), ENZO **may not 
 - some boards have different boot‑strap pins and LED wiring
 - the physical header layout differs
 
-**For V1, use the ESP32‑S3 baseline.** Support for other boards is a later (V2+) project.
+**For V1, use the Waveshare ESP32-S3-DEV-KIT-N8R8 baseline.** Support for other boards is a later project; their pinout and USB power circuitry require separate validation.
 
 ---
 
@@ -65,7 +65,7 @@ These are the pins ENZO V1 code expects:
 | Mode / Big button | **GPIO 4** |
 | Wi‑Fi button | **GPIO 5** |
 
-> If your hardware uses different pins, **change the constants in `config.py` / `tasks.py`** to match (and document it for your build).
+> Preserve this pin map for a faithful V1 build. A remapped experiment is a separate variant; do not modify canonical firmware to make an undocumented wiring change appear to pass.
 
 ---
 
@@ -136,7 +136,14 @@ This becomes the “core module” you later bolt onto ENZO’s deck.
 - **LED cathode (–) → GND**
 
 **Test**
-- On boot, the Wi‑Fi indicator should follow whatever the firmware uses for network state.
+- GPIO12 starts LOW, so the Wi-Fi LED is OFF at boot. Test its ON/OFF response with the Wi-Fi button in A8 using valid private credentials.
+- If you are not testing network association, verify the LED directly using the existing MicroPython REPL: press Ctrl-C to stop the runtime, run the following one line at a time, observe ON then OFF, then press Ctrl-D to restart normal V1. These commands do not edit firmware files.
+
+```python
+from machine import Pin
+Pin(12, Pin.OUT).value(1)
+Pin(12, Pin.OUT).value(0)
+```
 
 ---
 
@@ -170,11 +177,11 @@ This becomes the “core module” you later bolt onto ENZO’s deck.
 **Wiring**
 - **PIR VCC → 5V** *(most PIR modules expect 5V; many also work on 3.3V, but don’t assume)*
 - **PIR GND → GND**
-- **PIR OUT → GPIO14**
+- **PIR OUT → GPIO14**; the Freenove-supplied HC-SR501 used by V1 outputs a 3.3V HIGH level and is suitable for this ESP32-S3 GPIO input
 
 **Test**
 - Leave the PIR still for ~30–60 seconds to settle.
-- Move your hand in front of it; ENZO should react.
+- After warm-up, select `blink`, wait at least 8 seconds after the Mode button press, then move your hand in front of the PIR. The normal serial output should show `MOTION!`, the eyes temporarily switch to solid, and `MOTION END ->` appears when the approximately 4-second hold ends. Let the PIR return LOW before testing a fresh trigger.
 
 ---
 
@@ -184,16 +191,17 @@ This becomes the “core module” you later bolt onto ENZO’s deck.
 
 **Parts**
 - 1× LDR (photoresistor)
-- 1× fixed resistor (start with **10 kΩ**)
+- 1× fixed resistor (**10 kΩ**, as used in the owner-confirmed V1 divider)
 - hookup wire
 
 **Wiring (voltage divider)**
-- **3.3V → LDR → node → resistor → GND**
+- **3.3V → 10 kΩ resistor → node → LDR → GND**
 - **node → GPIO7**
 
 **Test**
-- Cover the LDR with your finger: readings should shift.
-- Shine a light: readings should shift the other way.
+- With USB bench power connected, measure the GPIO7 divider node relative to GND with a multimeter on DC volts, using accessible test points. Covering the LDR should raise the voltage; brighter light should lower it. GPIO7 is not connected to 5V.
+- The normal runtime does not print raw LDR readings. Its eye level is already 1, the same as the squint cap, so visible dimming is not a reliable pass/fail test. This check establishes divider response; it does not measure the firmware threshold transition.
+- Disconnect USB before changing wiring.
 
 ---
 
@@ -208,7 +216,7 @@ This becomes the “core module” you later bolt onto ENZO’s deck.
 Firmware uses an internal pull‑up (so the pin reads HIGH normally, LOW when pressed).
 
 **Test**
-- Press the button; ENZO should change mode / brightness / behaviour depending on your firmware build.
+- Press and release, allowing at least half a second between presses. The normal serial output cycles `EYE MODE:` through `blink`, `solid`, `off`, `angry`, `happy`, then `idle`. Verify the corresponding eye behaviour. V1 selects brightness level 1; this button is not a brightness selector.
 
 ---
 
@@ -224,9 +232,12 @@ The firmware uses an internal pull‑up, so the input is normally HIGH and goes 
 
 **Test**
 - If you configured valid private Wi‑Fi credentials in `config.py`, pressing the button should request connection / disconnection and the Wi‑Fi status LED should follow the resulting state.
-- If the public placeholder credentials are still present, the connection attempt is expected to fail or time out; the important hardware check is that the button press is detected.
+- With placeholder credentials, watch for `WIFI BTN`, followed by a failed connection or timeout. The main loop can pause during the attempt (default timeout approximately 10 seconds), then resume.
+- With valid credentials, successful connection prints `WIFI: ON` and lights GPIO12; the next press prints `WIFI: OFF` and turns it off. The LED records the button action outcome, not continuous monitoring of later network loss.
 
 ---
+
+Network association is optional for Free V1. The Wi-Fi button input and GPIO12 LED checks are still required; record any optional network connection test separately.
 
 ## A9 — Grounding philosophy (don’t overthink this)
 
@@ -246,10 +257,10 @@ You’re done with Module Group A when:
 
 - [ ] ESP boots with **no import errors**
 - [ ] Heartbeat LED works (GPIO2)
-- [ ] Wi‑Fi LED behaves as expected (GPIO12)
+- [ ] GPIO12 LED ON/OFF response verified using A3 or a successful A8 network toggle
 - [ ] NeoPixel eyes run and idle cleanly (GPIO16)
 - [ ] PIR triggers reliably (GPIO14)
-- [ ] LDR readings change with light (GPIO7)
+- [ ] GPIO7 divider voltage rises when covered and falls under brighter light (A6)
 - [ ] Mode button is detected (GPIO4)
 - [ ] Wi‑Fi button is detected (GPIO5)
 - [ ] Wiring is bundled and labelled (so later mounting is easy)

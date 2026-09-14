@@ -17,11 +17,13 @@ For the clearest public V1 build path, use the staged order below:
 Module A is built and tested first on USB bench power. Module B is then built and verified with the ESP disconnected before the two are integrated.
 
 Do **not** solder, move wires, or change connections while the system is powered.
-Disconnect battery / external power before making physical wiring changes.
+Disconnect battery, USB and any external supply before making physical wiring changes.
 
 ---
 
-## 1. Bill of Materials (Exact)
+## 1. Bill of Materials (Overview)
+
+Use the [BOM](BOM_T1_ENZO_v1.md) for purchasing information and validated replacement requirements.
 
 ### Core Electronics
 - ESP32‑S3 development board (core controller)
@@ -46,7 +48,7 @@ Disconnect battery / external power before making physical wiring changes.
 - 5V distribution rail
 - ground bus bar
 
-### Chassis & Mechanical
+### Chassis & Mechanical — Optional Reference Installation
 - **Black Gladiator tracked robot chassis (Pi Hut)**
 - DC motors (12V, ~300 RPM)
 - M3 risers (20–30mm)
@@ -64,7 +66,9 @@ Disconnect battery / external power before making physical wiring changes.
 
 ---
 
-## 2. Mechanical Assembly
+## 2. Mechanical Assembly — Optional Reference Installation
+
+These steps describe the photographed tracked ENZO mounting. An insulated bench base is sufficient for V1 Free. Motors and tracks are not V1 completion requirements.
 
 ### Step 1: Chassis
 - Assemble the black Gladiator tracked chassis and motors
@@ -113,7 +117,7 @@ USB / ESP 5V pin → Schottky → 5V Rail
 5V Rail → Schottky → ESP 5V pin
 ```
 
-Use the dedicated [V1 Schottky OR-ing reference](V1%20schottky%20OR-ing%20method.txt) for exact diode direction. The V1 arrangement uses **three Schottky diodes total**.
+Use the dedicated [V1 Schottky reference](V1%20schottky%20OR-ing%20method.txt) for diode direction, the Waveshare onboard USB diode and evidence limits. V1 uses **three external Schottky diodes** in addition to the board’s onboard USB diode. USB can keep the 5V rail powered with the latching button OFF.
 
 ### Grounding Rule
 - ONE heavy ground from ESP → ground rail
@@ -142,7 +146,7 @@ Use the dedicated [V1 Schottky OR-ing reference](V1%20schottky%20OR-ing%20method
 
 ## 5. Firmware
 
-1. Flash the provided firmware files
+1. Install the canonical [material/v1/firmware](../material/v1/firmware/) files using [Software Setup](SOFTWARE_SETUP_T1_ENZO_v1_USER.md)
 2. Verify serial output
 3. Test modes:
    - Idle
@@ -160,17 +164,16 @@ Use the dedicated [V1 Schottky OR-ing reference](V1%20schottky%20OR-ing%20method
 - Fuse installed
 - Main Schottky installed with correct polarity
 - ESP/5V isolation Schottkys installed with correct polarity
-- Tracks free-moving
+- Optional chassis, if fitted, is securely mounted and does not short the electronics
 - ESP secure
 
 ---
 
 ## 7. When v1 Is Finished
-STOP.
-Do not add features.
-Document.
-Photograph.
-Tag firmware.
+
+ENZO V1 Free is complete when the ESP32-S3 sensor/UI assembly works, Module A is complete, the protected battery and 5V power system has passed Module B, the ESP and power system are integrated, and the documented V1 completion checks pass. The photographed tracked chassis is a reference installation and optional mounting context. Locomotion begins in V2.
+
+Use the [integration and completion checks](WIRING_REFERENCES_T1_ENZO_v1_COMBINED.md#integration-and-v1-completion), record the source commit or release you built, and document your result. Do not add features to the canonical baseline.
 
 ## Next Step
 

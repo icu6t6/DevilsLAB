@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1400" viewBox="0 0 1120 1400">
+<title>ENZO V1 Free — electrical connection reference</title>
+<desc>Three external Schottky power paths, onboard USB diode, GPIO mapping and owner-confirmed LDR divider. Topology reference; component operating limits are specified separately.</desc>
+<rect width="1120" height="1400" fill="#f4f6f8"/>
+<text x="40" y="48" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="30" font-weight="700" text-anchor="start">ENZO T1 V1 Free</text>
+<text x="40" y="78" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="400" text-anchor="start">Electrical connection reference · no motors or Pi required</text>
+<rect x="30" y="100" width="1060" height="675" rx="10" fill="#ffffff" stroke="#c9d2dd"/>
+<text x="50" y="132" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start">POWER PATHS</text>
+<rect x="55" y="153" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="189.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">2S battery +</text>
+<polyline points="290,213 290,228" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,228 285.21537912477646,218.09508187412055 294.78462087522354,218.09508187412055" fill="#365b82"/>
+<rect x="55" y="228" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="252" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Inline fuse</text>
+<text x="290.0" y="275" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Original documentation: approximately 5A</text>
+<polyline points="290,288 290,303" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,303 285.21537912477646,293.0950818741206 294.78462087522354,293.0950818741206" fill="#365b82"/>
+<rect x="55" y="303" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="327" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Main Schottky</text>
+<text x="290.0" y="350" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Band / cathode toward source rail</text>
+<polyline points="290,363 290,378" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,378 285.21537912477646,368.0950818741206 294.78462087522354,368.0950818741206" fill="#365b82"/>
+<rect x="55" y="378" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="414.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Source / input rail</text>
+<polyline points="290,438 290,453" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,453 285.21537912477646,443.0950818741206 294.78462087522354,443.0950818741206" fill="#365b82"/>
+<rect x="55" y="453" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="477" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">UBEC / buck</text>
+<text x="290.0" y="500" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Nominal 5V; original guide specifies 3A minimum</text>
+<polyline points="290,513 290,528" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,528 285.21537912477646,518.0950818741205 294.78462087522354,518.0950818741205" fill="#365b82"/>
+<rect x="55" y="528" width="470" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="290.0" y="552" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Latching switch</text>
+<text x="290.0" y="575" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Buck OUT+ → C1; NO1 → 5V rail; NC1 unused</text>
+<rect x="605" y="153" width="420" height="56" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="815.0" y="187.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">USB connector VBUS</text>
+<rect x="605" y="240" width="420" height="60" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="815.0" y="264" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Onboard D1 · B5819WS</text>
+<text x="815.0" y="287" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Waveshare ESP32-S3-DEV-KIT-N8R8</text>
+<polyline points="815,209 815,240" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="815,240 810.2153791247765,230.09508187412055 819.7846208752235,230.09508187412055" fill="#365b82"/>
+<rect x="605" y="341" width="420" height="65" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="815.0" y="365" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">ESP 5V header / VDDUSB</text>
+<text x="815.0" y="388" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Onboard D1 cathode faces this board-side node</text>
+<polyline points="815,300 815,341" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="815,341 810.2153791247765,331.0950818741206 819.7846208752235,331.0950818741206" fill="#365b82"/>
+<rect x="560" y="473" width="225" height="66" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="672.5" y="497" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Channel A</text>
+<text x="672.5" y="520" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Schottky · band toward rail</text>
+<rect x="835" y="473" width="225" height="66" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="947.5" y="497" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">Channel B</text>
+<text x="947.5" y="520" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Schottky · band toward ESP</text>
+<polyline points="680,406 680,473" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="680,473 675.2153791247765,463.0950818741206 684.7846208752235,463.0950818741206" fill="#365b82"/>
+<polyline points="680,539 680,627" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="680,627 675.2153791247765,617.0950818741205 684.7846208752235,617.0950818741205" fill="#365b82"/>
+<polyline points="950,627 950,539" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="950,539 954.7846208752235,548.9049181258795 945.2153791247765,548.9049181258795" fill="#365b82"/>
+<polyline points="950,473 950,406" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="950,406 954.7846208752235,415.9049181258794 945.2153791247765,415.9049181258794" fill="#365b82"/>
+<rect x="55" y="627" width="1005" height="57" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="557.5" y="651" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">5V RAIL</text>
+<text x="557.5" y="674" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="middle">Feeds RGB supply, PIR supply and button LED+; Channel B feeds ESP</text>
+<polyline points="290,588 290,627" fill="none" stroke="#365b82" stroke-width="2"/>
+<polygon points="290,627 285.21537912477646,617.0950818741205 294.78462087522354,617.0950818741205" fill="#365b82"/>
+<text x="55" y="713" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">COMMON GND: battery −, buck IN− / OUT−, ESP GND and all load returns.</text>
+<text x="55" y="740" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="16" font-weight="400" text-anchor="start">Insulate rails from the chassis. Connect sensor grounds locally to ESP as documented.</text>
+<rect x="30" y="792" width="1060" height="96" rx="10" fill="#fff4df" stroke="#e0b16d"/>
+<text x="50" y="821" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="19" font-weight="700" text-anchor="start">Button OFF does not disconnect USB power.</text>
+<text x="50" y="848" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">USB can feed the 5V rail through Channel A. Disconnect battery AND USB before wiring.</text>
+<text x="50" y="873" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">External diode arrows show forward paths. Onboard D1 provides the board’s USB reverse blocking.</text>
+<rect x="30" y="906" width="1060" height="282" rx="10" fill="#ffffff" stroke="#c9d2dd"/>
+<text x="50" y="936" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start">SENSOR / UI CONNECTIONS</text>
+<rect x="45" y="951" width="1030" height="32" rx="0" fill="#f2f5f8" stroke="#f2f5f8"/>
+<text x="55" y="975" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO2</text>
+<text x="160" y="975" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">Heartbeat LED</text>
+<text x="330" y="975" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">GPIO → 220–330Ω → LED anode; cathode → GND</text>
+<text x="55" y="1011" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO12</text>
+<text x="160" y="1011" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">Wi-Fi LED</text>
+<text x="330" y="1011" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">GPIO → 220–330Ω → LED anode; cathode → GND</text>
+<rect x="45" y="1023" width="1030" height="32" rx="0" fill="#f2f5f8" stroke="#f2f5f8"/>
+<text x="55" y="1047" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO4</text>
+<text x="160" y="1047" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">Mode button</text>
+<text x="330" y="1047" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">Momentary contact to GND; internal pull-up</text>
+<text x="55" y="1083" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO5</text>
+<text x="160" y="1083" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">Wi-Fi button</text>
+<text x="330" y="1083" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">Momentary contact to GND; internal pull-up</text>
+<rect x="45" y="1095" width="1030" height="32" rx="0" fill="#f2f5f8" stroke="#f2f5f8"/>
+<text x="55" y="1119" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO14</text>
+<text x="160" y="1119" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">PIR OUT</text>
+<text x="330" y="1119" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">PIR supply → 5V; GND → GND; output must suit 3.3V GPIO</text>
+<text x="55" y="1155" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="700" text-anchor="start">GPIO16</text>
+<text x="160" y="1155" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">RGB DIN / DATA</text>
+<text x="330" y="1155" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="15" font-weight="400" text-anchor="start">RGB supply → 5V; GND → GND; optional 330–470Ω data resistor</text>
+<rect x="30" y="1205" width="1060" height="160" rx="10" fill="#ffffff" stroke="#c9d2dd"/>
+<text x="50" y="1235" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="start">LDR DIVIDER · GPIO7</text>
+<rect x="55" y="1254" width="130" height="44" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="120.0" y="1282.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">ESP 3.3V</text>
+<rect x="245" y="1254" width="175" height="44" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="332.5" y="1282.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">10kΩ resistor</text>
+<rect x="480" y="1254" width="175" height="44" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="567.5" y="1282.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">GPIO7 junction</text>
+<rect x="715" y="1254" width="130" height="44" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="780.0" y="1282.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">LDR</text>
+<rect x="905" y="1254" width="130" height="44" rx="10" fill="#eef4fa" stroke="#c9d2dd"/>
+<text x="970.0" y="1282.0" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="18" font-weight="700" text-anchor="middle">GND</text>
+<polyline points="185,1276 245,1276" fill="none" stroke="#365b82" stroke-width="2"/>
+<polyline points="420,1276 480,1276" fill="none" stroke="#365b82" stroke-width="2"/>
+<polyline points="655,1276 715,1276" fill="none" stroke="#365b82" stroke-width="2"/>
+<polyline points="845,1276 905,1276" fill="none" stroke="#365b82" stroke-width="2"/>
+<text x="50" y="1333" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="17" font-weight="400" text-anchor="start">Brighter light → lower junction voltage. Covering the LDR → higher voltage. No 5V on GPIO7.</text>
+<text x="30" y="1390" fill="#192d43" font-family="DejaVu Sans, sans-serif" font-size="14" font-weight="400" text-anchor="start">Follow the BOM and staged checks for component ratings and voltage limits. This diagram does not certify substitutes.</text>
+</svg>

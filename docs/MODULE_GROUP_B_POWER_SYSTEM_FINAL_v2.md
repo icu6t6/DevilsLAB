@@ -96,7 +96,8 @@ This ground rail will later accept:
 2. Buck **IN − → ground rail**
 3. Buck **OUT + → temporary test lead**
 4. Buck **OUT − → ground rail**
-5. Adjust the buck to **5.0–5.2V**
+5. Historical V1 used a fixed-output RC-style 5V / 3A UBEC; there was no adjustment. A replacement may be fixed or adjustable, but it must provide regulated nominal 5V at least 3A continuous and its input range must suit the 2S source.
+6. Record the protected input voltage and unloaded output before connecting the ESP. Historical V1 was about 5.28–5.30V at the 5V rail because its RC-style UBEC was fixed-output. For a replacement, use regulated nominal 5V at least 3A continuous and measure UBEC output, 5V rail and ESP 5V header; do not tune a replacement to 5.30V merely to reproduce the historical reading.
 
 At this point:
 - you can power the buck safely
@@ -133,9 +134,11 @@ Nothing else connects to this rail yet.
 - Button LED **− → ground rail**
 - **NC1** unused
 
-### Result
-- Button OFF → no 5V rail
-- Button ON → 5V rail live + LED illuminated
+### Result — battery-only Module B test, ESP disconnected
+- Button OFF → buck feed disconnected from the 5V rail
+- Button ON → buck supplies the 5V rail and the button LED illuminates
+
+After integration, USB can supply the 5V rail through Channel A even when the button is OFF. Disconnect the battery and USB before changing wiring; the button is not an all-source disconnect.
 
 This is intentional and mirrors real equipment.
 
@@ -143,7 +146,9 @@ This is intentional and mirrors real equipment.
 
 ## MODULE B5A – ESP / USB 5V SCHOTTKY ISOLATION
 
-ENZO V1 uses **two additional Schottky diodes** around the ESP 5V connection so battery/rail power and USB power can coexist without direct back-feed.
+ENZO V1 uses **two additional SR560 Schottky diodes** as opposite-direction supply paths between the ESP 5V header and the 5V rail; the main path uses a third SR560. The Waveshare ESP32-S3-DEV-KIT-N8R8 also has onboard USB diode D1, which provides the board-side reverse-current block toward USB VBUS. The external pair alone does not guarantee the reverse-drive behaviour of an arbitrary replacement UBEC.
+
+See the [Schottky reference](V1%20schottky%20OR-ing%20method.txt) for the original operating record and the limits of that evidence.
 
 These are in addition to the main-path Schottky from Module B1, making **three Schottky diodes total in the V1 arrangement**.
 
@@ -172,7 +177,8 @@ Before connecting the ESP:
   - the main Schottky polarity is correct
   - the button correctly enables/disables 5V
   - no heat buildup
-  - no unexpected voltage
+  - UBEC output, 5V rail and ESP 5V header measured and recorded; the historical 5.28–5.30V rail reading is a reference for the original fixed UBEC, not a universal target
+  - no power-source connection has been inferred from a wire colour or terminal position
 
 ### Early Power Validation (optional)
 Before permanent power installation, a low-current source may be connected to the input rail to verify buck converter operation and downstream 5V distribution.
