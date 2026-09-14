@@ -23,11 +23,19 @@ In this build:
 - ESP32 dev board
 - 4x4 membrane keypad
 - 1602 I2C LCD
+- bidirectional I2C logic-level shifter suitable for open-drain I2C
 - micro servo
 - 4× 1.5V battery pack
 - 5V servo rail / source rail
 - jumper wires
 - breadboard
+
+## LCD I2C safety
+This module inherits the safe LCD wiring rule from [011 – LCD Hello](../011_lcd_hello/README.md).
+
+The ESP32 GPIO pins are **not 5V tolerant**. If the LCD backpack is powered from `VIN` / 5V, do not connect its SDA/SCL lines directly to GPIO21/GPIO22 unless you have positively verified that the backpack's I2C pull-ups are limited to 3.3V.
+
+For a beginner-safe default, keep the LCD powered from 5V and pass SDA/SCL through a bidirectional open-drain-compatible I2C level shifter, with its HV side at 5V and LV side at 3.3V.
 
 ## Wiring
 
@@ -41,11 +49,16 @@ In this build:
 - pin 7 → GPIO33
 - pin 8 → GPIO32
 
-### LCD → ESP32
-- GND → GND
-- VDD / VCC → VIN
-- SDA → GPIO21
-- SCL → GPIO22
+### LCD / level shifter → ESP32
+- LCD GND → GND
+- LCD VDD / VCC → VIN / 5V
+- LCD SDA → level shifter HV1
+- LCD SCL → level shifter HV2
+- level shifter HV → VIN / 5V
+- level shifter LV → 3.3V
+- level shifter GND → GND
+- level shifter LV1 → GPIO21
+- level shifter LV2 → GPIO22
 
 ### Servo
 - signal → GPIO5
@@ -54,6 +67,8 @@ In this build:
 
 ## Wiring Diagram
 
+> **Safety note:** the image below records the original build. If it shows a 5V-powered LCD backpack with SDA/SCL wired directly to the ESP32, do not copy those two signal connections. Use the level-shifted arrangement above unless you have separately verified a 3.3V-safe pull-up arrangement.
+
 ![014 – Keypad LCD Servo Lock](../../images/014_keypad_lcd_servo_batterypack.png)
 
 ## Important
@@ -61,7 +76,9 @@ Servo signal for this build is **GPIO5**.
 
 The servo must be powered from the separate **5V servo rail**, not from the ESP32 3.3V pin.
 
-The servo ground, battery ground, LCD ground, and ESP32 ground must all share the same common ground.
+The servo ground, battery ground, LCD ground, level-shifter ground, and ESP32 ground must all share the same common ground.
+
+Keep the LCD I2C voltage boundary from 011: a 5V-powered backpack must not place 5V pull-ups directly onto ESP32 GPIO21/GPIO22.
 
 The LCD address used here is `0x27`, which matched the display used in this build.
 
@@ -326,7 +343,8 @@ The `last_key` check stops one long press from being read as repeated presses.
 That makes the lock behave more cleanly when keys are held slightly too long.
 
 ## Test
-- wire the keypad, LCD, and servo exactly as shown
+- wire the LCD through the safe I2C voltage boundary described above and in 011
+- wire the keypad exactly as shown
 - confirm the servo is on the separate 5V servo rail
 - confirm all grounds share the same common ground
 - run the script
@@ -339,6 +357,7 @@ That makes the lock behave more cleanly when keys are held slightly too long.
 - confirm `DENIED` shows and the servo does not unlock
 
 ## Definition of done
+- ESP32 I2C GPIO side is not exposed to 5V pull-ups
 - keypad reads correctly
 - LCD updates correctly
 - `*` clears the entry
