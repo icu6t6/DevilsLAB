@@ -2,9 +2,11 @@
 
 Use this with the [BOM](BOM_T1_ENZO_v1.md), [Module A](ESP_BUILD_GUIDE_MODULE_GROUP_A.md) and [Module B](MODULE_GROUP_B_POWER_SYSTEM_FINAL_v2.md). It describes the Free V1 electrical baseline; chassis mounting is optional and locomotion belongs to V2.
 
-![ENZO V1 electrical connection reference](updated_v1_wiring_diagram_ELF.png)
+Retained physical/as-built reference (for build and mounting context):
 
-[Editable SVG reference](WIRING_T1_ENZO_V1.svg)
+![ENZO V1 physical/as-built wiring reference](updated_v1_wiring_diagram_ELF.png)
+
+Supplementary electrical topology reference (for corrected connection, polarity and label truth): [WIRING_T1_ENZO_V1.svg](WIRING_T1_ENZO_V1.svg)
 
 ## Connections that must agree
 
