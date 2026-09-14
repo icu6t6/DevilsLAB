@@ -52,6 +52,12 @@ These ENZO-Labs modules use this ESP32 dev board style and pin layout:
 
 If you are using a different ESP32 board, pin labels and layout may differ.
 
+### Never used an ESP32 before?
+
+Start with **[000 – First ESP32 Setup](enzo-labs/000_first_esp32_setup/README.md)**.
+
+It takes you from a fresh board and USB cable through Thonny, MicroPython firmware, serial/COM-port selection and a first working test before you wire Module 001.
+
 ---
 
 ## Start here if you want to
@@ -61,10 +67,11 @@ If you are using a different ESP32 board, pin labels and layout may differ.
 - get quick wins before larger systems
 - work through a clean progression
 
-Recommended first modules:
-1. 001 – RGB LED
-2. 002 – RGB LED Button Cycle
-3. 003 – Potentiometer Input
+Recommended first steps:
+1. 000 – First ESP32 Setup
+2. 001 – RGB LED
+3. 002 – RGB LED Button Cycle
+4. 003 – Potentiometer Input
 
 Then continue through the ladder.
 
@@ -72,6 +79,7 @@ Then continue through the ladder.
 
 ## Current modules
 
+- [000 – First ESP32 Setup (Never Used One Before)](enzo-labs/000_first_esp32_setup/README.md)
 - [001 – RGB LED (3 Channel Output)](enzo-labs/001_rgb_led/README.md)
 - [002 – RGB LED Button Cycle](enzo-labs/002_rgb_led_button_cycle/README.md)
 - [003 – Potentiometer Input](enzo-labs/003_potentiometer_input/README.md)
