@@ -36,16 +36,17 @@ RC522 → ESP32
 ## Important
 The RC522 must be powered from **3.3V**, not 5V.
 
-The `mfrc522.py` driver file must be saved onto the **MicroPython device** before running the RFID read script.
+The `mfrc522.py` driver file must be saved onto the **MicroPython device root** before running the RFID read script. In Thonny, save it directly on the device as `/mfrc522.py`, not inside a PC folder and not inside a subfolder on the ESP32.
 
 ## Driver setup
 - create or open `mfrc522.py`
-- save it to the **MicroPython device**
-- confirm the file exists on the device filesystem
+- in Thonny choose **Save as... → MicroPython device**
+- save it in the **root of the device filesystem** as `/mfrc522.py`
+- confirm `mfrc522.py` appears at the top level of the MicroPython device files
 - then run the RFID read script
 
 ### Practical note
-If the script says it cannot import `mfrc522`, the driver file is either missing from the MicroPython device or saved in the wrong place.
+If the script says it cannot import `mfrc522`, the driver file is either missing from the MicroPython device or saved in the wrong place. The expected location for this lesson is `/mfrc522.py` on the device root.
 
 ## Notes
 The RC522 detected both the card and the fob correctly.
@@ -75,8 +76,8 @@ while True:
     time.sleep(0.1)
 ```
 
-## Driver file (must be on the MicroPython device)
-Save this as `mfrc522.py` on the microcontroller:
+## Driver file (must be on the MicroPython device root)
+Save this as `/mfrc522.py` on the microcontroller:
 
 ```python
 from machine import Pin, SPI
@@ -337,6 +338,7 @@ class MFRC522:
 
 ## Test
 - power the RC522 from 3.3V
+- confirm `/mfrc522.py` exists at the MicroPython device root
 - run the read script
 - present the RFID card
 - confirm a UID prints to serial
