@@ -13,18 +13,45 @@ Brings up a 1602 I2C LCD and writes simple text to both display lines.
 ## Parts
 - ESP32 dev board
 - 1602 I2C LCD
+- bidirectional I2C logic-level shifter suitable for open-drain I2C (2-channel is enough; 4-channel is also fine)
 - jumper wires
 - breadboard
 
+## I2C voltage safety — read before wiring
+The ESP32 GPIO pins are **not 5V tolerant**.
+
+Many 1602 I2C backpacks have pull-up resistors from SDA and SCL to the backpack supply. If the backpack is powered from `VIN` / 5V, those pull-ups can place about 5V on SDA and SCL. Do **not** connect a 5V-powered backpack's SDA/SCL lines directly to ESP32 GPIO21/GPIO22 unless you have positively verified that the bus pull-ups are limited to 3.3V.
+
+For a total beginner, use the level-shifted arrangement below:
+- LCD backpack VDD / VCC → VIN / 5V
+- level shifter HV → VIN / 5V
+- level shifter LV → ESP32 3.3V
+- all grounds → common GND
+- ESP32 GPIO21 (SDA) → level shifter LV1
+- LCD SDA → matching level shifter HV1
+- ESP32 GPIO22 (SCL) → level shifter LV2
+- LCD SCL → matching level shifter HV2
+
+Use a **bidirectional, open-drain-compatible I2C level shifter**. A common 2-channel or 4-channel BSS138-style I2C level-shifter module is suitable.
+
+An alternative is only acceptable if the specific backpack/pull-up arrangement has been verified as 3.3V-safe. Do not assume that every 1602 I2C backpack is safe just because the LCD itself works from 5V.
+
 ## Wiring
 
-### LCD → ESP32
-- GND → GND
-- VDD / VCC → VIN
-- SDA → GPIO21
-- SCL → GPIO22
+### LCD / level shifter → ESP32
+- LCD GND → GND
+- LCD VDD / VCC → VIN / 5V
+- LCD SDA → level shifter HV1
+- LCD SCL → level shifter HV2
+- level shifter HV → VIN / 5V
+- level shifter LV → 3.3V
+- level shifter GND → GND
+- level shifter LV1 → GPIO21
+- level shifter LV2 → GPIO22
 
 ## Wiring Diagram
+
+> **Safety note:** the image below records the original build. If it shows SDA/SCL connected directly between a 5V-powered LCD backpack and the ESP32, do not copy those two signal connections. Use the level-shifted wiring above unless you have verified the backpack's I2C pull-ups are 3.3V-safe.
 
 ![011 – LCD Hello](../../images/011_1602_I2C_LCD_AND_%20KEYPAD.png)
 
@@ -54,6 +81,7 @@ If you get an empty list:
 - there may be a bad connection
 - the backpack may not be responding
 - the LCD power may be wrong
+- the level shifter may be wired to the wrong HV/LV side
 
 ## Notes
 A row of solid blocks usually means:
@@ -136,6 +164,8 @@ The ESP32 creates an I2C connection using:
 
 The LCD address used here is `0x27`, which matches the scanned I2C address of `39`.
 
+The level shifter changes the electrical voltage boundary only; the MicroPython I2C pin definitions and LCD address stay the same.
+
 ### 2. LCD control values
 The script defines:
 - LCD width = 16 characters
@@ -190,7 +220,8 @@ After initialisation, the script writes:
 The loop at the end keeps the script running so the display stays stable.
 
 ## Test
-- wire the LCD as shown
+- wire the LCD and level shifter as shown in the text above
+- confirm the LCD's 5V I2C side is isolated from the ESP32's 3.3V GPIO side by the level shifter, unless you have separately verified a 3.3V-safe backpack/pull-up arrangement
 - run the I2C scan
 - confirm the LCD address appears
 - run the main LCD script
@@ -200,6 +231,7 @@ The loop at the end keeps the script running so the display stays stable.
 
 ## Definition of done
 - LCD powers correctly
+- the ESP32 I2C GPIO side is not exposed to 5V pull-ups
 - I2C scan finds the display address
 - the display initialises cleanly
 - line 1 shows `ENZO LABS`
