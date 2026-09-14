@@ -21,16 +21,29 @@ In this build:
 - ESP32 dev board
 - 4x4 membrane keypad
 - 1602 I2C LCD
+- bidirectional I2C logic-level shifter suitable for open-drain I2C
 - jumper wires
 - breadboard
 
+## LCD I2C safety
+This module inherits the safe LCD wiring rule from [011 – LCD Hello](../011_lcd_hello/README.md).
+
+The ESP32 GPIO pins are **not 5V tolerant**. If the LCD backpack is powered from `VIN` / 5V, do not connect its SDA/SCL lines directly to GPIO21/GPIO22 unless you have positively verified that the backpack's I2C pull-ups are limited to 3.3V.
+
+For a beginner-safe default, keep the LCD powered from 5V and pass SDA/SCL through a bidirectional open-drain-compatible I2C level shifter, with its HV side at 5V and LV side at 3.3V.
+
 ## Wiring
 
-### LCD → ESP32
-- GND → GND
-- VDD / VCC → VIN
-- SDA → GPIO21
-- SCL → GPIO22
+### LCD / level shifter → ESP32
+- LCD GND → GND
+- LCD VDD / VCC → VIN / 5V
+- LCD SDA → level shifter HV1
+- LCD SCL → level shifter HV2
+- level shifter HV → VIN / 5V
+- level shifter LV → 3.3V
+- level shifter GND → GND
+- level shifter LV1 → GPIO21
+- level shifter LV2 → GPIO22
 
 ### Keypad → ESP32
 - pin 1 → GPIO13
@@ -44,14 +57,17 @@ In this build:
 
 ## Wiring Diagram
 
+> **Safety note:** the image below records the original build. If it shows a 5V-powered LCD backpack with SDA/SCL wired directly to the ESP32, do not copy those two signal connections. Use the level-shifted arrangement above unless you have separately verified a 3.3V-safe pull-up arrangement.
+
 ![013 – Keypad LCD Entry Display](../../images/013.png)
 
 ## Important
 Before using this module:
 - confirm the LCD works first with [011 – LCD Hello](../011_lcd_hello/README.md)
 - confirm the keypad works first with [010 – Keypad Read](../010_keypad_read/README.md)
+- keep the safe I2C voltage boundary from 011 when you combine the two modules
 
-This build uses the same LCD and keypad wiring already proven in those earlier modules.
+This build uses the same LCD and keypad behaviour already proven in those earlier modules.
 
 The LCD address used here is `0x27`, which matched the scanned address in this build.
 
@@ -196,7 +212,8 @@ while True:
 ```
 
 ## Test
-- wire the LCD and keypad exactly as shown
+- wire the LCD through the safe I2C voltage boundary described above and in 011
+- wire the keypad exactly as shown
 - run the script
 - confirm the LCD shows `ENTER CODE`
 - press keypad buttons and confirm they appear on line 2
@@ -206,6 +223,7 @@ while True:
 - confirm the entered value is also printed to serial
 
 ## Definition of done
+- ESP32 I2C GPIO side is not exposed to 5V pull-ups
 - LCD initialises correctly
 - keypad reads correctly
 - typed keys appear on the LCD
