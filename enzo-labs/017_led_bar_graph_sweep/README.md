@@ -24,7 +24,7 @@ This module proves the LED bar graph wiring, polarity, resistor paths, and GPIO 
 
 * ESP32 dev board
 * 10-segment LED bar graph
-* 10 × 220Ω resistors
+* 10 × 1kΩ resistors
 * breadboard
 * jumper wires
 
