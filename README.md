@@ -31,7 +31,7 @@ ENZO-Labs exists as the easier entry ladder.
 
 ## Parts note
 
-Many of the parts used in ENZO-Labs modules 001–017 were tested or experimented with using parts from a **Freenove Ultimate Starter Kit** and similar ESP32 learning kits.
+Many of the parts used in ENZO-Labs modules 001–018 were tested or experimented with using parts from a **Freenove Ultimate Starter Kit** and similar ESP32 learning kits.
 
 If you already own a kit like this, you may already have many of the parts needed for the early ENZO-Labs modules.
 
@@ -97,6 +97,7 @@ Then continue through the ladder.
 - [015 – Keypad + LCD Multi-Position Lock](enzo-labs/015_keypad_lcd_multi_position_lock/README.md)
 - [016 – Ultrasonic Read](enzo-labs/016_ultrasonic_read/README.md)
 - [017 – LED Bar Graph Sweep](enzo-labs/017_led_bar_graph_sweep/README.md)
+- [018 – Ultrasonic LED Bar Distance Display](enzo-labs/018_ultrasonic_led_bar_distance_display/README.md)
 
 ---
 
